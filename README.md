@@ -4,7 +4,7 @@ Decidim es una plataforma de código libre para gestionar procesos de democracia
 
 Este repositorio es el código fuente de la instancia para el municipio de Monterrey en Nuevo León, México.
 
-El código es una modificación del proyecto [Decidim](https://github.com/decidim/decidim).
+El código es una modificación del proyecto [Decidim](https://decidim.org).
 
 ## Configurando Decidim en tu máquina para desarrollo
 
