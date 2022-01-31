@@ -37,3 +37,6 @@
 public/uploads
 
 node_modules
+.env
+.env.production
+.devcontainer
