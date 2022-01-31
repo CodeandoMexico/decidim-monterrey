@@ -4,6 +4,8 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
+gem 'dotenv-rails', groups: [:development, :test]
+
 gem "decidim", "0.25.2"
 # gem "decidim-conferences", "0.25.2"
 # gem "decidim-consultations", "0.25.2"
@@ -12,16 +14,12 @@ gem "decidim", "0.25.2"
 # gem "decidim-templates", "0.25.2"
 
 gem "bootsnap", "~> 1.3"
-
 gem "puma", ">= 5.0.0"
-
 gem "faker", "~> 2.14"
-
 gem "wicked_pdf", "~> 2.1"
 
 group :development, :test do
   gem "byebug", "~> 11.0", platform: :mri
-
   gem "decidim-dev", "0.25.2"
 end
 
