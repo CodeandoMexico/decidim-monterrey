@@ -1,9 +1,13 @@
 version: '3'
 services:
   decidim:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - SECRET_KEY_BASE=${SECRET_KEY_BASE}
     ports:
-      - '80:3000'
+      - '3000:3000'
     env_file:
       - .env
     tmpfs:
