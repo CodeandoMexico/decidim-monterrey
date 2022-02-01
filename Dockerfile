@@ -19,7 +19,7 @@ COPY . .
 
 RUN yarn install
 RUN bundle check || bundle install --jobs=4
-RUN bundle exec rake assets:precompile
+RUN bundle exec rails assets:precompile
 
 ENTRYPOINT []
 CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
