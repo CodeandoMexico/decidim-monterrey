@@ -1,0 +1,23 @@
+# Git
+.git
+.gitignore
+
+# Visual Studio
+.devcontainer
+
+# Node y npm
+node_modules/
+
+# logfiles y tempfiles
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+
+# Variables de entorno
+.env
+
+## Environment normalization:
+/.bundle
+/vendor/bundle
+

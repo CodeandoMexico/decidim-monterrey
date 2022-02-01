@@ -1,0 +1,14 @@
+version: '3'
+services:
+  decidim:
+    build: .
+    ports:
+      - '3000:3000'
+    environment:
+      - RAILS_ENV=production
+      - DATABASE_HOST="${DATABASE_HOST}"
+      - DATABASE_USERNAME="${DATABASE_USERNAME}"
+      - DATABASE_PASSWORD="${DATABASE_PASSWORD}"
+    tmpfs:
+      - /decidim/tmp
+    command: '/decidim/bin/rails s -b 0.0.0.0'
