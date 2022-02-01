@@ -18,8 +18,8 @@ WORKDIR /decidim
 COPY . .
 
 RUN yarn install
-RUN bundle check || bundle install
+RUN bundle check || bundle install --jobs=4
 RUN bundle exec rake assets:precompile
 
 ENTRYPOINT []
-CMD ["bundle", "exec", "rails", "s", "-b", "0.0.0.0"]
+CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
