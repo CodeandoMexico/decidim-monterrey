@@ -1,7 +1,5 @@
 FROM ruby:2.7.5
 
-LABEL maintainer="oscar@codeandomexico.org"
-
 ENV RAILS_ENV production
 ENV RAILS_SERVE_STATIC_FILES=true
 ENV BUNDLE_WITHOUT=development:test
