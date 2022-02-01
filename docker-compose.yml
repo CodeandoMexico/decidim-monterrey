@@ -3,12 +3,9 @@ services:
   decidim:
     build: .
     ports:
-      - '3000:3000'
-    environment:
-      - RAILS_ENV=production
-      - DATABASE_URL="${DATABASE_URL}"
-      - SECRET_KEY_BASE="${SECRET_KEY_BASE}"
-      - RAILS_LOG_TO_STDOUT=true
+      - '80:3000'
+    env_file:
+      - .env
     tmpfs:
       - /decidim/tmp
     command: '/decidim/bin/rails s -b 0.0.0.0'
