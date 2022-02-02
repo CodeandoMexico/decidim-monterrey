@@ -1,0 +1,15 @@
+jobs:
+  build-svc:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        name: Checkout repository
+
+      - uses: pmorelli92/github-container-registry-build-push@2.0.0
+        name: Build and Publish latest image
+        with:
+          github-push-secret: ${{secrets.GITHUB_TOKEN}}
+          docker-image-name: decidim-monterrey
+          docker-image-tag: latest
+          dockerfile-path: Dockerfile-production
+          build-context: .
