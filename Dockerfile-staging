@@ -17,11 +17,12 @@ RUN npm install -g yarn
 RUN gem install bundler
 
 WORKDIR /decidim
-COPY . .
+COPY Gemfile .
+COPY Gemfile.lock .
 
-RUN yarn install
 RUN bundle check || bundle install --jobs=4
-RUN bundle exec rails assets:precompile
+# RUN yarn install
+# RUN bundle exec rails assets:precompile
 
 ENTRYPOINT []
-CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
+CMD []

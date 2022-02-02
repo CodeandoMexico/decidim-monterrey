@@ -3,7 +3,7 @@ services:
   decidim:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile-production
       args:
         - SECRET_KEY_BASE=${SECRET_KEY_BASE}
     ports:

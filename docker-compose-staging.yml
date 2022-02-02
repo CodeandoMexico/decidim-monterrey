@@ -1,0 +1,26 @@
+version: '3'
+services:
+  # ----------------------------------------
+  decidim:
+    build:
+      context: .
+      dockerfile: Dockerfile-staging
+      args:
+        - SECRET_KEY_BASE=${SECRET_KEY_BASE}
+    ports:
+      - '3000:3000'
+    env_file:
+      - .env
+    command: '/decidim/bin/rails s -b 0.0.0.0'
+    volumes:
+      - ..:/decidim
+      - gem_cache:/usr/local/bundle/gems
+      - node_modules_cache:/decidim/node_modules
+      - tmp_cache:/decidim/tmp
+  # ----------------------------------------
+volumes:
+  gem_cache: {}
+  node_modules_cache: {}
+  tmp_cache: {}
+
+
