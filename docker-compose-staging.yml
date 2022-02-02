@@ -13,7 +13,7 @@ services:
       - .env
     command: '/decidim/bin/rails s -b 0.0.0.0'
     volumes:
-      - ..:/decidim
+      - .:/decidim
       - gem_cache:/usr/local/bundle/gems
       - node_modules_cache:/decidim/node_modules
       - tmp_cache:/decidim/tmp
