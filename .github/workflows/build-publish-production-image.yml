@@ -1,17 +1,19 @@
 on: workflow_dispatch
 
 jobs:
-  build-svc:
+  build-publish-production-image:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-        name: Checkout repository
+    if: github.ref == 'refs/heads/main'
 
-      - uses: pmorelli92/github-container-registry-build-push@2.0.0
-        name: Build and Publish latest image
-        with:
-          github-push-secret: ${{secrets.GITHUB_TOKEN}}
-          docker-image-name: decidim-monterrey
-          docker-image-tag: latest
-          dockerfile-path: Dockerfile-production
-          build-context: .
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Build with --build-arg(s)
+      uses: VaultVulp/gp-docker-action@1.2.0
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        image-name: decidim-monterrey
+        image-tag: production
+        custom-args: --build-arg SECRET_KEY_BASE=${{ secrets.SECRET_KEY_BASE }}
+        dockerfile: Dockerfile-production
+        build-context: .
