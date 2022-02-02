@@ -1,8 +1,11 @@
+name: Construir y publicar imagen de producción
+
 on: workflow_dispatch
 
 jobs:
   build-publish-production-image:
     runs-on: ubuntu-latest
+    environment: production
     if: github.ref == 'refs/heads/main'
 
     steps:
