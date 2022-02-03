@@ -2,6 +2,7 @@ FROM ruby:2.7.5
 
 LABEL org.opencontainers.image.source="https://github.com/codeandomexico/decidim-monterrey"
 
+ARG RAILS_ENV
 ARG SECRET_KEY_BASE
 ENV SHELL /bin/bash
 
@@ -18,6 +19,8 @@ WORKDIR /decidim
 COPY Gemfile .
 COPY Gemfile.lock .
 RUN bundle check || bundle install --jobs=4
+RUN yarn install
+RUN bundle exec rails assets:precompile
 COPY . .
 
-CMD ["bash"]
+CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]

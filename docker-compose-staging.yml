@@ -6,13 +6,13 @@ services:
       context: .
       dockerfile: ./docker/decidim.staging.Dockerfile
       args:
+        - RAILS_ENV=${RAILS_ENV}
         - SECRET_KEY_BASE=${SECRET_KEY_BASE}
     ports:
-      - '3000:3000'
+      - '80:3000'
     env_file:
       - .env
     command: '/decidim/bin/rails s -b 0.0.0.0'
-    # command: rails s -b 'ssl://localhost:3000?key=./certs/localhost.oscar.key&cert=./certs/localhost.oscar.crt'
     volumes:
       - gem_cache:/usr/local/bundle/gems
       - node_modules_cache:/decidim/node_modules

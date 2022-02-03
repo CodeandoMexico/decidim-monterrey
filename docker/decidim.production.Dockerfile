@@ -1,10 +1,9 @@
 FROM ruby:2.7.5
 
-ARG SECRET_KEY_BASE
+LABEL org.opencontainers.image.source="https://github.com/codeandomexico/decidim-monterrey"
 
-ENV RAILS_ENV production
-ENV RAILS_SERVE_STATIC_FILES=true
-ENV BUNDLE_WITHOUT=development:test
+ARG RAILS_ENV
+ARG SECRET_KEY_BASE
 ENV SHELL /bin/bash
 
 RUN apt-get update && apt-get upgrade -y
@@ -17,11 +16,9 @@ RUN npm install -g yarn
 RUN gem install bundler
 
 WORKDIR /decidim
-COPY . .
-
 RUN bundle check || bundle install --jobs=4
 RUN yarn install
 RUN bundle exec rails assets:precompile
+COPY . .
 
-ENTRYPOINT []
 CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
