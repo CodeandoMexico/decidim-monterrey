@@ -38,6 +38,5 @@ public/uploads
 public/decidim-packs
 
 node_modules
-.env
-.env.production
+.env*
 .devcontainer
