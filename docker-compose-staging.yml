@@ -4,7 +4,7 @@ services:
   decidim:
     build:
       context: .
-      dockerfile: Dockerfile-staging
+      dockerfile: ./docker/decidim.staging.Dockerfile
       args:
         - SECRET_KEY_BASE=${SECRET_KEY_BASE}
     ports:
@@ -12,8 +12,8 @@ services:
     env_file:
       - .env
     command: '/decidim/bin/rails s -b 0.0.0.0'
+    # command: rails s -b 'ssl://localhost:3000?key=./certs/localhost.oscar.key&cert=./certs/localhost.oscar.crt'
     volumes:
-      - .:/decidim
       - gem_cache:/usr/local/bundle/gems
       - node_modules_cache:/decidim/node_modules
       - tmp_cache:/decidim/tmp
@@ -22,5 +22,3 @@ volumes:
   gem_cache: {}
   node_modules_cache: {}
   tmp_cache: {}
-
-
