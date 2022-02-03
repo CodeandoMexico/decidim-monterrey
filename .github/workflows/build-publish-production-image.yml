@@ -9,14 +9,14 @@ jobs:
     if: github.ref == 'refs/heads/main'
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Build with --build-arg(s)
-      uses: VaultVulp/gp-docker-action@1.2.0
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        image-name: production
-        image-tag: latest
-        custom-args: --build-arg SECRET_KEY_BASE=${{ secrets.SECRET_KEY_BASE }}
-        dockerfile: Dockerfile-production
-        build-context: .
+      - name: Build with --build-arg(s)
+        uses: VaultVulp/gp-docker-action@1.2.0
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          image-name: production
+          image-tag: latest
+          custom-args: --build-arg SECRET_KEY_BASE=${{ secrets.SECRET_KEY_BASE }}
+          dockerfile: docker/decidim.production.Dockerfile
+          build-context: .
