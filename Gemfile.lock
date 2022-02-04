@@ -124,6 +124,9 @@ GEM
     chef-utils (17.9.26)
       concurrent-ruby
     childprocess (3.0.0)
+    clockwork (3.0.0)
+      activesupport
+      tzinfo
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
     coffee-rails (5.0.0)
@@ -793,6 +796,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap (~> 1.3)
   byebug (~> 11.0)
+  clockwork
   daemons
   decidim (= 0.25.2)
   decidim-dev (= 0.25.2)
