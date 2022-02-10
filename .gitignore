@@ -40,3 +40,5 @@ public/decidim-packs
 node_modules
 .env*
 .devcontainer
+.DS_Store
+.DS_Store?
