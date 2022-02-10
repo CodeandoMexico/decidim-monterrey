@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Exte nsions
+module Extensions
 
   module Decidim
     module Budgets
