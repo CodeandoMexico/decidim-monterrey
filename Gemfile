@@ -17,6 +17,8 @@ gem "clockwork"
 group :development, :test do
   gem "byebug", "~> 11.0", platform: :mri
   gem "decidim-dev", "0.25.2"
+  gem "pry"
+  gem "standard"
 end
 
 group :development do
