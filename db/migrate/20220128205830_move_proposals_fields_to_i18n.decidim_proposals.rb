@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # This migration comes from decidim_proposals (originally 20200708091228)
 
 class MoveProposalsFieldsToI18n < ActiveRecord::Migration[5.2]
@@ -13,12 +14,12 @@ class MoveProposalsFieldsToI18n < ActiveRecord::Migration[5.2]
         author = proposal.coauthorships.first.author
 
         locale = if author
-                   author.try(:locale).presence || author.try(:default_locale).presence || author.try(:organization).try(:default_locale).presence
-                 elsif proposal.component && proposal.component.participatory_space
-                   proposal.component.participatory_space.organization.default_locale
-                 else
-                   I18n.default_locale.to_s
-                 end
+          author.try(:locale).presence || author.try(:default_locale).presence || author.try(:organization).try(:default_locale).presence
+        elsif proposal&.component&.participatory_space
+          proposal.component.participatory_space.organization.default_locale
+        else
+          I18n.default_locale.to_s
+        end
 
         proposal.new_title = {
           locale => proposal.title

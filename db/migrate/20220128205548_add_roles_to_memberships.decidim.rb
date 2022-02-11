@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # This migration comes from decidim (originally 20181011080252)
 
 class AddRolesToMemberships < ActiveRecord::Migration[5.2]
@@ -8,7 +9,7 @@ class AddRolesToMemberships < ActiveRecord::Migration[5.2]
     change_column_null :decidim_user_group_memberships, :role, false
     add_index(
       :decidim_user_group_memberships,
-      %w(role decidim_user_group_id),
+      %w[role decidim_user_group_id],
       where: "(role = 'creator')",
       name: "decidim_group_membership_one_creator_per_group",
       unique: true

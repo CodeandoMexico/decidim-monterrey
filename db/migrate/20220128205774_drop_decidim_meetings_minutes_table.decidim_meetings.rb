@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # This migration comes from decidim_meetings (originally 20210512100333)
 
 class DropDecidimMeetingsMinutesTable < ActiveRecord::Migration[6.0]
@@ -29,8 +30,8 @@ class DropDecidimMeetingsMinutesTable < ActiveRecord::Migration[6.0]
       }
       if version.object_changes.present?
         version_updates[:object_changes] = version.object_changes
-                                                  .gsub("\ndescription:\n-\n-", "\nminutes_description:\n-\n-")
-                                                  .gsub("\ndescription:\n-\n-", "\nminutes_description:\n-\n-")
+          .gsub("\ndescription:\n-\n-", "\nminutes_description:\n-\n-")
+          .gsub("\ndescription:\n-\n-", "\nminutes_description:\n-\n-")
       end
 
       version.update!(version_updates)

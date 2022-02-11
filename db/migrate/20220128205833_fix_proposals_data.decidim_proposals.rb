@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # This migration comes from decidim_proposals (originally 20201002085508)
 
 class FixProposalsData < ActiveRecord::Migration[5.2]
@@ -15,8 +16,8 @@ class FixProposalsData < ActiveRecord::Migration[5.2]
 
         # rubocop:disable Rails/SkipsModelValidations
         values = {}
-        values[:title] = { locale => proposal.title } unless proposal.title.is_a?(Hash)
-        values[:body] = { locale => proposal.body } unless proposal.body.is_a?(Hash)
+        values[:title] = {locale => proposal.title} unless proposal.title.is_a?(Hash)
+        values[:body] = {locale => proposal.body} unless proposal.body.is_a?(Hash)
 
         proposal.update_columns(values)
         # rubocop:enable Rails/SkipsModelValidations
@@ -26,7 +27,8 @@ class FixProposalsData < ActiveRecord::Migration[5.2]
     reset_column_information
   end
 
-  def down; end
+  def down
+  end
 
   def reset_column_information
     Decidim::User.reset_column_information

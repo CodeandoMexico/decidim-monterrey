@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # This migration comes from decidim_participatory_processes (originally 20170720120135)
 
 class MakeFeaturesPolymorphic < ActiveRecord::Migration[5.1]
@@ -19,8 +20,8 @@ class MakeFeaturesPolymorphic < ActiveRecord::Migration[5.1]
     rename_column :decidim_components, :decidim_participatory_process_id, :participatory_space_id
 
     add_index :decidim_components,
-              [:participatory_space_id, :participatory_space_type],
-              name: "index_decidim_components_on_decidim_participatory_space"
+      [:participatory_space_id, :participatory_space_type],
+      name: "index_decidim_components_on_decidim_participatory_space"
 
     change_column_null :decidim_components, :participatory_space_id, false
     change_column_null :decidim_components, :participatory_space_type, false

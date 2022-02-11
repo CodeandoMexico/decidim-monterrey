@@ -4,7 +4,7 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-gem 'dotenv-rails', groups: [:development, :test, :production]
+gem "dotenv-rails", groups: [:development, :test, :production]
 
 gem "decidim", "0.25.2"
 
@@ -30,6 +30,6 @@ group :development do
 end
 
 group :production do
-  gem 'delayed_job_active_record'
+  gem "delayed_job_active_record"
   gem "daemons"
 end

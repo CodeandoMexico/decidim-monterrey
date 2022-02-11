@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # This migration comes from decidim_meetings (originally 20180809134748)
 
 class AddUpcomingEventsAsContentBlock < ActiveRecord::Migration[5.2]

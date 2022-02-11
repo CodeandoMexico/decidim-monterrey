@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # This migration comes from decidim_debates (originally 20181016132850)
 
 class AddOrganizationAsAuthorToDebates < ActiveRecord::Migration[5.2]
@@ -24,8 +25,8 @@ class AddOrganizationAsAuthorToDebates < ActiveRecord::Migration[5.2]
     end
 
     add_index :decidim_debates_debates,
-              [:decidim_author_id, :decidim_author_type],
-              name: "index_decidim_debates_debates_on_decidim_author"
+      [:decidim_author_id, :decidim_author_type],
+      name: "index_decidim_debates_debates_on_decidim_author"
     change_column_null :decidim_debates_debates, :decidim_author_id, false
     change_column_null :decidim_debates_debates, :decidim_author_type, false
   end

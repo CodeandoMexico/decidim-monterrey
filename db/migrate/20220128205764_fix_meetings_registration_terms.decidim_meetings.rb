@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # This migration comes from decidim_meetings (originally 20201016065302)
 
 class FixMeetingsRegistrationTerms < ActiveRecord::Migration[5.2]
@@ -21,7 +22,8 @@ class FixMeetingsRegistrationTerms < ActiveRecord::Migration[5.2]
     reset_column_information
   end
 
-  def down; end
+  def down
+  end
 
   def reset_column_information
     Decidim::Meetings::Meeting.reset_column_information

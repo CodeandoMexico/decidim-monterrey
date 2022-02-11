@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # This migration comes from decidim_verifications (originally 20171030133426)
 
 #
@@ -29,9 +30,9 @@ class MoveAuthorizationsToNewApi < ActiveRecord::Migration[5.1]
 
   def up
     Organization.find_each do |organization|
-      migrated_authorizations = organization.available_authorizations.map do |authorization|
+      migrated_authorizations = organization.available_authorizations.map { |authorization|
         authorization.demodulize.underscore
-      end
+      }
 
       organization.update!(available_authorizations: migrated_authorizations)
     end
@@ -54,9 +55,9 @@ class MoveAuthorizationsToNewApi < ActiveRecord::Migration[5.1]
 
   def down
     Organization.find_each do |organization|
-      migrated_authorizations = organization.available_authorizations.map do |authorization|
+      migrated_authorizations = organization.available_authorizations.map { |authorization|
         Decidim::Verifications.find_workflow_manifest(authorization).form
-      end
+      }
 
       organization.update!(available_authorizations: migrated_authorizations)
     end
