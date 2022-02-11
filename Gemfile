@@ -19,6 +19,7 @@ group :development, :test do
   gem "decidim-dev", "0.25.2"
   gem "pry"
   gem "standard"
+  gem "rspec-rails"
 end
 
 group :development do

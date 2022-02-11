@@ -817,6 +817,7 @@ DEPENDENCIES
   listen (~> 3.1)
   pry
   puma (>= 5.0.0)
+  rspec-rails
   spring (~> 2.0)
   spring-watcher-listen (~> 2.0)
   standard
