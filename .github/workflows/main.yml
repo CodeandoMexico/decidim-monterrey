@@ -61,7 +61,7 @@ jobs:
           DATABASE_URL: postgres://postgres:password@localhost:5432/decidim_monterrey_test
           RAILS_ENV: test
         run: |
-          bin/rails db:setup
+          bin/rails db:test:prepare
       - name: Run tests
         env:
           MAILER_SENDER: "homer.simpson@gmail.com"
