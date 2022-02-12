@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # This migration comes from decidim (originally 20200327082257)
 
 class MigrateNewslettersToTemplates < ActiveRecord::Migration[5.2]
@@ -15,9 +16,9 @@ class MigrateNewslettersToTemplates < ActiveRecord::Migration[5.2]
 
     Newsletter.find_each do |newsletter|
       existing_content_block = ContentBlock
-                               .where(decidim_organization_id: newsletter.organization_id)
-                               .where(scope_name: :newsletter_template)
-                               .find_by(scoped_resource_id: newsletter.id)
+        .where(decidim_organization_id: newsletter.organization_id)
+        .where(scope_name: :newsletter_template)
+        .find_by(scoped_resource_id: newsletter.id)
 
       next if existing_content_block
 

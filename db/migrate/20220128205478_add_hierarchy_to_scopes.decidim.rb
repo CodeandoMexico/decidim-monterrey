@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # This migration comes from decidim (originally 20170605162500)
 
 class AddHierarchyToScopes < ActiveRecord::Migration[5.0]
@@ -25,8 +26,8 @@ class AddHierarchyToScopes < ActiveRecord::Migration[5.0]
       t.remove_index :name
       t.remove :name
       t.jsonb :name
-      t.references :scope_type, foreign_key: { to_table: :decidim_scope_types }, index: true
-      t.references :parent, foreign_key: { to_table: :decidim_scopes }
+      t.references :scope_type, foreign_key: {to_table: :decidim_scope_types}, index: true
+      t.references :parent, foreign_key: {to_table: :decidim_scopes}
       t.string :code
       t.integer :part_of, array: true, default: [], null: false
       t.index :part_of, using: "gin"

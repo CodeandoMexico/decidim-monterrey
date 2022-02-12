@@ -1,11 +1,12 @@
 # frozen_string_literal: true
+
 # This migration comes from decidim (originally 20170307084957)
 
 class CreateReports < ActiveRecord::Migration[5.0]
   def change
     create_table :decidim_reports do |t|
-      t.references :decidim_moderation, null: false, index: { name: "decidim_reports_moderation" }
-      t.references :decidim_user, null: false, index: { name: "decidim_reports_user" }
+      t.references :decidim_moderation, null: false, index: {name: "decidim_reports_moderation"}
+      t.references :decidim_user, null: false, index: {name: "decidim_reports_user"}
 
       t.string :reason, null: false
       t.text :details

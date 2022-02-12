@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # This migration comes from decidim_proposals (originally 20200730131631)
 
 class MoveProposalEndorsedEventNotificationsToResourceEndorsedEvent < ActiveRecord::Migration[5.2]
@@ -14,7 +15,7 @@ class MoveProposalEndorsedEventNotificationsToResourceEndorsedEvent < ActiveReco
       event_class: "Decidim::ResourceEndorsedEvent",
       decidim_resource_type: "Decidim::Proposals::Proposal"
     )
-                         .find_each do |notification|
+      .find_each do |notification|
       notification.update(event_name: "decidim.events.proposals.proposal_endorsed", event_class: "Decidim::Proposals::ProposalEndorsedEvent")
     end
   end

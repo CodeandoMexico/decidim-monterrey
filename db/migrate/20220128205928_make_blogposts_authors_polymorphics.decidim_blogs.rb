@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # This migration comes from decidim_blogs (originally 20181017084519)
 
 class MakeBlogpostsAuthorsPolymorphics < ActiveRecord::Migration[5.2]
@@ -23,8 +24,8 @@ class MakeBlogpostsAuthorsPolymorphics < ActiveRecord::Migration[5.2]
     end
 
     add_index :decidim_blogs_posts,
-              [:decidim_author_id, :decidim_author_type],
-              name: "index_decidim_blogs_posts_on_decidim_author"
+      [:decidim_author_id, :decidim_author_type],
+      name: "index_decidim_blogs_posts_on_decidim_author"
     change_column_null :decidim_blogs_posts, :decidim_author_id, false
     change_column_null :decidim_blogs_posts, :decidim_author_type, false
 

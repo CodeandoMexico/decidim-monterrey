@@ -4,7 +4,7 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-gem 'dotenv-rails', groups: [:development, :test, :production]
+gem "dotenv-rails", groups: [:development, :test, :production]
 
 gem "decidim", "0.25.2"
 
@@ -17,6 +17,9 @@ gem "clockwork"
 group :development, :test do
   gem "byebug", "~> 11.0", platform: :mri
   gem "decidim-dev", "0.25.2"
+  gem "pry"
+  gem "standard"
+  gem "rspec-rails"
 end
 
 group :development do
@@ -28,6 +31,6 @@ group :development do
 end
 
 group :production do
-  gem 'delayed_job_active_record'
+  gem "delayed_job_active_record"
   gem "daemons"
 end

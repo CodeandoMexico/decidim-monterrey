@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # This migration comes from decidim (originally 20180221101934)
 
 class FixNicknameIndex < ActiveRecord::Migration[5.1]
@@ -10,9 +11,9 @@ class FixNicknameIndex < ActiveRecord::Migration[5.1]
 
   def change
     User.where(nickname: nil)
-        .where(deleted_at: nil)
-        .where(managed: false)
-        .find_each { |u| u.update(nickname: UserBaseEntity.nicknamize(u.name, decidim_organization_id: u.decidim_organization_id)) }
+      .where(deleted_at: nil)
+      .where(managed: false)
+      .find_each { |u| u.update(nickname: UserBaseEntity.nicknamize(u.name, decidim_organization_id: u.decidim_organization_id)) }
 
     # rubocop:disable Rails/SkipsModelValidations
     User.where(nickname: nil).update_all("nickname = ''")
