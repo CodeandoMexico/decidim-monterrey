@@ -4,6 +4,7 @@ LABEL org.opencontainers.image.source="https://github.com/codeandomexico/decidim
 
 ARG FORCE_SSL
 ARG RAILS_ENV
+ARG MAILER_SENDER
 ARG SECRET_KEY_BASE
 ENV SHELL /bin/bash
 
@@ -23,5 +24,3 @@ RUN bundle check || bundle install --jobs=4
 COPY . .
 RUN yarn install
 RUN bundle exec rails assets:precompile
-
-CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0"]
