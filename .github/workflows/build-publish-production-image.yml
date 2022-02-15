@@ -17,6 +17,6 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           image-name: production
           image-tag: latest
-          custom-args: --build-arg SECRET_KEY_BASE=${{ secrets.SECRET_KEY_BASE }} RAILS_ENV=${{ secrets.RAILS_ENV }} FORCE_SSL=${{ secrets.FORCE_SSL }} MAILER_SENDER={{ secrets.MAILER_SENDER }}
+          custom-args: --build-arg RAILS_ENV=production --build-arg FORCE_SSL=false --build-arg SECRET_KEY_BASE=${{ secrets.SECRET_KEY_BASE }} --build-arg MAILER_SENDER={{ secrets.MAILER_SENDER }}
           dockerfile: docker/decidim.Dockerfile
           build-context: .
