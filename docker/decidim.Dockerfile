@@ -24,3 +24,4 @@ RUN bundle check || bundle install --jobs=4
 COPY . .
 RUN yarn install
 RUN bundle exec rails assets:precompile
+RUN chmod +x /decidim/docker/entrypoints/decidim.sh
