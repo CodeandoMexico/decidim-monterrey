@@ -11,12 +11,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Build with --build-arg(s)
+      - name: Construir imagen Docker
         uses: VaultVulp/gp-docker-action@1.2.0
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           image-name: production
           image-tag: latest
-          custom-args: --build-arg RAILS_ENV=production --build-arg FORCE_SSL=false --build-arg SECRET_KEY_BASE=${{ secrets.SECRET_KEY_BASE }} --build-arg MAILER_SENDER={{ secrets.MAILER_SENDER }}
+          custom-args: --build-arg RAILS_ENV=production --build-arg FORCE_SSL=false --build-arg SECRET_KEY_BASE=${{ secrets.SECRET_KEY_BASE }} --build-arg MAILER_SENDER=${{ secrets.MAILER_SENDER }}
           dockerfile: docker/decidim.Dockerfile
           build-context: .
