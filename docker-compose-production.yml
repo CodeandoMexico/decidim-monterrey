@@ -3,7 +3,9 @@ services:
   decidim:
     image: ghcr.io/codeandomexico/decidim-monterrey/production:latest
     ports:
-      - '80:3000'
+      - '3000:3000'
     env_file:
       - .env
+    volumes:
+      - ~/decidim-storage:/decidim/storage
     command: '/decidim/bin/rails s -b 0.0.0.0'
