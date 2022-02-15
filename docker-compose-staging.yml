@@ -4,19 +4,24 @@ services:
   decidim:
     build:
       context: .
-      dockerfile: ./docker/decidim.staging.Dockerfile
+      dockerfile: ./docker/decidim.Dockerfile
       args:
         - RAILS_ENV=${RAILS_ENV}
         - SECRET_KEY_BASE=${SECRET_KEY_BASE}
+        - FORCE_SSL=${FORCE_SSL}
+        - MAILER_SENDER=${MAILER_SENDER}
     ports:
       - '80:3000'
     env_file:
       - .env
-    command: '/decidim/bin/rails s -b 0.0.0.0'
     volumes:
       - gem_cache:/usr/local/bundle/gems
       - node_modules_cache:/decidim/node_modules
       - tmp_cache:/decidim/tmp
+      - ./docker/entrypoints:/decidim/docker/entrypoints
+      - ~/decidim-storage:/decidim/storage
+    entrypoint: docker/entrypoints/decidim.sh
+    command: 'rails s -b 0.0.0.0'
   # ----------------------------------------
 volumes:
   gem_cache: {}
