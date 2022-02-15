@@ -42,3 +42,4 @@ node_modules
 .devcontainer
 .DS_Store
 .DS_Store?
+.vscode
