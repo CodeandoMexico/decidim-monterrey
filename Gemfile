@@ -7,6 +7,7 @@ ruby RUBY_VERSION
 gem "dotenv-rails", groups: [:development, :test, :production]
 
 gem "decidim", "0.25.2"
+gem "decidim-ine", path: 'decidim-module-ine'
 
 gem "bootsnap", "~> 1.3"
 gem "puma", ">= 5.0.0"
@@ -28,6 +29,7 @@ group :development do
   gem "spring", "~> 2.0"
   gem "spring-watcher-listen", "~> 2.0"
   gem "web-console", "~> 4.0"
+  gem "ripper-tags"
 end
 
 group :production do

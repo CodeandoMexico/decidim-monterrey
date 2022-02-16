@@ -1,0 +1,25 @@
+<%= form_required_explanation %>
+
+<div class="card-section">
+
+  <div class="field">
+    <%= form.text_field :street %>
+  </div>
+
+  <div class="field">
+    <%= form.text_field :street_number %>
+  </div>
+
+  <div class="field">
+    <%= form.text_field :postal_code %>
+  </div>
+
+  <div class="field">
+    <%= form.select :neighbourhood, @form.neighbourhoods_for_select, prompt: true %>
+  </div>
+
+  <div class="field">
+    <%= form.upload :verification_attachment %>
+  </div>
+
+</div>

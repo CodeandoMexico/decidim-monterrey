@@ -1,0 +1,27 @@
+es:
+  decidim:
+    verifications:
+      ine:
+        authorizations:
+          create:
+            success: Solicitud de verificación recibida correctamente
+            error: No se pudo crear tu solicitud de verificación
+          update:
+            success: Solicitud de verificación recibida correctamente
+            error: No se pudo actualizar tu solicitud de verificación
+    ine:
+      authorizations:
+        new:
+          title: Verificación de INE
+          send: Solicitar verificación
+        edit:
+          being_reviewed: Estamos revisando tu solicitud
+          send: Solicitar verificación
+    authorization_handlers:
+      ine:
+        name: Documento INE
+        explanation: Verifícate con tu documento INE
+  errors:
+    messages:
+      postal_code: Debe ser un código postal correcto
+      number: Debe ser un número

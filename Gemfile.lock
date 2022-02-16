@@ -1,3 +1,10 @@
+PATH
+  remote: decidim-module-ine
+  specs:
+    decidim-ine (0.25.2)
+      decidim-core (= 0.25.2)
+      decidim-verifications (= 0.25.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -648,6 +655,7 @@ GEM
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
     rexml (3.2.5)
+    ripper-tags (0.9.0)
     rspec (3.10.0)
       rspec-core (~> 3.10.0)
       rspec-expectations (~> 3.10.0)
@@ -810,6 +818,7 @@ DEPENDENCIES
   daemons
   decidim (= 0.25.2)
   decidim-dev (= 0.25.2)
+  decidim-ine!
   delayed_job_active_record
   dotenv-rails
   faker (~> 2.14)
@@ -817,6 +826,7 @@ DEPENDENCIES
   listen (~> 3.1)
   pry
   puma (>= 5.0.0)
+  ripper-tags
   rspec-rails
   spring (~> 2.0)
   spring-watcher-listen (~> 2.0)
