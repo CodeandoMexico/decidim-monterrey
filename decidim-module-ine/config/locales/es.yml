@@ -10,14 +10,41 @@ es:
             success: Solicitud de verificación recibida correctamente
             error: No se pudo actualizar tu solicitud de verificación
     ine:
+      admin:
+        confirmations:
+          new:
+            check_the_info: Revisa la información
+            reject: Rechazar
+            verify: Aceptar verificación
+            street: Calle
+            street_number: Número
+            postal_code: Código Postal
+            neighbourhood: Colonia
+        pending_authorizations:
+          index:
+            title: Verificaciones de documento INE pendientes
+            verification_number: "Verificación #%{n}"
       authorizations:
         new:
           title: Verificación de INE
           send: Solicitar verificación
         edit:
-          being_reviewed: Estamos revisando tu solicitud
+          being_reviewed: Estamos revisando tu solicitud de verificación
           send: Solicitar verificación
+        form:
+          street: Calle
+          street_number: Número
+          postal_code: Código Postal
+          neighbourhood: Colonia
+          verification_attachment: Imagen documento INE
     authorization_handlers:
+      admin:
+        ine:
+          help:
+            - Las participantes rellenan la información de su identidad y suben una copia de su INE.
+            - Revisas la información del INE.
+            - Si la información coincide, acepta la verificación.
+            - Si no puedes ver la información con claridad o no la puedes verificar, puedes rechazar la solicitud para que la participante la pueda corregir.
       ine:
         name: Documento INE
         explanation: Verifícate con tu documento INE

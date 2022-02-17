@@ -49,6 +49,20 @@ module Decidim
         }
       end
 
+      def metadata
+        {
+          "street" => street,
+          "street_number" => street_number,
+          "postal_code" => postal_code,
+          "neighbourhood" => neighbourhood
+        }
+      end
+
+      def unique_id
+        # ToDo crear una cadena de texto única para cada usuario, por ejemplo con el nombre y email
+        "#{street}|#{street_number}|#{postal_code}|#{neighbourhood}"
+      end
+
       def neighbourhoods_for_select
         Decidim::Ine::Neighbourhood.all.order('name').map do |n|
           [
@@ -56,6 +70,10 @@ module Decidim
             n.id
           ]
         end
+      end
+
+      def neighbourhood_by_id(neighbourhood_id)
+        Decidim::Ine::Neighbourhood.find(neighbourhood_id)
       end
 
     end
