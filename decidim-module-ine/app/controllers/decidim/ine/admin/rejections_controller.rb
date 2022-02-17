@@ -17,6 +17,7 @@ module Decidim
 
           Decidim::Verifications::PerformAuthorizationStep.call(@pending_authorization, @form) do
             on(:ok) do
+              SendVerificationRejectedJob.perform_now(@authorization.user)
               flash[:notice] = t("rejections.create.success", scope: "decidim.verifications.ine.admin")
               redirect_to root_path
             end

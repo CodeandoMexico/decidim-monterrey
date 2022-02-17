@@ -18,6 +18,21 @@ es:
             success: Solicitud de verificación recibida correctamente
             error: No se pudo actualizar tu solicitud de verificación
     ine:
+      verification_mailer:
+        verification_rejected:
+          subject: Solicitud de verificación documento INE rechazada
+          title: Solicitud de verificación documento INE rechazada
+          copy_p: Hubo un problema con tu verificación.
+          copy_ul_1: Asegúrate de que la información sea claramente visible en la imagen subida.
+          copy_ul_2: Asegúrate de que la información ingresada sea correcta.
+          copy_cta: Revisa tu solicitud
+        verification_accepted:
+          subject: Solicitud de verificación documento INE aceptada
+          title: Solicitud de verificación documento INE aceptada
+          copy_p: "Enhorabuena, ya eres un ciudadano verificado. Entre otras cosas ahora ya puedes:"
+          copy_ul_1: Subir propuestas
+          copy_ul_2: Votar y comentar propuestas
+          copy_cta: Participa
       admin:
         confirmations:
           new:

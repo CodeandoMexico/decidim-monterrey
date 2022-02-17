@@ -19,6 +19,9 @@ module Decidim
           enforce_permission_to :update, :authorization, authorization: @pending_authorization
 
           @pending_authorization.grant!
+
+          SendVerificationAcceptedJob.perform_now(@pending_authorization.user)
+
           flash[:notice] = t("confirmations.create.success", scope: "decidim.verifications.ine.admin")
           redirect_to pending_authorizations_path
         end
