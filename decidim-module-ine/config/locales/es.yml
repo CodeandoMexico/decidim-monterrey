@@ -1,0 +1,81 @@
+es:
+  decidim:
+    verifications:
+      ine:
+        admin:
+          rejections:
+            create:
+              success: Verificación rechazada. Se pedirá a la participante que modifique sus documentos.
+          confirmations:
+            create:
+              error: La verificación no coincide. Por favor inténtalo de nuevo o rechaza la verificación para que la participante pueda modificarla.
+              success: La participante ha sido verificada correctamente.
+        authorizations:
+          create:
+            success: Solicitud de verificación recibida correctamente
+            error: No se pudo crear tu solicitud de verificación
+          update:
+            success: Solicitud de verificación recibida correctamente
+            error: No se pudo actualizar tu solicitud de verificación
+    ine:
+      verification_mailer:
+        verification_rejected:
+          subject: Solicitud de verificación documento INE rechazada
+          title: Solicitud de verificación documento INE rechazada
+          copy_p: Hubo un problema con tu verificación.
+          copy_ul_1: Asegúrate de que la información sea claramente visible en la imagen subida.
+          copy_ul_2: Asegúrate de que la información ingresada sea correcta.
+          copy_cta: Revisa tu solicitud
+        verification_accepted:
+          subject: Solicitud de verificación documento INE aceptada
+          title: Solicitud de verificación documento INE aceptada
+          copy_p: "Enhorabuena, ya eres un ciudadano verificado. Entre otras cosas ahora ya puedes:"
+          copy_ul_1: Subir propuestas
+          copy_ul_2: Votar y comentar propuestas
+          copy_cta: Participa
+      admin:
+        confirmations:
+          new:
+            check_the_info: Revisa la información
+            reject: Rechazar
+            verify: Aceptar verificación
+            street: Calle
+            street_number: Número
+            postal_code: Código Postal
+            neighbourhood: Colonia
+            district: Distrito
+        pending_authorizations:
+          index:
+            title: Verificaciones de documento INE pendientes
+            verification_number: "Verificación #%{n}"
+      authorizations:
+        new:
+          title: Verificación de INE
+          send: Solicitar verificación
+        edit:
+          being_reviewed: Estamos revisando tu solicitud de verificación.
+          send: Solicitar verificación de nuevo
+          rejection_notice: Hubo un problema con tu verificación. Por favor, inténtalo de nuevo.
+          rejection_clarity: Asegúrate de que la información sea claramente visible en la imagen subida.
+          rejection_correctness: Asegúrate de que la información ingresada sea correcta.
+        form:
+          street: Calle
+          street_number: Número
+          postal_code: Código Postal
+          neighbourhood: Colonia
+          verification_attachment: Imagen documento INE
+    authorization_handlers:
+      admin:
+        ine:
+          help:
+            - Las participantes rellenan la información de su identidad y suben una copia de su INE.
+            - Revisas la información del INE.
+            - Si la información coincide, acepta la verificación.
+            - Si no puedes ver la información con claridad o no la puedes verificar, puedes rechazar la solicitud para que la participante la pueda corregir.
+      ine:
+        name: Documento INE
+        explanation: Verifícate con tu documento INE
+  errors:
+    messages:
+      postal_code: Debe ser un código postal correcto
+      number: Debe ser un número

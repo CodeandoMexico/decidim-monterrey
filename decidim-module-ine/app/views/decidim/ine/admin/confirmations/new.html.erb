@@ -1,0 +1,52 @@
+<%= decidim_form_for(@form, url: pending_authorization_confirmation_path(@pending_authorization),
+                            html: { class: "form" }) do |form| %>
+  <div class="card">
+    <div class="card-divider">
+      <h2 class="card-title">
+        <%= t(".check_the_info") %>
+        <%= link_to t(".reject"), pending_authorization_rejection_path(@pending_authorization), method: :post, class: "button alert tiny button--title destroy" %>
+      </h2>
+    </div>
+
+    <div class="card-section">
+      <div class="row column">
+        <%= image_tag @pending_authorization.attached_uploader(:verification_attachment).variant_path(:big), class: "thumbnail" %>
+      </div>
+      <div class="row column">
+        <label>
+          <%= t(".street") %>
+          <input type="text" readonly="true" value="<%= @pending_authorization.verification_metadata['street'] %>" >
+        </label>
+      </div>
+      <div class="row column">
+        <label>
+          <%= t(".street_number") %>
+          <input type="text" readonly="true" value="<%= @pending_authorization.verification_metadata['street_number'] %>" >
+        </label>
+      </div>
+      <div class="row column">
+        <label>
+          <%= t(".postal_code") %>
+          <input type="text" readonly="true" value="<%= @pending_authorization.verification_metadata['postal_code'] %>" >
+        </label>
+      </div>
+      <div class="row column">
+        <label>
+          <%= t(".neighbourhood") %>
+          <input type="text" readonly="true" value="<%= @form.neighbourhood_by_id(@pending_authorization.verification_metadata['neighbourhood']).name %>" >
+        </label>
+      </div>
+      <div class="row column">
+        <label>
+          <%= t(".district") %>
+          <% n = @form.neighbourhood_by_id(@pending_authorization.verification_metadata['neighbourhood']) %>
+          <input type="text" readonly="true" value='<%= "#{n.district_id} - #{n.district_name}" %>'>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="button--double form-general-submit">
+    <%= form.submit t(".verify") %>
+  </div>
+<% end %>
