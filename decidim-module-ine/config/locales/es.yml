@@ -2,6 +2,14 @@ es:
   decidim:
     verifications:
       ine:
+        admin:
+          rejections:
+            create:
+              success: Verificación rechazada. Se pedirá a la participante que modifique sus documentos.
+          confirmations:
+            create:
+              error: La verificación no coincide. Por favor inténtalo de nuevo o rechaza la verificación para que la participante pueda modificarla.
+              success: La participante ha sido verificada correctamente.
         authorizations:
           create:
             success: Solicitud de verificación recibida correctamente
@@ -20,6 +28,7 @@ es:
             street_number: Número
             postal_code: Código Postal
             neighbourhood: Colonia
+            district: Distrito
         pending_authorizations:
           index:
             title: Verificaciones de documento INE pendientes
@@ -29,8 +38,11 @@ es:
           title: Verificación de INE
           send: Solicitar verificación
         edit:
-          being_reviewed: Estamos revisando tu solicitud de verificación
-          send: Solicitar verificación
+          being_reviewed: Estamos revisando tu solicitud de verificación.
+          send: Solicitar verificación de nuevo
+          rejection_notice: Hubo un problema con tu verificación. Por favor, inténtalo de nuevo.
+          rejection_clarity: Asegúrate de que la información sea claramente visible en la imagen subida.
+          rejection_correctness: Asegúrate de que la información ingresada sea correcta.
         form:
           street: Calle
           street_number: Número

@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
 module Decidim
   module Ine
     module Admin
+
       class ConfirmationsController < Decidim::Admin::ApplicationController
         layout "decidim/admin/users"
 
@@ -8,32 +11,24 @@ module Decidim
 
         def new
           enforce_permission_to :update, :authorization, authorization: @pending_authorization
-          @form = InformationForm.from_params(@pending_authorization[:verification_metadata])
+
+          @form = InformationForm.new
         end
 
         def create
           enforce_permission_to :update, :authorization, authorization: @pending_authorization
 
-          @form = InformationForm.from_params(params)
-
-          ConfirmUserAuthorization.call(@pending_authorization, @form, session) do
-            on(:ok) do
-              flash[:notice] = t("confirmations.create.success", scope: "decidim.verifications.id_documents.admin")
-              redirect_to pending_authorizations_path
-            end
-
-            on(:invalid) do
-              flash.now[:alert] = t("confirmations.create.error", scope: "decidim.verifications.id_documents.admin")
-              render action: :new
-            end
-          end
+          @pending_authorization.grant!
+          flash[:notice] = t("confirmations.create.success", scope: "decidim.verifications.ine.admin")
+          redirect_to pending_authorizations_path
         end
 
         private
 
         def load_pending_authorization
-          @pending_authorization = Decidim::Authorization.find(params[:pending_authorization_id])
+          @pending_authorization = Authorization.find(params[:pending_authorization_id])
         end
+
       end
     end
   end

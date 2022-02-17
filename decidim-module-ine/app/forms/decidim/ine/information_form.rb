@@ -51,10 +51,7 @@ module Decidim
 
       def metadata
         {
-          "street" => street,
-          "street_number" => street_number,
-          "postal_code" => postal_code,
-          "neighbourhood" => neighbourhood
+          "district_id" => neighbourhood_by_id(neighbourhood).district_id
         }
       end
 
@@ -74,6 +71,10 @@ module Decidim
 
       def neighbourhood_by_id(neighbourhood_id)
         Decidim::Ine::Neighbourhood.find(neighbourhood_id)
+      end
+
+      def district_by_id(district_id)
+        district_id
       end
 
     end

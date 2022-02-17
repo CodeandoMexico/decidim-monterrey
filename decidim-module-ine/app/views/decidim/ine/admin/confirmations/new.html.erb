@@ -15,25 +15,32 @@
       <div class="row column">
         <label>
           <%= t(".street") %>
-          <input type="text" readonly="true" value="<%= @pending_authorization.metadata['street'] %>" >
+          <input type="text" readonly="true" value="<%= @pending_authorization.verification_metadata['street'] %>" >
         </label>
       </div>
       <div class="row column">
         <label>
           <%= t(".street_number") %>
-          <input type="text" readonly="true" value="<%= @pending_authorization.metadata['street_number'] %>" >
+          <input type="text" readonly="true" value="<%= @pending_authorization.verification_metadata['street_number'] %>" >
         </label>
       </div>
       <div class="row column">
         <label>
           <%= t(".postal_code") %>
-          <input type="text" readonly="true" value="<%= @pending_authorization.metadata['postal_code'] %>" >
+          <input type="text" readonly="true" value="<%= @pending_authorization.verification_metadata['postal_code'] %>" >
         </label>
       </div>
       <div class="row column">
         <label>
           <%= t(".neighbourhood") %>
-          <input type="text" readonly="true" value="<%= @form.neighbourhood_by_id(@pending_authorization.metadata['neighbourhood']).name %>" >
+          <input type="text" readonly="true" value="<%= @form.neighbourhood_by_id(@pending_authorization.verification_metadata['neighbourhood']).name %>" >
+        </label>
+      </div>
+      <div class="row column">
+        <label>
+          <%= t(".district") %>
+          <% n = @form.neighbourhood_by_id(@pending_authorization.verification_metadata['neighbourhood']) %>
+          <input type="text" readonly="true" value='<%= "#{n.district_id} - #{n.district_name}" %>'>
         </label>
       </div>
     </div>
