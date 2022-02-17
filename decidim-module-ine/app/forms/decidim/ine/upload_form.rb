@@ -2,19 +2,16 @@
 
 module Decidim
   module Ine
-
     class UploadForm < InformationForm
-
       mimic :ine_upload
 
       attribute :verification_attachment, String
 
       validates :verification_attachment,
-                passthru: { to: Decidim::Authorization },
-                presence: true
+        passthru: {to: Decidim::Authorization},
+        presence: true
 
-      alias organization current_organization
-
+      alias_method :organization, :current_organization
     end
   end
 end

@@ -2,9 +2,7 @@
 
 module Decidim
   module Ine
-
     class AuthorizationsController < Decidim::Verifications::ApplicationController
-
       helper_method :authorization
 
       before_action :load_authorization
@@ -77,7 +75,6 @@ module Decidim
           name: "ine"
         )
       end
-
     end
   end
 end

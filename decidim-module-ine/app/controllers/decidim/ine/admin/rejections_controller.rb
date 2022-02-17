@@ -2,10 +2,8 @@
 
 module Decidim
   module Ine
-      module Admin
-
+    module Admin
       class RejectionsController < Decidim::Admin::ApplicationController
-
         layout "decidim/admin/users"
 
         before_action :load_pending_authorization
@@ -29,9 +27,7 @@ module Decidim
         def load_pending_authorization
           @pending_authorization = Authorization.find(params[:pending_authorization_id])
         end
-
       end
-
     end
   end
 end

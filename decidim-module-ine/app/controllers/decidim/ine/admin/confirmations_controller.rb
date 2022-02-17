@@ -3,7 +3,6 @@
 module Decidim
   module Ine
     module Admin
-
       class ConfirmationsController < Decidim::Admin::ApplicationController
         layout "decidim/admin/users"
 
@@ -31,7 +30,6 @@ module Decidim
         def load_pending_authorization
           @pending_authorization = Authorization.find(params[:pending_authorization_id])
         end
-
       end
     end
   end

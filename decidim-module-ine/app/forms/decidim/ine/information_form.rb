@@ -2,12 +2,10 @@
 
 module Decidim
   module Ine
-
     class InformationForm < AuthorizationHandler
-
       mimic :ine_information
 
-      NEIGHBOURHOODS = Decidim::Ine::Neighbourhood.all.map{|n| n.id}
+      NEIGHBOURHOODS = Decidim::Ine::Neighbourhood.all.map { |n| n.id }
 
       attribute :street, String
       attribute :street_number, String
@@ -15,19 +13,19 @@ module Decidim
       attribute :neighbourhood, Integer
 
       validates :street,
-                presence: true
+        presence: true
 
       validates :street_number,
-                format: { with: /\A[0-9]*\z/, message: I18n.t("errors.messages.number") },
-                presence: true
+        format: {with: /\A[0-9]*\z/, message: I18n.t("errors.messages.number")},
+        presence: true
 
       validates :postal_code,
-                format: { with: /\A[0-9]{5}\z/, message: I18n.t("errors.messages.postal_code") },
-                presence: true
+        format: {with: /\A[0-9]{5}\z/, message: I18n.t("errors.messages.postal_code")},
+        presence: true
 
       validates :neighbourhood,
-                inclusion: { in: NEIGHBOURHOODS },
-                presence: true
+        inclusion: {in: NEIGHBOURHOODS},
+        presence: true
 
       def handler_name
         "ine"
@@ -61,7 +59,7 @@ module Decidim
       end
 
       def neighbourhoods_for_select
-        Decidim::Ine::Neighbourhood.all.order('name').map do |n|
+        Decidim::Ine::Neighbourhood.all.order("name").map do |n|
           [
             n.name,
             n.id
@@ -76,7 +74,6 @@ module Decidim
       def district_by_id(district_id)
         district_id
       end
-
     end
   end
 end
