@@ -1,10 +1,10 @@
-require 'csv'
+require "csv"
 
 # --------------------------------------------------
 # Neighbourhoods
 
-neighbourhoods_csv = File.read('db/neighbourhoods.csv')
-neighbourhoods = CSV.parse(neighbourhoods_csv, :headers => true)
+neighbourhoods_csv = File.read("db/neighbourhoods.csv")
+neighbourhoods = CSV.parse(neighbourhoods_csv, headers: true)
 
 Decidim::Ine::Neighbourhood.destroy_all
 neighbourhoods.each do |neighbourhood|
@@ -23,22 +23,21 @@ o = Decidim::Organization.first
 
 scope_type = Decidim::ScopeType.new(
   decidim_organization_id: o.id,
-  name: { 'es': 'Distrito' },
-  plural: { 'es': 'Distritos' },
+  name: {'es': "Distrito"},
+  plural: {'es': "Distritos"}
 )
 scope_type.save!
 
-districts_csv = File.read('db/districts.csv')
-districts = CSV.parse(districts_csv, :headers => true)
+districts_csv = File.read("db/districts.csv")
+districts = CSV.parse(districts_csv, headers: true)
 districts.each do |district|
   dh = district.to_hash
   d = Decidim::Scope.new(
     decidim_organization_id: o.id,
     scope_type_id: scope_type.id,
-    name: { 'es': "#{dh['id']} - #{dh['name']}" },
-    code: { 'es': dh['id'] }
+    name: {'es': "#{dh["id"]} - #{dh["name"]}"},
+    code: {'es': dh["id"]}
   )
   puts "Creating district: #{d.name}"
   d.save!
 end
-

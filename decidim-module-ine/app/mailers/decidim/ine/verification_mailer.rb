@@ -1,6 +1,5 @@
 module Decidim
   module Ine
-
     class VerificationMailer < Decidim::ApplicationMailer
       include Decidim::TranslationsHelper
       include Decidim::SanitizeHelper
@@ -30,8 +29,6 @@ module Decidim
           mail(to: user.email, subject: subject)
         end
       end
-
     end
-
   end
 end
