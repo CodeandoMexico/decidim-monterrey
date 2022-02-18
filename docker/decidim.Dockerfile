@@ -20,6 +20,8 @@ RUN gem install bundler
 WORKDIR /decidim
 COPY Gemfile .
 COPY Gemfile.lock .
+COPY decidim-module-ine/decidim-ine.gemspec ./decidim-module-ine/
+COPY decidim-module-ine/lib/decidim/ine/version.rb ./decidim-module-ine/lib/decidim/ine/
 RUN bundle check || bundle install --jobs=4
 COPY . .
 RUN yarn install

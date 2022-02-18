@@ -11,8 +11,6 @@ module Decidim
       class PendingAuthorizationsController < Decidim::Admin::ApplicationController
         layout "decidim/admin/users"
 
-
-
         def index
           enforce_permission_to :index, :authorization
           @pending_online_authorizations = pending_online_authorizations
@@ -25,12 +23,8 @@ module Decidim
             .new(organization: current_organization, name: "ine", granted: false)
             .query
             .where("verification_metadata->'rejected' IS NULL")
-
         end
-
-
       end
-
     end
   end
 end

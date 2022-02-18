@@ -2,7 +2,6 @@
 
 module Decidim
   module Ine
-
     class SendVerificationRejectedJob < ApplicationJob
       queue_as :default
 
@@ -12,6 +11,5 @@ module Decidim
         VerificationMailer.verification_rejected(user).deliver_now
       end
     end
-
   end
 end

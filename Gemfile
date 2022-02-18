@@ -7,7 +7,7 @@ ruby RUBY_VERSION
 gem "dotenv-rails", groups: [:development, :test, :production]
 
 gem "decidim", "0.25.2"
-gem "decidim-ine", path: 'decidim-module-ine'
+gem "decidim-ine", path: "decidim-module-ine"
 
 gem "bootsnap", "~> 1.3"
 gem "puma", ">= 5.0.0"

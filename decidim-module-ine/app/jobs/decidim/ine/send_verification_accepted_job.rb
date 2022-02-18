@@ -2,7 +2,6 @@
 
 module Decidim
   module Ine
-
     class SendVerificationAcceptedJob < ApplicationJob
       queue_as :default
 
@@ -12,6 +11,5 @@ module Decidim
         VerificationMailer.verification_accepted(user).deliver_now
       end
     end
-
   end
 end
