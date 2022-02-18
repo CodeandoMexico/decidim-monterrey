@@ -1,5 +1,8 @@
 es:
   decidim:
+    components:
+      ine:
+        name: Verificación INE
     verifications:
       ine:
         admin:
