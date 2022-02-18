@@ -13,8 +13,8 @@ Gem::Specification.new do |s|
   s.required_ruby_version = ">= 2.7"
 
   s.name = "decidim-ine"
-  s.summary = "A decidim ine module"
-  s.description = "INE document verification."
+  s.summary = "Verificación por documento INE"
+  s.description = "Módulo desarrollado para el municipio de Monterrey. Para poder participar los ciudadanos deben verificar que son ciudadanos del municipio."
 
   s.files = Dir["{app,config,lib}/**/*", "LICENSE-AGPLv3.txt", "Rakefile", "README.md"]
 

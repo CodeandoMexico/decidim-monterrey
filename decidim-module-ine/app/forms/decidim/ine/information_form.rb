@@ -7,8 +7,6 @@ module Decidim
 
       mimic :ine_information
 
-      NEIGHBOURHOODS = Decidim::Ine::Neighbourhood.all.map{|n| n.id}
-
       attribute :street, String
       attribute :street_number, String
       attribute :postal_code, String
@@ -26,8 +24,8 @@ module Decidim
                 presence: true
 
       validates :neighbourhood,
-                inclusion: { in: NEIGHBOURHOODS },
-                presence: true
+        inclusion: {in: :neighbourhoods_ids},
+        presence: true
 
       def handler_name
         "ine"
@@ -67,6 +65,10 @@ module Decidim
             n.id
           ]
         end
+      end
+
+      def neighbourhoods_ids
+        Decidim::Ine::Neighbourhood.all.map { |n| n.id }
       end
 
       def neighbourhood_by_id(neighbourhood_id)
