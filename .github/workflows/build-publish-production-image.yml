@@ -1,6 +1,9 @@
 name: Construir y publicar imagen de producción
 
-on: workflow_dispatch
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   build-publish-production-image:
