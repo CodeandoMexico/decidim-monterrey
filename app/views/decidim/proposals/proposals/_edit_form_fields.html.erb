@@ -1,0 +1,115 @@
+<%= form_required_explanation %>
+
+<div class="field hashtags__container">
+  <%= form.text_field :title, class: "js-hashtags", value: form_presenter.title %>
+</div>
+
+<div class="field hashtags__container">
+  <%= text_editor_for_proposal_body(form) %>
+</div>
+
+<% if @form.component_automatic_hashtags.any? %>
+  <div class="field">
+    <%= form.label :automatic_hashtags %>
+    <div class="checkboxes hashtags">
+      <% @form.component_automatic_hashtags.each do |hashtag| %>
+        <label>
+          <%= check_box_tag "", "", { checked: true }, { disabled: true } %>#<%= hashtag %>
+        </label>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<% if @form.component_suggested_hashtags.any? %>
+  <div class="field">
+    <%= form.label :suggested_hashtags, nil, for: nil %>
+    <div class="checkboxes hashtags">
+      <%= form.collection_check_boxes :suggested_hashtags, @form.component_suggested_hashtags.map { |hashtag| [hashtag.downcase, "##{hashtag}"] }, :first, :last do |option|
+        option.label { option.check_box(checked: @form.suggested_hashtag_checked?(option.value)) + option.text }
+      end %>
+    </div>
+  </div>
+<% end %>
+
+<% if @form.geocoding_enabled? %>
+  <div class="field">
+    <%= form.check_box :has_address, checked: form_has_address? %>
+  </div>
+
+  <div class="field" id="address_input">
+    <%= form.geocoding_field :address, placeholder: t("decidim.proposals.proposals.placeholder.address") %>
+    <div class="map" id="address_map">
+      <%= render partial: "dynamic_map_instructions" %>
+      <%= dynamic_map_for proposal_preview_data_for_map(@proposal) %>
+    </div>
+  </div>
+<% end %>
+
+<% if @form.categories&.any? %>
+  <div class="field">
+    <%= form.categories_select :category_id, @form.categories, include_blank: t("decidim.proposals.proposals.edit.select_a_category") %>
+  </div>
+<% end %>
+<!--
+<% if current_component.has_subscopes? %>
+  <div class="field">
+    <%= scopes_picker_field form, :scope_id, root: current_component.scope %>
+  </div>
+<% end %>
+ -->
+<% if current_organization.user_groups_enabled? && Decidim::UserGroups::ManageableUserGroups.for(current_user).verified.any? %>
+  <div class="field">
+    <%= user_group_select_field form, :user_group_id %>
+  </div>
+<% end %>
+
+<% if component_settings.attachments_allowed? && @proposal %>
+  <fieldset class="gallery__container">
+    <legend><%= t("gallery_legend", scope: "decidim.proposals.proposals.edit") %></legend>
+
+    <% if @form.photos.any? %>
+      <% @form.photos.each do |photo| %>
+        <div class="callout gallery__item" id="attachment_<%= photo.id %>" data-closable>
+          <%= image_tag photo.thumbnail_url, class: "thumbnail", alt: photo.file.filename %>
+          <%= form.hidden_field :photos, multiple: true, value: photo.id, id: "photo-#{photo.id}" %>
+          <button class="close-button"
+                  aria-label="<%= t("delete_image", scope: "decidim.proposals.proposals.edit") %>"
+                  title="<%= t("delete_image", scope: "decidim.proposals.proposals.edit") %>"
+                  type="button"
+                  data-close>
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      <% end %>
+    <% end %>
+
+    <div class="row column">
+      <%= form.file_field :add_photos, multiple: false, label: t("add_images", scope: "decidim.proposals.proposals.edit") %>
+    </div>
+  </fieldset>
+
+  <fieldset class="gallery__container">
+    <legend><%= t("attachment_legend", scope: "decidim.proposals.proposals.edit") %></legend>
+
+    <% if @form.documents.any? %>
+      <% @form.documents.each do |document| %>
+        <div class="callout" id="attachment_<%= document.id %>" data-closable>
+          <%= link_to translated_attribute(document.title), document.url %>
+          <small><%= document.file_type %> <%= number_to_human_size(document.file_size) %></small>
+          <%= form.hidden_field :documents, multiple: true, value: document.id, id: "document-#{document.id}" %>
+          <button class="close-button"
+                  aria-label="<%= t("delete_document", scope: "decidim.proposals.proposals.edit") %>"
+                  title="<%= t("delete_document", scope: "decidim.proposals.proposals.edit") %>"
+                  type="button" data-close>
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      <% end %>
+    <% end %>
+
+    <div class="row column">
+      <%= form.file_field :add_documents, multiple: true, label: t("add_documents", scope: "decidim.proposals.proposals.edit") %>
+    </div>
+  </fieldset>
+<% end %>
