@@ -36,7 +36,7 @@ districts.each do |district|
     decidim_organization_id: o.id,
     scope_type_id: scope_type.id,
     name: {'es': "#{dh["id"]} - #{dh["name"]}"},
-    code: {'es': dh["id"]}
+    code: dh["id"]
   )
   puts "Creating district: #{d.name}"
   d.save!
