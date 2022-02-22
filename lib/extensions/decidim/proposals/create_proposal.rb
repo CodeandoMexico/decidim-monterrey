@@ -11,7 +11,7 @@ module Extensions
               ::Decidim::Proposals::Proposal,
               @current_user,
               visibility: "public-only"
-            ) do
+            ) {
               proposal = ::Decidim::Proposals::Proposal.new(
                 title: {
                   I18n.locale => title_with_hashtags
@@ -23,10 +23,9 @@ module Extensions
               )
               proposal.add_coauthor(@current_user, user_group: user_group)
               proposal.scope = current_user_scope
-              binding.irb
               proposal.save!
               proposal
-            end
+            }
           end
         end
 
@@ -34,8 +33,8 @@ module Extensions
 
         def current_user_scope
           authorization = ::Decidim::Authorization.where
-                                                  .not(granted_at: nil)
-                                                  .find_by!(user: @current_user, name: "ine")
+            .not(granted_at: nil)
+            .find_by!(user: @current_user, name: "ine")
 
           ::Decidim::Scope.find_by! code: authorization.metadata["district_id"].to_s
         end

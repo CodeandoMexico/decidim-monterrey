@@ -16,13 +16,13 @@ module Extensions
           @proposal.scope = current_user_scope
           @proposal.save!
         end
-  
+
         private
 
         def current_user_scope
           authorization = ::Decidim::Authorization.where
-                                                  .not(granted_at: nil)
-                                                  .find_by!(user: @current_user, name: "ine")
+            .not(granted_at: nil)
+            .find_by!(user: @current_user, name: "ine")
 
           ::Decidim::Scope.find_by! code: authorization.metadata["district_id"].to_s
         end
