@@ -33,10 +33,20 @@ end
 
 Decidim::Scope.destroy_all
 Decidim::ScopeType.destroy_all
-
 organization = Decidim::Organization.first
-
 create_scopes(organization, "Municipio", "Municipios", "municipalities")
 create_scopes(organization, "Delegación", "Delegaciones", "delegations")
 create_scopes(organization, "Sector", "Sectores", "sectors")
-create_scopes(organization, "Colonia", "Colonias", "neighbourhoods")
+
+# --------------------------------------------------------------------------------
+# Neighborhoods
+# --------------------------------------------------------------------------------
+Decidim::Ine::Neighbourhood.destroy_all
+neighbourhoods_csv = File.read("db/csv/neighbourhoods.csv")
+neighbourhoods = CSV.parse(neighbourhoods_csv, headers: true)
+neighbourhoods = neighbourhoods.sort_by{|s| s[:name]}
+neighbourhoods.each do |neighbourhood|
+  n = Decidim::Ine::Neighbourhood.new(neighbourhood.to_hash)
+  n.save!
+  puts "Creating neighbourhood: #{n.name} | #{n.code} | #{n.parent_code}"
+end

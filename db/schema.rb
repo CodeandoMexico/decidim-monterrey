@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_16_210221) do
+ActiveRecord::Schema.define(version: 2022_02_24_220959) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
@@ -651,11 +651,10 @@ ActiveRecord::Schema.define(version: 2022_02_16_210221) do
 
   create_table "decidim_ine_neighbourhoods", force: :cascade do |t|
     t.string "name"
-    t.integer "district_id"
-    t.text "district_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["name", "district_id"], name: "index_decidim_ine_neighbourhoods_on_name_and_district_id", unique: true
+    t.string "code"
+    t.string "parent_code"
   end
 
   create_table "decidim_meetings_agenda_items", force: :cascade do |t|

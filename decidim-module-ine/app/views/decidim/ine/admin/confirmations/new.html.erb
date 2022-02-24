@@ -33,7 +33,7 @@
       <div class="row column">
         <label>
           <%= t(".neighbourhood") %>
-          <input type="text" readonly="true" value="<%= @form.scope_by_code(@pending_authorization.metadata['neighbourhood_code']).name['es'] %>" >
+          <input type="text" readonly="true" value="<%= @form.neighbourhood_by_code(@pending_authorization.metadata['neighbourhood_code']).name %>" >
         </label>
       </div>
       <div class="row column">

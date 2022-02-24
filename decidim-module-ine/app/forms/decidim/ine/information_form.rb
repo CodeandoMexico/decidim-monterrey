@@ -46,12 +46,12 @@ module Decidim
       end
 
       def metadata
-        neighbourhood_scope = Decidim::Scope.find_by(code: neighbourhood_code)
-        sector_scope = Decidim::Scope.find(neighbourhood_scope.parent_id)
+        neighbourhood = Decidim::Ine::Neighbourhood.find_by(code: neighbourhood_code)
+        sector_scope = scope_by_code(neighbourhood.parent_code)
         delegation_scope = Decidim::Scope.find(sector_scope.parent_id)
         municipality_scope = Decidim::Scope.find(delegation_scope.parent_id)
         {
-          "neighbourhood_code" => neighbourhood_scope.code,
+          "neighbourhood_code" => neighbourhood.code,
           "sector_code" => sector_scope.code,
           "delegation_code" => delegation_scope.code,
           "municipality_code" => municipality_scope.code
@@ -64,22 +64,25 @@ module Decidim
       end
 
       def neighbourhoods_for_select
-        scope_type = Decidim::ScopeType.find_by(name: {'es': 'Colonia'})
-        Decidim::Scope.where(scope_type_id: scope_type.id).order("name").map do |n|
+
+        Decidim::Ine::Neighbourhood.all.order("name").map do |n|
           [
-            n.name['es'],
+            n.name,
             n.code
           ]
         end
       end
 
       def neighbourhoods_codes
-        scope_type = Decidim::ScopeType.find_by(name: {'es': 'Colonia'})
-        Decidim::Scope.where(scope_type_id: scope_type.id).map { |n| n.code }
+        Decidim::Ine::Neighbourhood.all.map { |n| n.code }
       end
 
       def scope_by_code(code)
         Decidim::Scope.find_by(code: code)
+      end
+
+      def neighbourhood_by_code(code)
+        Decidim::Ine::Neighbourhood.find_by(code: code)
       end
 
     end
