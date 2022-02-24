@@ -13,7 +13,7 @@ def create_scopes(organization, scope_type_name, scope_type_plural, scopes_csv_n
 
   scopes_csv = File.read("./db/csv/#{scopes_csv_name}.csv")
   scopes = CSV.parse(scopes_csv, headers: true)
-  scopes = scopes.sort_by{|s| s[:name]}
+  scopes = scopes.sort_by { |s| s[:name] }
   scopes.each do |s|
     hash = s.to_hash
     parent_scope = Decidim::Scope.find_by(code: hash["parent_code"])
@@ -28,7 +28,6 @@ def create_scopes(organization, scope_type_name, scope_type_plural, scopes_csv_n
     scope.update(part_of: [scope.id] + (!parent_scope ? [] : parent_scope.part_of))
     puts "Creating Scope: #{scope.id} | #{scope.name} | #{scope.code} | #{scope.parent_id} | #{scope.part_of}"
   end
-
 end
 
 Decidim::Scope.destroy_all
@@ -44,7 +43,7 @@ create_scopes(organization, "Sector", "Sectores", "sectors")
 Decidim::Ine::Neighbourhood.destroy_all
 neighbourhoods_csv = File.read("db/csv/neighbourhoods.csv")
 neighbourhoods = CSV.parse(neighbourhoods_csv, headers: true)
-neighbourhoods = neighbourhoods.sort_by{|s| s[:name]}
+neighbourhoods = neighbourhoods.sort_by { |s| s[:name] }
 neighbourhoods.each do |neighbourhood|
   n = Decidim::Ine::Neighbourhood.new(neighbourhood.to_hash)
   n.save!

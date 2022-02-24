@@ -64,7 +64,6 @@ module Decidim
       end
 
       def neighbourhoods_for_select
-
         Decidim::Ine::Neighbourhood.all.order("name").map do |n|
           [
             n.name,
@@ -84,7 +83,6 @@ module Decidim
       def neighbourhood_by_code(code)
         Decidim::Ine::Neighbourhood.find_by(code: code)
       end
-
     end
   end
 end
