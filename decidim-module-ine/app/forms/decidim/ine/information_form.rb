@@ -8,7 +8,7 @@ module Decidim
       attribute :street, String
       attribute :street_number, String
       attribute :postal_code, String
-      attribute :neighbourhood, Integer
+      attribute :neighbourhood_code, String
 
       validates :street,
         presence: true
@@ -21,8 +21,8 @@ module Decidim
         format: {with: /\A[0-9]{5}\z/, message: I18n.t("errors.messages.postal_code")},
         presence: true
 
-      validates :neighbourhood,
-        inclusion: {in: :neighbourhoods_ids},
+      validates :neighbourhood_code,
+        inclusion: {in: :neighbourhoods_codes},
         presence: true
 
       def handler_name
@@ -33,7 +33,7 @@ module Decidim
         self.street = model.verification_metadata["street"]
         self.street_number = model.verification_metadata["street_number"]
         self.postal_code = model.verification_metadata["postal_code"]
-        self.neighbourhood = model.verification_metadata["neighbourhood"]
+        self.neighbourhood_code = model.verification_metadata["neighbourhood_code"]
       end
 
       def verification_metadata
@@ -41,40 +41,47 @@ module Decidim
           "street" => street,
           "street_number" => street_number,
           "postal_code" => postal_code,
-          "neighbourhood" => neighbourhood
+          "neighbourhood_code" => neighbourhood_code
         }
       end
 
       def metadata
+        neighbourhood = Decidim::Ine::Neighbourhood.find_by(code: neighbourhood_code)
+        sector_scope = scope_by_code(neighbourhood.parent_code)
+        delegation_scope = Decidim::Scope.find(sector_scope.parent_id)
+        municipality_scope = Decidim::Scope.find(delegation_scope.parent_id)
         {
-          "district_id" => neighbourhood_by_id(neighbourhood).district_id
+          "neighbourhood_code" => neighbourhood.code,
+          "sector_code" => sector_scope.code,
+          "delegation_code" => delegation_scope.code,
+          "municipality_code" => municipality_scope.code
         }
       end
 
       def unique_id
         # ToDo crear una cadena de texto única para cada usuario, por ejemplo con el nombre y email
-        "#{street}|#{street_number}|#{postal_code}|#{neighbourhood}"
+        "#{street}|#{street_number}|#{postal_code}|#{neighbourhood_code}"
       end
 
       def neighbourhoods_for_select
         Decidim::Ine::Neighbourhood.all.order("name").map do |n|
           [
             n.name,
-            n.id
+            n.code
           ]
         end
       end
 
-      def neighbourhoods_ids
-        Decidim::Ine::Neighbourhood.all.map { |n| n.id }
+      def neighbourhoods_codes
+        Decidim::Ine::Neighbourhood.all.map { |n| n.code }
       end
 
-      def neighbourhood_by_id(neighbourhood_id)
-        Decidim::Ine::Neighbourhood.find(neighbourhood_id)
+      def scope_by_code(code)
+        Decidim::Scope.find_by(code: code)
       end
 
-      def district_by_id(district_id)
-        district_id
+      def neighbourhood_by_code(code)
+        Decidim::Ine::Neighbourhood.find_by(code: code)
       end
     end
   end

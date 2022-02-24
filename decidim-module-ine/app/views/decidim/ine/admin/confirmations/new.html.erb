@@ -33,14 +33,25 @@
       <div class="row column">
         <label>
           <%= t(".neighbourhood") %>
-          <input type="text" readonly="true" value="<%= @form.neighbourhood_by_id(@pending_authorization.verification_metadata['neighbourhood']).name %>" >
+          <input type="text" readonly="true" value="<%= @form.neighbourhood_by_code(@pending_authorization.metadata['neighbourhood_code']).name %>" >
         </label>
       </div>
       <div class="row column">
         <label>
-          <%= t(".district") %>
-          <% n = @form.neighbourhood_by_id(@pending_authorization.verification_metadata['neighbourhood']) %>
-          <input type="text" readonly="true" value='<%= "#{n.district_id} - #{n.district_name}" %>'>
+          <%= t(".sector") %>
+          <input type="text" readonly="true" value='<%= @form.scope_by_code(@pending_authorization.metadata['sector_code']).name['es'] %>'>
+        </label>
+      </div>
+      <div class="row column">
+        <label>
+          <%= t(".delegation") %>
+          <input type="text" readonly="true" value='<%= @form.scope_by_code(@pending_authorization.metadata['delegation_code']).name['es'] %>'>
+        </label>
+      </div>
+      <div class="row column">
+        <label>
+          <%= t(".municipality") %>
+          <input type="text" readonly="true" value='<%= @form.scope_by_code(@pending_authorization.metadata['municipality_code']).name['es'] %>'>
         </label>
       </div>
     </div>
