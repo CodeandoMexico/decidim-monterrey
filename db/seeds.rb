@@ -1,43 +1,42 @@
+# frozen_string_literal: true
+
 require "csv"
 
-# --------------------------------------------------
-# Neighbourhoods
+def create_scopes(organization, scope_type_name, scope_type_plural, scopes_csv_name)
+  scope_type = Decidim::ScopeType.new(
+    decidim_organization_id: organization.id,
+    name: {'es': scope_type_name},
+    plural: {'es': scope_type_plural}
+  )
+  scope_type.save!
+  puts "Creating Scope Type: #{scope_type.id} | #{scope_type.name} | #{scope_type.plural}"
 
-neighbourhoods_csv = File.read("db/neighbourhoods.csv")
-neighbourhoods = CSV.parse(neighbourhoods_csv, headers: true)
+  scopes_csv = File.read("./db/csv/#{scopes_csv_name}.csv")
+  scopes = CSV.parse(scopes_csv, headers: true)
+  scopes = scopes.sort_by{|s| s[:name]}
+  scopes.each do |s|
+    hash = s.to_hash
+    parent_scope = Decidim::Scope.find_by(code: hash["parent_code"])
+    scope = Decidim::Scope.new(
+      decidim_organization_id: organization.id,
+      scope_type_id: scope_type.id,
+      name: {'es': hash["name"]},
+      code: hash["code"],
+      parent_id: !parent_scope ? nil : parent_scope.id
+    )
+    scope.save!
+    scope.update(part_of: [scope.id] + (!parent_scope ? [] : parent_scope.part_of))
+    puts "Creating Scope: #{scope.id} | #{scope.name} | #{scope.code} | #{scope.parent_id} | #{scope.part_of}"
+  end
 
-Decidim::Ine::Neighbourhood.destroy_all
-neighbourhoods.each do |neighbourhood|
-  n = Decidim::Ine::Neighbourhood.new(neighbourhood.to_hash)
-  puts "Creating neighbourhood: #{n.name} | District: #{n.district_id} - #{n.district_name}"
-  n.save!
 end
-
-# --------------------------------------------------
-# Scopes & Scope Types
 
 Decidim::Scope.destroy_all
 Decidim::ScopeType.destroy_all
 
-o = Decidim::Organization.first
+organization = Decidim::Organization.first
 
-scope_type = Decidim::ScopeType.new(
-  decidim_organization_id: o.id,
-  name: {'es': "Distrito"},
-  plural: {'es': "Distritos"}
-)
-scope_type.save!
-
-districts_csv = File.read("db/districts.csv")
-districts = CSV.parse(districts_csv, headers: true)
-districts.each do |district|
-  dh = district.to_hash
-  d = Decidim::Scope.new(
-    decidim_organization_id: o.id,
-    scope_type_id: scope_type.id,
-    name: {'es': "#{dh["id"]} - #{dh["name"]}"},
-    code: dh["id"]
-  )
-  puts "Creating district: #{d.name}"
-  d.save!
-end
+create_scopes(organization, "Municipio", "Municipios", "municipalities")
+create_scopes(organization, "Delegación", "Delegaciones", "delegations")
+create_scopes(organization, "Sector", "Sectores", "sectors")
+create_scopes(organization, "Colonia", "Colonias", "neighbourhoods")
