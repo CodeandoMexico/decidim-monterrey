@@ -78,9 +78,10 @@ module Decidim
         Decidim::Scope.where(scope_type_id: scope_type.id).map { |n| n.code }
       end
 
-      def district_by_id(district_id)
-        district_id
+      def scope_by_code(code)
+        Decidim::Scope.find_by(code: code)
       end
+
     end
   end
 end

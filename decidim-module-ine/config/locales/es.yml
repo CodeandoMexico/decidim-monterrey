@@ -47,6 +47,9 @@ es:
             postal_code: Código Postal
             neighbourhood: Colonia
             district: Distrito
+            sector: Sector
+            delegation: Delegación
+            municipality: Municipio
         pending_authorizations:
           index:
             title: Verificaciones de documento INE pendientes
