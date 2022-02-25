@@ -4,6 +4,8 @@ module Extensions
   module Decidim
     module Proposals
       module PublishProposal
+        include Extensions::Decidim::Proposals::CurrentUserScope
+
         def publish_proposal
           title = reset(:title)
           body = reset(:body)
@@ -15,19 +17,9 @@ module Extensions
             visibility: "public-only"
           ) do
             @proposal.update title: title, body: body, published_at: Time.current
-            @proposal.scope = current_user_scope
+            @proposal.scope = current_user_scope(@proposal)
             @proposal.save!
           end
-        end
-
-        private
-
-        def current_user_scope
-          authorization = ::Decidim::Authorization.where
-            .not(granted_at: nil)
-            .find_by!(user: @current_user, name: "ine")
-
-          ::Decidim::Scope.find_by! code: authorization.metadata["district_id"].to_s
         end
       end
     end
