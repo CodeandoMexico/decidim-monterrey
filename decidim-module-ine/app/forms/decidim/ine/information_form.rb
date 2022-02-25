@@ -52,7 +52,7 @@ module Decidim
         {
           "neighbourhood_code" => neighbourhood.code,
           "sector_code" => sector_scope.code,
-          "delegation_code" => delegation_scope.code,
+          "delegation_code" => delegation_scope.code
         }
       end
 

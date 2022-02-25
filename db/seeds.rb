@@ -7,10 +7,8 @@ def sort_csv(csv_rows, sort_column)
   csv_rows.each do |row|
     rows << row.to_h
   end
-  rows_sorted = rows.sort_by{ |row| row[sort_column] }
-  rows_sorted
+  rows.sort_by { |row| row[sort_column] }
 end
-
 
 def create_scopes(organization, scope_type_name, scope_type_plural, scopes_csv_name)
   scope_type = Decidim::ScopeType.new(
@@ -33,7 +31,7 @@ def create_scopes(organization, scope_type_name, scope_type_plural, scopes_csv_n
 
   scopes_csv = File.read("./db/csv/#{scopes_csv_name}.csv")
   scopes = CSV.parse(scopes_csv, headers: true)
-  scopes = sort_csv(scopes, 'name')
+  scopes = sort_csv(scopes, "name")
   scopes.each do |s|
     hash = s.to_hash
     parent_scope = Decidim::Scope.find_by(code: hash["parent_code"])
@@ -62,7 +60,7 @@ create_scopes(organization, "Sector", "Sectores", "sectors")
 Decidim::Ine::Neighbourhood.destroy_all
 neighbourhoods_csv = File.read("db/csv/neighbourhoods.csv")
 neighbourhoods = CSV.parse(neighbourhoods_csv, headers: true)
-neighbourhoods = sort_csv(neighbourhoods, 'name')
+neighbourhoods = sort_csv(neighbourhoods, "name")
 neighbourhoods.each do |neighbourhood|
   n = Decidim::Ine::Neighbourhood.new(neighbourhood.to_hash)
   n.save!
