@@ -6,7 +6,7 @@ namespace :cmx do
     puts ""
     unless Rails.env.production?
 
-      organization = Decidim::Organization.first || Decidim::Organization.create!(
+      Decidim::Organization.first || Decidim::Organization.create!(
         name: "Organización",
         twitter_handler: "",
         facebook_handler: "",
