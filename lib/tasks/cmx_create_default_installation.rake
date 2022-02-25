@@ -1,11 +1,10 @@
 namespace :cmx do
-
   desc "Create the default Organization"
-  task :create_default_organization => [ :environment ] do
+  task create_default_organization: [:environment] do
     puts ""
     puts "CMX >> Creando Organización"
     puts ""
-    if !Rails.env.production?
+    unless Rails.env.production?
 
       organization = Decidim::Organization.first || Decidim::Organization.create!(
         name: "Organización",
@@ -33,7 +32,7 @@ namespace :cmx do
   end
 
   desc "Create a new system admin"
-  task :create_system_admin_user => [:environment, :create_default_organization] do
+  task create_system_admin_user: [:environment, :create_default_organization] do
     puts ""
     puts "CMX >> Usuario administrador de sistema"
     puts ""
@@ -55,7 +54,7 @@ namespace :cmx do
   end
 
   desc "Create a new admin user"
-  task :create_admin_user => [ :environment, :create_system_admin_user ] do
+  task create_admin_user: [:environment, :create_system_admin_user] do
     puts ""
     puts "CMX >> Usuario administrador de aplicación"
     puts ""
@@ -79,26 +78,25 @@ namespace :cmx do
       locale: I18n.default_locale,
       admin: true,
       tos_agreement: true,
-      personal_url: '',
-      about: '',
+      personal_url: "",
+      about: "",
       accepted_tos_version: organization.tos_version,
       admin_terms_accepted_at: Time.current
     )
   end
 
   desc "Create default installation"
-  task :create_default_installation => [ :environment, :create_admin_user ] do
+  task create_default_installation: [:environment, :create_admin_user] do
   end
 
   def prompt(attribute, hidden: true)
     print("#{attribute}: ")
     input = if hidden
-              $stdin.noecho(&:gets).chomp
-            else
-              $stdin.gets.chomp
-            end
+      $stdin.noecho(&:gets).chomp
+    else
+      $stdin.gets.chomp
+    end
     print("\n") if hidden
     input
   end
-
 end
