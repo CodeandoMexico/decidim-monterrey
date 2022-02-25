@@ -4,6 +4,8 @@ module Extensions
   module Decidim
     module Proposals
       module CreateProposal
+        include Extensions::Decidim::Proposals::CurrentUserScope
+
         def create_proposal
           PaperTrail.request(enabled: false) do
             @proposal = ::Decidim.traceability.perform_action!(
@@ -22,21 +24,11 @@ module Extensions
                 component: form.component
               )
               proposal.add_coauthor(@current_user, user_group: user_group)
-              proposal.scope = current_user_scope
+              proposal.scope = current_user_scope(proposal)
               proposal.save!
               proposal
             }
           end
-        end
-
-        private
-
-        def current_user_scope
-          authorization = ::Decidim::Authorization.where
-            .not(granted_at: nil)
-            .find_by!(user: @current_user, name: "ine")
-
-          ::Decidim::Scope.find_by! code: authorization.metadata["district_id"].to_s
         end
       end
     end
