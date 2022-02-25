@@ -47,14 +47,12 @@ module Decidim
 
       def metadata
         neighbourhood = Decidim::Ine::Neighbourhood.find_by(code: neighbourhood_code)
-        sector_scope = scope_by_code(neighbourhood.parent_code)
-        delegation_scope = Decidim::Scope.find(sector_scope.parent_id)
-        municipality_scope = Decidim::Scope.find(delegation_scope.parent_id)
+        sector_scope = scope_by_code(neighbourhood.sector_code)
+        delegation_scope = scope_by_code(neighbourhood.delegation_code)
         {
           "neighbourhood_code" => neighbourhood.code,
           "sector_code" => sector_scope.code,
           "delegation_code" => delegation_scope.code,
-          "municipality_code" => municipality_scope.code
         }
       end
 
