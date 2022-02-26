@@ -33,6 +33,8 @@ namespace :cmx do
       terms_and_conditions_page.slug = "terms-and-conditions"
       terms_and_conditions_page.title = {"es": "Términos y Condiciones"}
       terms_and_conditions_page.content = {"es": "..."}
+      terms_and_conditions_page.show_in_footer = true
+      terms_and_conditions_page.weight = 0
       terms_and_conditions_page.save!
 
       puts("Organización creada con éxito")
