@@ -1,12 +1,10 @@
 namespace :cmx do
-  desc "Create the default Organization"
-  task create_default_organization: [:environment] do
-    puts ""
-    puts "CMX >> Creando Organización"
-    puts ""
+  desc "Create Organization"
+  task create_organization: [:environment] do
+    puts "\nCMX >> Creando Organización"
     unless Rails.env.production?
 
-      Decidim::Organization.first || Decidim::Organization.create!(
+      organization = Decidim::Organization.first || Decidim::Organization.create!(
         name: "Organización",
         twitter_handler: "",
         facebook_handler: "",
@@ -28,14 +26,22 @@ namespace :cmx do
         send_welcome_notification: true,
         file_upload_settings: Decidim::OrganizationSettings.default(:upload)
       )
+
+      Decidim::System::CreateDefaultContentBlocks.call(organization)
+      terms_and_conditions_page = Decidim::StaticPage.new
+      terms_and_conditions_page.organization = organization
+      terms_and_conditions_page.slug = "terms-and-conditions"
+      terms_and_conditions_page.title = {"es": "Términos y Condiciones"}
+      terms_and_conditions_page.content = {"es": "..."}
+      terms_and_conditions_page.save!
+
+      puts("Organización creada con éxito")
     end
   end
 
   desc "Create a new system admin"
-  task create_system_admin_user: [:environment, :create_default_organization] do
-    puts ""
-    puts "CMX >> Usuario administrador de sistema"
-    puts ""
+  task create_system_admin_user: [:environment, :create_organization] do
+    puts "\nCMX >> Usuario administrador de sistema"
     email = ENV["SYSTEM_USER_EMAIL"] || prompt("Correo electrónico", hidden: false)
     password = ENV["SYSTEM_USER_PASSWORD"] || prompt("Contraseña")
     password_confirmation = ENV["SYSTEM_USER_PASSWORD"] || prompt("Confirmar contraseña")
@@ -55,9 +61,7 @@ namespace :cmx do
 
   desc "Create a new admin user"
   task create_admin_user: [:environment, :create_system_admin_user] do
-    puts ""
-    puts "CMX >> Usuario administrador de aplicación"
-    puts ""
+    puts "\nCMX >> Usuario administrador de aplicación"
     name = ENV["ADMIN_USER_NAME"] || prompt("Nombre completo", hidden: false)
     nickname = ENV["ADMIN_USER_NICKNAME"] || prompt("Nickname", hidden: false)
     email = ENV["ADMIN_USER_EMAIL"] || prompt("Correo electrónico", hidden: false)
@@ -83,6 +87,7 @@ namespace :cmx do
       accepted_tos_version: organization.tos_version,
       admin_terms_accepted_at: Time.current
     )
+    puts("Administrador de aplicación creado con éxito")
   end
 
   desc "Create default installation"
