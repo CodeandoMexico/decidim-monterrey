@@ -3,6 +3,7 @@ require "extensions/decidim/proposals/current_user_scope"
 require "extensions/decidim/proposals/create_proposal"
 require "extensions/decidim/proposals/publish_proposal"
 require "extensions/decidim/proposals/update_proposal"
+require "extensions/decidim/proposals/vote_proposal"
 
 module Extensions
   module Decidim

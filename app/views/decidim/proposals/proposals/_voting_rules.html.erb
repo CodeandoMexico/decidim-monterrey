@@ -5,7 +5,6 @@
         <div class="columns medium-8 large-9">
           <h3 class="heading3"><%= t(".title") %></h3>
           <ul>
-              <li><%= t(get_proposal_type(component_settings)) %>.</li>
             <% if vote_limit_enabled? %>
               <li><%= t(".vote_limit.description", limit: component_settings.vote_limit) %></li>
             <% end %>
@@ -27,6 +26,9 @@
                   <%= t(".minimum_votes_per_user.supports_remaining", remaining_votes: minimum_votes_per_user - votes_given) %>
                 <% end %>
               </li>
+            <% end %>
+            <% if component_settings.scopes_enabled %>
+              <li><%= t(get_proposals_component_scope_message_key(component_settings), scope_name: user_scope_name(current_user, component_settings)[I18n.locale.to_s]) %></li>
             <% end %>
           </ul>
         </div>

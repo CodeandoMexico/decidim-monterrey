@@ -1,11 +1,12 @@
-
 es:
   decidim:
     proposals:
       proposals:
         voting_rules:
-            district_auth: 
-              sector: Solo puedes votar por propuestas que pertenecen a tu sector
-              delegation: Solo puedes votar por propuestas que pertenecen a tu delegación
-        vote_button: 
-          out_of_scope: Esta propuesta no pertenece a tu distrito
+          proposal_scope:
+            sector: Solo puedes votar por propuestas que pertenecen a tu sector (%{scope_name}).
+            delegation: Solo puedes votar por propuestas que pertenecen a tu delegación (%{scope_name}).
+        vote_button:
+          out_of_scope:
+            sector: No pertenece a tu sector
+            delegation: No pertenece a tu delegación
