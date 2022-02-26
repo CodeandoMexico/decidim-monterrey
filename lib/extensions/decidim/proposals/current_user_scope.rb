@@ -12,7 +12,6 @@ module Extensions
             .not(granted_at: nil)
             .find_by!(user: @current_user, name: "ine")
           scope_type = PARTICIPATORY_PROCESS_TYPE[proposal.component.scope.code]
-
           ::Decidim::Scope.find_by! code: authorization.metadata[scope_type]
         end
       end
