@@ -2,7 +2,6 @@ module Extensions
   module Decidim
     module Proposals
       module CurrentUserScope
-
         PARTICIPATORY_PROCESS_TYPE = {
           "DELEGACIONES" => "delegation_code",
           "SECTORES" => "sector_code"

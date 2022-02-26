@@ -3,14 +3,13 @@
 module Extensions
   module Decidim
     module Proposals
-
       module VoteProposal
         include Extensions::Decidim::Proposals::CurrentUserScope
 
         def call
           return broadcast(:invalid) if @proposal.maximum_votes_reached? && !@proposal.can_accumulate_supports_beyond_threshold
 
-          return broadcast(:invalid) if !can_user_vote_in_proposal?
+          return broadcast(:invalid) unless can_user_vote_in_proposal?
 
           build_proposal_vote
           return broadcast(:invalid) unless vote.valid?
@@ -32,9 +31,7 @@ module Extensions
         def can_user_vote_in_proposal?
           @proposal.scope == current_user_scope(@proposal)
         end
-
       end
-
     end
   end
 end
