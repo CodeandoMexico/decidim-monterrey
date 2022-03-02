@@ -1,4 +1,4 @@
-<% if show_voting_rules? %>
+<% if show_voting_rules? && current_user %>
   <div class="row column voting-rules">
     <div class="callout secondary">
       <div class="row">
@@ -27,7 +27,7 @@
                 <% end %>
               </li>
             <% end %>
-            <% if component_settings.scopes_enabled %>
+            <% if current_user && component_settings.scopes_enabled %>
               <li><%= t(get_proposals_component_scope_message_key(component_settings), scope_name: user_scope_name(current_user, component_settings)[I18n.locale.to_s]) %></li>
             <% end %>
           </ul>
