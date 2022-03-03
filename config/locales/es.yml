@@ -2,10 +2,19 @@ es:
   decidim:
     proposals:
       proposals:
+        create_proposal_rules:
+          title: "El envío de propuestas se rige por las siguientes normas:"
+          proposal_scope:
+            sector: Perteneces al <strong>%{scope_name}</strong>, y las propuestas que envíes serán asignadas a este sector.
+            delegation: Perteneces a la <strong>%{scope_name}</strong>, y las propuestas que envíes serán asignadas a esta delegación.
+          proposal_limit:
+            left: Restante
+            description: Puedes enviar hasta %{limit} propuestas.
+            proposals: Propuestas
         voting_rules:
           proposal_scope:
-            sector: Solo puedes votar por propuestas que pertenecen a tu sector (%{scope_name}).
-            delegation: Solo puedes votar por propuestas que pertenecen a tu delegación (%{scope_name}).
+            sector: Solo puedes votar por propuestas que pertenecen al <strong>%{scope_name}</strong>.
+            delegation: Solo puedes votar por propuestas que pertenecen a la <strong>%{scope_name}</strong>.
         vote_button:
           out_of_scope:
             sector: No pertenece a tu sector

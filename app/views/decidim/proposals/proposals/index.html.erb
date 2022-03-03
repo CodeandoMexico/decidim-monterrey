@@ -25,6 +25,7 @@
     </template>
   <% end %>
 <% end %>
+<%= render partial: "create_proposal_rules" if current_user && proposal_limit_enabled? %>
 <%= render partial: "voting_rules" %>
 <div class="row columns">
   <div class="title-action">

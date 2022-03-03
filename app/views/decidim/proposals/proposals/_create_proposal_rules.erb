@@ -1,0 +1,30 @@
+<div class="row column voting-rules">
+  <div class="callout secondary">
+    <div class="row">
+      <div class="columns medium-8 large-9">
+        <h3 class="heading3"><%= t(".title") %></h3>
+        <ul>
+          <% if proposal_limit_enabled? %>
+            <li><%= t(".proposal_limit.description", limit: proposal_limit) %></li>
+          <% end %>
+          <% if current_user && component_settings.scopes_enabled %>
+            <li><%= raw t(get_proposals_component_scope_create_message_key(component_settings), scope_name: user_scope_name(current_user, component_settings)[I18n.locale.to_s]) %></li>
+          <% end %>
+        </ul>
+      </div>
+      <% if current_user && proposal_limit_enabled? %>
+          <div class="columns medium-4 large-3">
+            <div class="card card--nomargin text-center remaining-votes-counter">
+              <div class="card__content">
+                <span class="definition-data__title"><%= t(".proposal_limit.left", limit: proposal_limit) %></span>
+                <span id="remaining-votes-count" class="extra__suport-number">
+                  <%= remaining_proposals_count_for(current_user) %>
+                </span>
+                <span class="extra__suport-text"><%= t(".proposal_limit.proposals") %></span>
+              </div>
+            </div>
+          </div>
+        <% end %>
+    </div>
+  </div>
+</div>
