@@ -13,8 +13,8 @@ es:
             proposals: Propuestas
         voting_rules:
           proposal_scope:
-            sector: Solo puedes votar por propuestas que pertenecen al <strong>%{scope_name}</strong>.
-            delegation: Solo puedes votar por propuestas que pertenecen a la <strong>%{scope_name}</strong>.
+            sector: Perteneces al <strong>%{scope_name}</strong>, solo puedes votar por propuestas de este sector.
+            delegation: Perteneces a la <strong>%{scope_name}</strong>, solo puedes votar por propuestas de esta delegación.
         vote_button:
           out_of_scope:
             sector: No pertenece a tu sector
