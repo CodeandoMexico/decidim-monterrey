@@ -238,7 +238,7 @@ Decidim.configure do |config|
   # config.default_csv_col_sep = ";"
 
   # The list of roles a user can have, not considering the space-specific roles.
-  # config.user_roles = %w(admin user_manager)
+  config.user_roles = %w(admin user_manager authorization_valuator)
 
   # The list of visibility options for amendments. An Array of Strings that
   # serve both as locale keys and values to construct the input collection in
