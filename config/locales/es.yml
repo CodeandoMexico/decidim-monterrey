@@ -2,6 +2,10 @@ es:
   decidim:
     proposals:
       proposals:
+        preview:
+          proposal_edit_before_minutes:
+            hours: Podrás editar esta propuesta durante las primeras %{hours} hora(s) y %{minutes} minuto(s) después que se publique. Una vez que pase este tiempo, no podrás editar la propuesta.
+            days: Podrás editar esta propuesta durante los primeros %{days} día(s) y %{hours} hora(s) después que se publique. Una vez que pase este tiempo, no podrás editar la propuesta.
         create_proposal_rules:
           title: "El envío de propuestas se rige por las siguientes normas:"
           proposal_scope:
