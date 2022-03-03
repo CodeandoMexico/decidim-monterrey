@@ -1,3 +1,9 @@
+![Logo Codeando México](/resources/images/logo-cmx.svg#gh-light-mode-only)
+![Logo Codeando México](/resources/images/logo-cmx-blanco.svg#gh-dark-mode-only)
+
+[![website](https://img.shields.io/badge/website-CodeandoMexico-00D88E.svg)](http://www.codeandomexico.org/)
+[![slack](https://img.shields.io/badge/slack-CodeandoMexico-EC0E4F.svg)](http://slack.codeandomexico.org/)
+
 # Decidim Monterrey
 
 Decidim es una plataforma de código libre para gestionar procesos de democracia participativa y gobierno abierto para ciudades y organizaciones. Aunque el proyecto todavía está siendo desarrollado activamente, decenas de gobiernos y organizaciones ya lo hayan adaptado a sus necesidades y utilizado en contextos reales.
@@ -22,3 +28,7 @@ Más detalle en el [Manual de Instalación](docs/manual_instalacion.md).
 - [Ley de Participación Ciudadana para el Estado de Nuevo Leon](docs/ley_participacion_ciudadana_estado_nuevo_leon.pdf)
 - [Reglamento de Participación Ciudadana del municipio de Monterrey](docs/reglamento_participación_ciudadana_monterrey.pdf)
 - [Ley General de Protección de Datos Personales en en Posesión de Sujetos Obligados](https://www.dof.gob.mx/nota_detalle.php?codigo=5469949&fecha=26/01/2017)
+
+## ¿Cómo colaborar?
+
+Si quieres saber como puedes colaborar, revisa la [guía de participación](CONTRIBUTING.md).
