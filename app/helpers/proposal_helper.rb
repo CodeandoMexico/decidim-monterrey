@@ -60,15 +60,15 @@ module ProposalHelper
     return 0 unless proposal_limit_enabled?
 
     proposals_count = Decidim::Proposals::Proposal.where(component: current_component)
-                                                  .where.not(published_at: nil)
-                                                  .joins(:coauthorships)
-                                                  .where(decidim_coauthorships: {
-                                                    decidim_author_type: ["Decidim::UserBaseEntity"],
-                                                    decidim_author_id: user.id
-                                                  })
-                                                  .except_withdrawn
-                                                  .to_a
-                                                  .size
+      .where.not(published_at: nil)
+      .joins(:coauthorships)
+      .where(decidim_coauthorships: {
+        decidim_author_type: ["Decidim::UserBaseEntity"],
+        decidim_author_id: user.id
+      })
+      .except_withdrawn
+      .to_a
+      .size
 
     component_settings.proposal_limit - proposals_count
   end
