@@ -22,6 +22,12 @@ module Extensions
               nil
             end
           end
+  
+          allow! if user_can_enter_space_area?(require_admin_terms_accepted: true)
+  
+          read_admin_dashboard_action?
+          allow! if permission_action.subject == :global_moderation
+          apply_newsletter_permissions_for_admin!
 
           if authorization_valuator?
             begin
@@ -30,13 +36,6 @@ module Extensions
               nil
             end
           end
-  
-          allow! if user_can_enter_space_area?(require_admin_terms_accepted: true)
-  
-          read_admin_dashboard_action?
-          apply_newsletter_permissions_for_admin!
-  
-          allow! if permission_action.subject == :global_moderation
   
           if user.admin? && admin_terms_accepted?
             allow! if read_admin_log_action?
