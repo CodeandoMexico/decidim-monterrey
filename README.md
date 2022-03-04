@@ -28,6 +28,7 @@ Más detalle en el [Manual de Instalación](docs/manual_instalacion.md).
 - [Ley de Participación Ciudadana para el Estado de Nuevo Leon](docs/ley_participacion_ciudadana_estado_nuevo_leon.pdf)
 - [Reglamento de Participación Ciudadana del municipio de Monterrey](docs/reglamento_participación_ciudadana_monterrey.pdf)
 - [Ley General de Protección de Datos Personales en en Posesión de Sujetos Obligados](https://www.dof.gob.mx/nota_detalle.php?codigo=5469949&fecha=26/01/2017)
+- [Documentación de Decidim](https://docs.decidim.org/en/)
 
 ## ¿Cómo colaborar?
 
