@@ -23,3 +23,9 @@ es:
           out_of_scope:
             sector: No pertenece a tu sector
             delegation: No pertenece a tu delegación
+    admin:
+      models:
+        user:
+          fields:
+            roles:
+              authorization_valuator: Verificador de usuarios

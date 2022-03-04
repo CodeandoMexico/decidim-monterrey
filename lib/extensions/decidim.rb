@@ -4,6 +4,8 @@ require "extensions/decidim/proposals/create_proposal"
 require "extensions/decidim/proposals/publish_proposal"
 require "extensions/decidim/proposals/update_proposal"
 require "extensions/decidim/proposals/vote_proposal"
+require "extensions/decidim/core/permissions"
+require "extensions/decidim/admin/permissions"
 
 module Extensions
   module Decidim
