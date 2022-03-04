@@ -4,17 +4,17 @@ module Extensions
       module Permissions
         def permissions
           return permission_action if managed_user_action?
-  
+
           unless permission_action.scope == :admin
             read_admin_dashboard_action?
             return permission_action
           end
-  
+
           unless user
             disallow!
             return permission_action
           end
-  
+
           if user_manager?
             begin
               allow! if user_manager_permissions.allowed?
@@ -22,9 +22,9 @@ module Extensions
               nil
             end
           end
-  
+
           allow! if user_can_enter_space_area?(require_admin_terms_accepted: true)
-  
+
           read_admin_dashboard_action?
           allow! if permission_action.subject == :global_moderation
           apply_newsletter_permissions_for_admin!
@@ -36,14 +36,14 @@ module Extensions
               nil
             end
           end
-  
+
           if user.admin? && admin_terms_accepted?
             allow! if read_admin_log_action?
             allow! if read_metrics_action?
             allow! if static_page_action?
             allow! if organization_action?
             allow! if user_action?
-  
+
             allow! if permission_action.subject == :category
             allow! if permission_action.subject == :component
             allow! if permission_action.subject == :admin_user
@@ -62,7 +62,7 @@ module Extensions
             allow! if permission_action.subject == :help_sections
             allow! if permission_action.subject == :share_token
           end
-  
+
           permission_action
         end
 
@@ -74,11 +74,11 @@ module Extensions
 
         def read_admin_dashboard_action?
           return unless permission_action.subject == :admin_dashboard &&
-                        permission_action.action == :read
-  
+            permission_action.action == :read
+
           return user_manager_permissions if user_manager?
           return authorization_valuator_permissions if authorization_valuator?
-  
+
           toggle_allow(user.admin? || space_allows_admin_access_to_current_action?)
         end
 

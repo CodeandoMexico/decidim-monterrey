@@ -13,7 +13,7 @@ module Extensions
           search_scope_action?
 
           return permission_action unless user
-        
+
           user_manager_permissions
           authorization_valuator_permissions
           manage_self_user_action?
