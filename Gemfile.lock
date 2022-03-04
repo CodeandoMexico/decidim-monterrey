@@ -828,6 +828,7 @@ DEPENDENCIES
   puma (>= 5.0.0)
   ripper-tags
   rspec-rails
+  ruby-progressbar
   spring (~> 2.0)
   spring-watcher-listen (~> 2.0)
   standard
