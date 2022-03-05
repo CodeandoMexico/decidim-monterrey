@@ -33,3 +33,7 @@ es:
           fields:
             roles:
               authorization_valuator: Verificador de usuarios
+    devise:
+      registrations:
+        new:
+          subtitle: Crea una cuenta para poder participar subiendo y votando propuestas
