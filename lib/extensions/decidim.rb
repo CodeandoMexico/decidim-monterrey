@@ -6,6 +6,8 @@ require "extensions/decidim/proposals/update_proposal"
 require "extensions/decidim/proposals/vote_proposal"
 require "extensions/decidim/core/permissions"
 require "extensions/decidim/admin/permissions"
+require "extensions/decidim/registrations/registrations_form"
+require "extensions/decidim/registrations/create_registration"
 
 module Extensions
   module Decidim

@@ -1,4 +1,8 @@
 es:
+  activemodel:
+    attributes:
+      user:
+        phone: Número teléfonico
   decidim:
     proposals:
       proposals:
