@@ -4,8 +4,8 @@ module Budgets
     # to their scope
     class Monterrey < ::Decidim::Budgets::Workflows::Base
       PARTICIPATORY_PROCESS_TYPE = {
-        "DELEGACIONES" => "delegation_code",
-        "SECTORES" => "sector_code"
+        "DISTRITOS" => "district_code",
+        "ZONAS" => "zone_code"
       }
 
       def highlighted?(_resource)

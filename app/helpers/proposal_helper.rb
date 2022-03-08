@@ -1,33 +1,33 @@
 module ProposalHelper
   PROPOSALS_COMPONENT_SCOPE_VOTE_MESSAGE_KEY = {
-    "DELEGACIONES" => "decidim.proposals.proposals.voting_rules.proposal_scope.delegation",
-    "SECTORES" => "decidim.proposals.proposals.voting_rules.proposal_scope.sector"
+    "DISTRITOS" => "decidim.proposals.proposals.voting_rules.proposal_scope.district",
+    "ZONAS" => "decidim.proposals.proposals.voting_rules.proposal_scope.zone"
   }
 
   PROPOSALS_COMPONENT_SCOPE_CREATE_MESSAGE_KEY = {
-    "DELEGACIONES" => "decidim.proposals.proposals.create_proposal_rules.proposal_scope.delegation",
-    "SECTORES" => "decidim.proposals.proposals.create_proposal_rules.proposal_scope.sector"
+    "DISTRITOS" => "decidim.proposals.proposals.create_proposal_rules.proposal_scope.district",
+    "ZONAS" => "decidim.proposals.proposals.create_proposal_rules.proposal_scope.zone"
   }
 
   USER_SCOPE_METADATA_KEY = {
-    "DELEGACIONES" => "delegation_code",
-    "SECTORES" => "sector_code"
+    "DISTRITOS" => "district_code",
+    "ZONAS" => "zone_code"
   }
 
-  def user_can_vote_delegation_proposal?(user, proposal)
+  def user_can_vote_district_proposal?(user, proposal)
     authorization = ::Decidim::Authorization.where
       .not(granted_at: nil)
       .find_by!(user: user, name: "ine")
 
-    !authorization.nil? && proposal.scope.code == authorization.metadata["delegation_code"]
+    !authorization.nil? && proposal.scope.code == authorization.metadata["district_code"]
   end
 
-  def user_can_vote_sector_proposal?(user, proposal)
+  def user_can_vote_zone_proposal?(user, proposal)
     authorization = ::Decidim::Authorization.where
       .not(granted_at: nil)
       .find_by!(user: user, name: "ine")
 
-    !authorization.nil? && proposal.scope.code == authorization.metadata["sector_code"]
+    !authorization.nil? && proposal.scope.code == authorization.metadata["zone_code"]
   end
 
   def get_proposals_component_scope_vote_message_key(component_settings)
@@ -40,12 +40,12 @@ module ProposalHelper
     PROPOSALS_COMPONENT_SCOPE_CREATE_MESSAGE_KEY[component_scope.code]
   end
 
-  def is_component_scope_delegation?(component)
-    Decidim::Scope.find(component.settings.scope_id).code == "DELEGACIONES"
+  def is_component_scope_district?(component)
+    Decidim::Scope.find(component.settings.scope_id).code == "DISTRICTS"
   end
 
-  def is_component_scope_sector?(component)
-    Decidim::Scope.find(component.settings.scope_id).code == "SECTORES"
+  def is_component_scope_zone?(component)
+    Decidim::Scope.find(component.settings.scope_id).code == "ZONES"
   end
 
   def user_scope_name(user, component_settings)

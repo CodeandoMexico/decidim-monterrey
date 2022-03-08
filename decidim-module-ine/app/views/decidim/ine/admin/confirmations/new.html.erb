@@ -38,14 +38,14 @@
       </div>
       <div class="row column">
         <label>
-          <%= t(".sector") %>
-          <input type="text" readonly="true" value='<%= @form.scope_by_code(@pending_authorization.metadata['sector_code']).name['es'] %>'>
+          <%= t(".zone") %>
+          <input type="text" readonly="true" value='<%= @form.scope_by_code(@pending_authorization.metadata['zone_code']).name['es'] %>'>
         </label>
       </div>
       <div class="row column">
         <label>
-          <%= t(".delegation") %>
-          <input type="text" readonly="true" value='<%= @form.scope_by_code(@pending_authorization.metadata['delegation_code']).name['es'] %>'>
+          <%= t(".district") %>
+          <input type="text" readonly="true" value='<%= @form.scope_by_code(@pending_authorization.metadata['district_code']).name['es'] %>'>
         </label>
       </div>
     </div>

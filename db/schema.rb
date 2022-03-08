@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_05_052550) do
+ActiveRecord::Schema.define(version: 2022_03_08_221415) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
@@ -654,8 +654,8 @@ ActiveRecord::Schema.define(version: 2022_03_05_052550) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "code"
-    t.string "sector_code"
-    t.string "delegation_code"
+    t.string "zone_code"
+    t.string "district_code"
   end
 
   create_table "decidim_meetings_agenda_items", force: :cascade do |t|
