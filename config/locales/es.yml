@@ -1,4 +1,8 @@
 es:
+  activemodel:
+    attributes:
+      user:
+        phone: Número teléfonico
   decidim:
     proposals:
       proposals:
@@ -29,3 +33,10 @@ es:
           fields:
             roles:
               authorization_valuator: Verificador de usuarios
+      officializations:
+        index:
+          phone: Teléfono
+    devise:
+      registrations:
+        new:
+          subtitle: Crea una cuenta para poder participar subiendo y votando propuestas
