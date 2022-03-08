@@ -33,6 +33,9 @@ es:
           fields:
             roles:
               authorization_valuator: Verificador de usuarios
+      officializations:
+        index:
+          phone: Teléfono
     devise:
       registrations:
         new:
