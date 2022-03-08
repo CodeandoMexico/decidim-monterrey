@@ -4,6 +4,12 @@ es:
       user:
         phone: Número teléfonico
   decidim:
+    components:
+      budgets:
+        settings:
+          global:
+            workflow_choices:
+              monterrey: "Voto limitado a alcance: Permite a las participantes a votar solo en los presupuestos de su delegacion o sector"
     proposals:
       proposals:
         preview:
