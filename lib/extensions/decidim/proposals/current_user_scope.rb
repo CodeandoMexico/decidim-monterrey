@@ -3,8 +3,8 @@ module Extensions
     module Proposals
       module CurrentUserScope
         PARTICIPATORY_PROCESS_TYPE = {
-          "DELEGACIONES" => "delegation_code",
-          "SECTORES" => "sector_code"
+          "DISTRITOS" => "district_code",
+          "ZONAS" => "zone_code"
         }
 
         def current_user_scope(proposal)

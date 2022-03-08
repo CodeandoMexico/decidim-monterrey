@@ -1,10 +1,6 @@
-id,name
-1,Norte
-2,Norte
-3,Norte
-4,Poniente
-5,Poniente
-6,Centro
-7,Centro
-8,Sur
-9,Huajuco
+name,code,parent_code
+Distrito Norte,DISTRITO-NORTE,MUNICIPIO-MONTERREY
+Distrito Poniente,DISTRITO-PONIENTE,MUNICIPIO-MONTERREY
+Distrito Centro,DISTRITO-CENTRO,MUNICIPIO-MONTERREY
+Distrito Sur,DISTRITO-SUR,MUNICIPIO-MONTERREY
+Distrito Huajuco,DISTRITO-HUAJUCO,MUNICIPIO-MONTERREY

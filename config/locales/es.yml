@@ -9,7 +9,7 @@ es:
         settings:
           global:
             workflow_choices:
-              monterrey: "Voto limitado a alcance: Permite a las participantes a votar solo en los presupuestos de su delegacion o sector"
+              monterrey: "Voto limitado a alcance: Permite a las participantes a votar solo en los presupuestos de su distrito o zona"
     proposals:
       proposals:
         preview:
@@ -19,20 +19,20 @@ es:
         create_proposal_rules:
           title: "El envío de propuestas se rige por las siguientes normas:"
           proposal_scope:
-            sector: Perteneces al <strong>%{scope_name}</strong>, y las propuestas que envíes serán asignadas a este sector.
-            delegation: Perteneces a la <strong>%{scope_name}</strong>, y las propuestas que envíes serán asignadas a esta delegación.
+            zone: Perteneces a la <strong>%{scope_name}</strong>, y las propuestas que envíes serán asignadas a esta zona.
+            district: Perteneces al <strong>%{scope_name}</strong>, y las propuestas que envíes serán asignadas a este distrito.
           proposal_limit:
             left: Restante
             description: Puedes enviar hasta %{limit} propuestas.
             proposals: Propuestas
         voting_rules:
           proposal_scope:
-            sector: Perteneces al <strong>%{scope_name}</strong>, solo puedes votar por propuestas de este sector.
-            delegation: Perteneces a la <strong>%{scope_name}</strong>, solo puedes votar por propuestas de esta delegación.
+            zone: Perteneces a la<strong>%{scope_name}</strong>, solo puedes votar por propuestas de esta zona.
+            district: Perteneces al <strong>%{scope_name}</strong>, solo puedes votar por propuestas de este distrito.
         vote_button:
           out_of_scope:
-            sector: No pertenece a tu sector
-            delegation: No pertenece a tu delegación
+            zone: No pertenece a tu zona
+            district: No pertenece a tu distrito
     admin:
       models:
         user:

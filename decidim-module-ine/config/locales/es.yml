@@ -47,8 +47,7 @@ es:
             postal_code: Código Postal
             neighbourhood: Colonia
             district: Distrito
-            sector: Sector
-            delegation: Delegación
+            zone: Zona
             municipality: Municipio
         pending_authorizations:
           index:
