@@ -2,7 +2,7 @@ es:
   activemodel:
     attributes:
       user:
-        phone: Número teléfonico
+        phone: Número telefónico
   decidim:
     components:
       budgets:
