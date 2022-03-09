@@ -4,6 +4,9 @@ es:
       user:
         phone: Número telefónico
   decidim:
+    authorization_handlers:
+      managed_user_authorization_handler:
+        name: Autorizacion de Usuaria Administrada
     components:
       budgets:
         settings:
@@ -46,3 +49,9 @@ es:
       registrations:
         new:
           subtitle: Crea una cuenta para poder participar subiendo y votando propuestas
+  managed_user_authorization:
+    form:
+      street: Calle
+      street_number: Número
+      postal_code: Código Postal
+      neighbourhood: Colonia
