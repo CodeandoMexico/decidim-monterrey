@@ -1,0 +1,20 @@
+<%= form_required_explanation %>
+
+<div class="card-section">
+
+  <div class="field">
+    <%= form.text_field :street, label: t(".street") %>
+  </div>
+
+  <div class="field">
+    <%= form.text_field :street_number, label: t(".street_number") %>
+  </div>
+
+  <div class="field">
+    <%= form.text_field :postal_code, label: t(".postal_code") %>
+  </div>
+
+  <div class="field">
+    <%= form.select :neighbourhood_code, handler.neighbourhoods_for_select, prompt: true, label: t(".neighbourhood") %>
+  </div>
+</div>
