@@ -72,6 +72,9 @@ es:
       registrations:
         new:
           subtitle: Crea una cuenta para poder participar subiendo y votando propuestas
+    content_blocks:
+      monterrey_landing_page:
+        name: Página principal Monterrey
   managed_user_authorization:
     form:
       street: Calle
