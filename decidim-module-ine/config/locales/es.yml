@@ -2,7 +2,7 @@ es:
   decidim:
     components:
       ine:
-        name: Verificación INE
+        name: Verificación INE / Carta de Residencia
     verifications:
       ine:
         admin:
@@ -23,15 +23,15 @@ es:
     ine:
       verification_mailer:
         verification_rejected:
-          subject: Solicitud de verificación documento INE rechazada
-          title: Solicitud de verificación documento INE rechazada
+          subject: Solicitud de verificación documento INE / Carta de Residencia rechazada
+          title: Solicitud de verificación documento INE / Carta de Residencia rechazada
           copy_p: Hubo un problema con tu verificación.
           copy_ul_1: Asegúrate de que la información sea claramente visible en la imagen subida.
           copy_ul_2: Asegúrate de que la información ingresada sea correcta.
           copy_cta: Revisa tu solicitud
         verification_accepted:
-          subject: Solicitud de verificación documento INE aceptada
-          title: Solicitud de verificación documento INE aceptada
+          subject: Solicitud de verificación documento INE / Carta de Residencia aceptada
+          title: Solicitud de verificación documento INE / Carta de Residencia aceptada
           copy_p: "Enhorabuena, ya eres un ciudadano verificado. Entre otras cosas ahora ya puedes:"
           copy_ul_1: Subir propuestas
           copy_ul_2: Votar y comentar propuestas
@@ -51,12 +51,15 @@ es:
             municipality: Municipio
         pending_authorizations:
           index:
-            title: Verificaciones de documento INE pendientes
+            title: Verificaciones de documento INE / Carta de Residencia pendientes
             verification_number: "Verificación #%{n}"
       authorizations:
         new:
-          title: Verificación de INE
+          title: Verifica tu usuario con tu identificación INE o Carta de Residencia
           send: Solicitar verificación
+          message_1: Para proponer y votar propuestas es importante comprobar que resides en Monterrey. Si tu credencial para votar no muestra domicilio o indica otro diferente a los datos que registrarás a continuación, puedes cargar una Carta de Residencia extendida por la Dirección de Concertación Social del Ayuntamiento.
+          message_2: En caso de cargar una credencial para votar INE, asegúrate que esta se encuentre vigente y que la imagen sea legible.
+          message_3: En caso de cargar una Carta de Residencia, asegúrate que esta muestre una residencia mínima de 6 meses en el municipio y sea legible.
         edit:
           being_reviewed: Estamos revisando tu solicitud de verificación.
           send: Solicitar verificación de nuevo
@@ -64,22 +67,22 @@ es:
           rejection_clarity: Asegúrate de que la información sea claramente visible en la imagen subida.
           rejection_correctness: Asegúrate de que la información ingresada sea correcta.
         form:
-          street: Calle
-          street_number: Número
+          street: Calle de tu domicilio
+          street_number: Número (exterior)
           postal_code: Código Postal
-          neighbourhood: Colonia
-          verification_attachment: Imagen documento INE
+          neighbourhood: Colonia (Como aparece en tu identificación o Carta de Residencia)
+          verification_attachment: Carga tu credencial para votar INE o Carta de Residencia
     authorization_handlers:
       admin:
         ine:
           help:
-            - Las participantes rellenan la información de su identidad y suben una copia de su INE.
-            - Revisas la información del INE.
+            - Las participantes rellenan la información de su identidad y suben una copia de su INE o Carta de Residencia.
+            - Revisas la información del INE o Carta de Residencia.
             - Si la información coincide, acepta la verificación.
             - Si no puedes ver la información con claridad o no la puedes verificar, puedes rechazar la solicitud para que la participante la pueda corregir.
       ine:
-        name: Documento INE
-        explanation: Verifícate con tu documento INE
+        name: Documento INE / Carta de Residencia
+        explanation: Verifícate con tu documento INE o Carta de Residencia
   errors:
     messages:
       postal_code: Debe ser un código postal correcto
