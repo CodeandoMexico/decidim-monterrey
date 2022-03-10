@@ -33,5 +33,5 @@ group :development do
 end
 
 group :production, :staging do
-  gem 'sidekiq'
+  gem "sidekiq"
 end
