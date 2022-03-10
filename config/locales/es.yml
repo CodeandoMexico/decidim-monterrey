@@ -4,9 +4,32 @@ es:
       user:
         phone: Número telefónico
   decidim:
+    forms:
+      current_file: Archivo actual
+      current_image: Imagen actual
+      default_image: Imagen predeterminada
+      errors:
+        decidim/user:
+          password: La contraseña es demasiado corta.
+          password_confirmation: La confirmación de la contraseña debe coincidir con tu contraseña.
+        error: Hay un error en este campo.
+      file_help:
+        file:
+          explanation: "Instrucciones para el archivo:"
+          message_1: Tiene que ser una imagen o un documento.
+          message_2: Para las imágenes, utilizar imágenes preferiblemente apaisadas, el servicio recorta la imagen. Para los archivos CSV, el separador entre columnas debe ser una coma (",")
+        image:
+          explanation: "Instrucciones para la imagen:"
+          message_1: Carga preferiblemente una imagen horizontal sin ningún texto.
+          message_2: Esta plataforma recortará la imagen automáticamente.
+      file_validation:
+        allowed_file_extensions: "Formatos de archivo permitidos: %{extensions}"
+        max_file_size: "Tamaño máximo del archivo: %{megabytes}MB"
+      remove_this_file: Eliminar este archivo
     authorization_handlers:
       managed_user_authorization_handler:
         name: Autorizacion de Usuaria Administrada
+        explanation: Esta verificación la realiza de manera directa un usuario administrador
     components:
       budgets:
         settings:
