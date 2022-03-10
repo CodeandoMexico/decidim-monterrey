@@ -32,7 +32,6 @@ group :development do
   gem "ripper-tags"
 end
 
-group :production do
-  gem "delayed_job_active_record"
-  gem "daemons"
+group :production, :staging do
+  gem 'sidekiq'
 end

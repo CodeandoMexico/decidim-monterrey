@@ -11,7 +11,7 @@ services:
         - FORCE_SSL=${FORCE_SSL}
         - MAILER_SENDER=${MAILER_SENDER}
     ports:
-      - '80:3000'
+      - '3000:3000'
     env_file:
       - .env
     volumes:
@@ -21,9 +21,26 @@ services:
       - ./docker/entrypoints:/decidim/docker/entrypoints
       - ~/decidim-storage:/decidim/storage
     entrypoint: docker/entrypoints/decidim.sh
-    command: 'rails s -b 0.0.0.0'
+    command: "rails s -b 0.0.0.0"
+    depends_on:
+      redis:
+        condition: service_healthy
+  # ------------------------------
+  # redis
+  redis:
+    image: redis
+    ports:
+      - '6379:6379'
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: [ "CMD", "redis-cli", "--raw", "incr", "ping" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
   # ----------------------------------------
 volumes:
   gem_cache: {}
   node_modules_cache: {}
   tmp_cache: {}
+  redis-data: {}

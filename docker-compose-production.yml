@@ -12,5 +12,18 @@ services:
       - tmp_cache:/decidim/tmp
     entrypoint: /decidim/docker/entrypoints/decidim.sh
     command: '/decidim/bin/rails s -b 0.0.0.0'
+    depends_on:
+      redis:
+        condition: service_healthy
+  redis:
+    image: redis
+    volumes:
+      - redis-data:/data
+    healthcheck:
+      test: [ "CMD", "redis-cli", "--raw", "incr", "ping" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5
 volumes:
   tmp_cache: {}
+  redis-data: {}
