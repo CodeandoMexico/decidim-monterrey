@@ -1,4 +1,4 @@
-name: Construir y publicar imagen de producción
+name: Construir y publicar imagen de staging
 
 on:
   push:
