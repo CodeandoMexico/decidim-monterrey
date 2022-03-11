@@ -56,7 +56,7 @@ Rails.application.configure do
   # config.cache_store = :mem_cache_store
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
-  config.active_job.queue_adapter = :sideqik
+  config.active_job.queue_adapter = :sidekiq
   config.active_job.queue_name_prefix = "decidim_monterrey_production"
   config.action_mailer.perform_caching = false
 
