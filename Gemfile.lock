@@ -485,7 +485,6 @@ GEM
     mime-types-data (3.2022.0105)
     mini_magick (4.11.0)
     mini_mime (1.1.2)
-    mini_portile2 (2.8.0)
     minitest (5.15.0)
     mixlib-cli (2.1.8)
     mixlib-config (3.0.9)
@@ -500,7 +499,6 @@ GEM
     nio4r (2.5.8)
     nobspw (0.6.2)
     nokogiri (1.13.3)
-      mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     oauth (0.5.8)
     oauth2 (1.4.9)
@@ -515,7 +513,7 @@ GEM
       rack-protection
     omniauth-facebook (5.0.0)
       omniauth-oauth2 (~> 1.2)
-    omniauth-google-oauth2 (1.0.0)
+    omniauth-google-oauth2 (1.0.1)
       jwt (>= 2.0)
       oauth2 (~> 1.1)
       omniauth (~> 2.0)
@@ -816,4 +814,4 @@ RUBY VERSION
    ruby 2.7.5p203
 
 BUNDLED WITH
-   2.2.18
+   2.3.9

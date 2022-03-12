@@ -14,6 +14,7 @@ gem "puma", ">= 5.0.0"
 gem "faker", "~> 2.14"
 gem "wicked_pdf", "~> 2.1"
 gem "clockwork"
+gem "sidekiq"
 
 group :development, :test do
   gem "byebug", "~> 11.0", platform: :mri
@@ -30,8 +31,4 @@ group :development do
   gem "spring-watcher-listen", "~> 2.0"
   gem "web-console", "~> 4.0"
   gem "ripper-tags"
-end
-
-group :production, :staging do
-  gem "sidekiq"
 end
