@@ -26,6 +26,8 @@ services:
   clockwork:
     image: ghcr.io/codeandomexico/decidim-monterrey/production:latest
     command: "bundle exec clockwork config/clockwork.rb"
+    env_file:
+      - .env
     depends_on:
       - decidim
 volumes:
