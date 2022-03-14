@@ -2,7 +2,7 @@
 
 Decidim.configure do |config|
   # The name of the application
-  config.application_name = "My Application Name"
+  config.application_name = "Decidimos juntos Monterrey"
 
   # The email that will be used as sender in all emails from Decidim
   config.mailer_sender = ENV.fetch("MAILER_SENDER")

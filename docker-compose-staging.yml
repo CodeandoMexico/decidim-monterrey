@@ -1,29 +1,34 @@
 version: '3'
 services:
-  # ----------------------------------------
   decidim:
-    build:
-      context: .
-      dockerfile: ./docker/decidim.Dockerfile
-      args:
-        - RAILS_ENV=${RAILS_ENV}
-        - SECRET_KEY_BASE=${SECRET_KEY_BASE}
-        - FORCE_SSL=${FORCE_SSL}
-        - MAILER_SENDER=${MAILER_SENDER}
+    image: ghcr.io/codeandomexico/decidim-monterrey/staging:latest
     ports:
       - '80:3000'
     env_file:
       - .env
     volumes:
-      - gem_cache:/usr/local/bundle/gems
-      - node_modules_cache:/decidim/node_modules
-      - tmp_cache:/decidim/tmp
-      - ./docker/entrypoints:/decidim/docker/entrypoints
       - ~/decidim-storage:/decidim/storage
-    entrypoint: docker/entrypoints/decidim.sh
-    command: 'rails s -b 0.0.0.0'
-  # ----------------------------------------
+      - ~/decidim-log:/decidim/log
+      - tmp_cache:/decidim/tmp
+    entrypoint: /decidim/docker/entrypoints/decidim.sh
+    command: "/decidim/bin/rails s -b 0.0.0.0"
+  # ------------------------------
+  # Delayed Job
+  delayed_job:
+    image: ghcr.io/codeandomexico/decidim-monterrey/staging:latest
+    command: "bundle exec bin/delayed_job restart"
+    env_file:
+      - .env
+    depends_on:
+      - decidim
+  # ------------------------------
+  # Clockwork
+  clockwork:
+    image: ghcr.io/codeandomexico/decidim-monterrey/staging:latest
+    command: "bundle exec clockwork config/clockwork.rb"
+    env_file:
+      - .env
+    depends_on:
+      - decidim
 volumes:
-  gem_cache: {}
-  node_modules_cache: {}
   tmp_cache: {}

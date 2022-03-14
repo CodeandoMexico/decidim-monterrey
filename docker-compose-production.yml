@@ -11,6 +11,24 @@ services:
       - ~/decidim-log:/decidim/log
       - tmp_cache:/decidim/tmp
     entrypoint: /decidim/docker/entrypoints/decidim.sh
-    command: '/decidim/bin/rails s -b 0.0.0.0'
+    command: "/decidim/bin/rails s -b 0.0.0.0"
+  # ------------------------------
+  # Delayed Job
+  delayed_job:
+    image: ghcr.io/codeandomexico/decidim-monterrey/production:latest
+    command: "bundle exec bin/delayed_job restart"
+    env_file:
+      - .env
+    depends_on:
+      - decidim
+  # ------------------------------
+  # Clockwork
+  clockwork:
+    image: ghcr.io/codeandomexico/decidim-monterrey/production:latest
+    command: "bundle exec clockwork config/clockwork.rb"
+    env_file:
+      - .env
+    depends_on:
+      - decidim
 volumes:
   tmp_cache: {}
