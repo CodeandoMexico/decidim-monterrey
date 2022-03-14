@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  build-publish-production-image:
+  docker-image-production:
     runs-on: ubuntu-latest
     environment: production
     if: github.ref == 'refs/heads/main'

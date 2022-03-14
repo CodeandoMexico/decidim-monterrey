@@ -6,7 +6,7 @@ on:
       - staging
 
 jobs:
-  build-publish-production-image:
+  docker-image-staging:
     runs-on: ubuntu-latest
     environment: staging
     if: github.ref == 'refs/heads/staging'
