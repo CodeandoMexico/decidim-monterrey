@@ -4,7 +4,7 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-gem "dotenv-rails", groups: [:development, :test, :production]
+gem "dotenv-rails", groups: [:development, :test, :staging, :production]
 
 gem "decidim", "0.25.2"
 gem "decidim-ine", path: "decidim-module-ine"
