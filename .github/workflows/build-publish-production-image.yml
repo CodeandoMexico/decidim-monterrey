@@ -1,4 +1,4 @@
-name: Construir y publicar imagen de producción
+name: Imagen de producción
 
 on:
   push:
