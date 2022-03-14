@@ -4,7 +4,7 @@ source "https://rubygems.org"
 
 ruby RUBY_VERSION
 
-gem "dotenv-rails", groups: [:development, :test, :staging, :production]
+gem "dotenv-rails", groups: [:development, :test, :production]
 
 gem "decidim", "0.25.2"
 gem "decidim-ine", path: "decidim-module-ine"
@@ -14,7 +14,8 @@ gem "puma", ">= 5.0.0"
 gem "faker", "~> 2.14"
 gem "wicked_pdf", "~> 2.1"
 gem "clockwork"
-gem "sidekiq"
+gem "delayed_job_active_record"
+gem "daemons"
 
 group :development, :test do
   gem "byebug", "~> 11.0", platform: :mri
