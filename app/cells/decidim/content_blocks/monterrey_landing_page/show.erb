@@ -1,3 +1,90 @@
-<section class="extended subhero home-section monterrey">
-  <h1>Colima</h1>
-</section>
+<main class="main-container">
+    <section class="section section-one">
+      <div class="section-one__title">
+        <h1><%= t("landing_page_monterrey.section_one.title") %></h1>
+      </div>
+      <div class="section-one__text">
+        <p><%= t("landing_page_monterrey.section_one.text") %></p>
+      </div>
+    </section>
+    <section class="section section-two">
+      <div class="section-two__title">
+        <h1><%= t("landing_page_monterrey.section_two.title") %></h1>
+      </div>
+      <div class="section-two__text">
+        <p><%= t("landing_page_monterrey.section_two.text") %></p>
+      </div>
+    </section>
+    <section class="section section-three">
+      <div class="section-three__text">
+        <p><%= t("landing_page_monterrey.section_three.text") %></p>
+      </div>
+      <div class="section-three__info">
+        <p><%= t("landing_page_monterrey.section_three.info.title") %></p>
+        <p><%= t("landing_page_monterrey.section_three.info.subtitle") %></p>
+      </div>
+      <div class="section-three__info-map">
+        <p><%= t("landing_page_monterrey.section_three.info_map.title") %></p>
+        <div class="map">
+          district's map
+        </div>
+      </div>
+    </section>
+    <section class="section section-four">
+      <div class="section-four__title">
+        <h1><%= t("landing_page_monterrey.section_four.title") %></h1>
+      </div>
+      <div class="phase">
+        <div class="phase__title">
+          <h1><%= t("landing_page_monterrey.section_four.phase_one.title") %></h1>
+        </div>
+        <div class="phase__info">
+          <p><%= t("landing_page_monterrey.section_four.phase_one.info") %></p>
+        </div>
+        <hr/>
+        <div class="phase__subtitle">
+          <h2><%= t("landing_page_monterrey.section_four.phase_one.subtitle") %></h2>
+        </div>
+        <div class="phase-categories">
+          <div class="phase-categories__title">
+            <h2><%= t("landing_page_monterrey.section_four.phase_one.categories_title") %></h2>
+          </div>
+          <div class="phase-categories__list">
+            <ul>
+              <li><%= t("landing_page_monterrey.section_four.phase_one.categories.sustainable_mobility") %></li>
+              <li><%= t("landing_page_monterrey.section_four.phase_one.categories.basic_services") %></li>
+              <li><%= t("landing_page_monterrey.section_four.phase_one.categories.sports_and_culture") %></li>
+              <li><%= t("landing_page_monterrey.section_four.phase_one.categories.cohesion_and_social_equity") %></li>
+              <li><%= t("landing_page_monterrey.section_four.phase_one.categories.health") %></li>
+              <li><%= t("landing_page_monterrey.section_four.phase_one.categories.environment") %></li>
+              <li><%= t("landing_page_monterrey.section_four.phase_one.categories.sustainable_urban_development") %></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section setion-five">
+      <div class="phase">
+        <div class="phase__title">
+          <h1><%= t("landing_page_monterrey.section_five.phase_two.title") %></h1>
+        </div>
+        <div class="phase__info">
+          <p><%= t("landing_page_monterrey.section_five.phase_two.info") %></p>
+        </div>
+      </div>
+    </section>
+    <section class="section section-six">
+      <div class="phase">
+        <div class="phase__title">
+          <h1><%= t("landing_page_monterrey.section_six.phase_three.title") %></h1>
+        </div>
+        <div class="phase__info">
+          <p><%= t("landing_page_monterrey.section_six.phase_three.info") %></p>
+        </div>
+      </div>
+    </section>
+    <% get_proposals(4).each do |proposal| %>
+      <h2><%= proposal.title["es"] %></h2>
+    <% end %>
+
+  </main>
