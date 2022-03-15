@@ -38,7 +38,7 @@ class ManagedUserAuthorizationHandler < Decidim::AuthorizationHandler
   end
 
   def unique_id
-    "#{hash_curp(curp)}"
+    hash_curp(curp).to_s
   end
 
   def neighbourhoods_for_select
