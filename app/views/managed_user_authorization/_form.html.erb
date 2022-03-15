@@ -17,4 +17,8 @@
   <div class="field">
     <%= form.select :neighbourhood_code, handler.neighbourhoods_for_select, prompt: true, label: t(".neighbourhood") %>
   </div>
+
+  <div class="field">
+    <%= form.text_field :curp, label: t(".curp") %>
+  </div>
 </div>

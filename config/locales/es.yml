@@ -78,3 +78,7 @@ es:
       street_number: Número
       postal_code: Código Postal
       neighbourhood: Colonia
+      curp: CURP
+  errors:
+    messages:
+      curp: No es un CURP válido
