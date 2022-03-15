@@ -46,6 +46,7 @@ es:
             street_number: Número
             postal_code: Código Postal
             neighbourhood: Colonia
+            curp: CURP
             district: Distrito
             zone: Zona
             municipality: Municipio
@@ -71,6 +72,7 @@ es:
           street_number: Número (exterior)
           postal_code: Código Postal
           neighbourhood: Colonia (Como aparece en tu identificación o Carta de Residencia)
+          curp: CURP
           verification_attachment: Carga tu credencial para votar INE o Carta de Residencia
     authorization_handlers:
       admin:
@@ -87,3 +89,4 @@ es:
     messages:
       postal_code: Debe ser un código postal correcto
       number: Debe ser un número
+      curp: CURP incorrecto
