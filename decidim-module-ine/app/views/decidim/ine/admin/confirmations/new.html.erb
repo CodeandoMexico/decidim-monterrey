@@ -47,6 +47,11 @@
           <%= t(".district") %>
           <input type="text" readonly="true" value='<%= @form.scope_by_code(@pending_authorization.metadata['district_code']).name['es'] %>'>
         </label>
+        <div class="row column">
+        <label>
+          <%= t(".curp") %>
+          <input type="text" readonly="true" value="<%= @pending_authorization.verification_metadata['curp'] %>">
+        </label>
       </div>
     </div>
   </div>
