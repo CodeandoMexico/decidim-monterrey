@@ -89,4 +89,4 @@ es:
     messages:
       postal_code: Debe ser un código postal correcto
       number: Debe ser un número
-      curp: Cantidad inválida de caracteres para una CURP
+      curp: CURP incorrecto
