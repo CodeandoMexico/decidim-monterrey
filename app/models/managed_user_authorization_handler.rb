@@ -5,6 +5,7 @@ class ManagedUserAuthorizationHandler < Decidim::AuthorizationHandler
   attribute :street_number, String
   attribute :postal_code, String
   attribute :neighbourhood_code, Decidim::Ine::Neighbourhood
+  attribute :curp, String
 
   validates :street,
     presence: true
@@ -21,6 +22,10 @@ class ManagedUserAuthorizationHandler < Decidim::AuthorizationHandler
     inclusion: {in: :neighbourhoods_codes},
     presence: true
 
+  validates :curp,
+    format: {with: /\A([A-Z][AEIOUX][A-Z]{2}\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])[HM](?:AS|B[CS]|C[CLMSH]|D[FG]|G[TR]|HG|JC|M[CNS]|N[ETL]|OC|PL|Q[TR]|S[PLR]|T[CSL]|VZ|YN|ZS)[B-DF-HJ-NP-TV-Z]{3}[A-Z\d])(\d)\z/, message: I18n.t("errors.messages.curp")},
+    presence: true
+
   def metadata
     neighbourhood = Decidim::Ine::Neighbourhood.find_by(code: neighbourhood_code)
     zone_scope = scope_by_code(neighbourhood.zone_code)
@@ -33,8 +38,7 @@ class ManagedUserAuthorizationHandler < Decidim::AuthorizationHandler
   end
 
   def unique_id
-    # TODO: TBD
-    "#{street}|#{street_number}|#{postal_code}|#{neighbourhood_code}"
+    hash_curp(curp).to_s
   end
 
   def neighbourhoods_for_select
@@ -52,5 +56,10 @@ class ManagedUserAuthorizationHandler < Decidim::AuthorizationHandler
 
   def scope_by_code(code)
     Decidim::Scope.find_by(code: code)
+  end
+
+  def hash_curp(curp)
+    return "" unless curp
+    Digest::MD5.hexdigest(curp)
   end
 end
