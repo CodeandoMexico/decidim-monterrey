@@ -48,13 +48,11 @@ module Extensions
               .not(granted_at: nil)
               .find_by(user: user, name: "ine")
 
-            return ine_authorization if ine_authorization
-
             managed_user_authorization = ::Decidim::Authorization.where
               .not(granted_at: nil)
               .find_by(user: user, name: "managed_user_authorization_handler")
 
-            return managed_user_authorization if managed_user_authorization
+            ine_authorization || managed_user_authorization
           end
         end
       end
