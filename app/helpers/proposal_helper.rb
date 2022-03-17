@@ -15,19 +15,17 @@ module ProposalHelper
   }
 
   def user_can_vote_district_proposal?(user, proposal)
-    authorization = ::Decidim::Authorization.where
-      .not(granted_at: nil)
-      .find_by!(user: user, name: "ine")
+    authorization = user_authorization(user)
+    return false unless authorization
 
-    !authorization.nil? && proposal.scope.code == authorization.metadata["district_code"]
+    proposal.scope.code == authorization.metadata["district_code"]
   end
 
   def user_can_vote_zone_proposal?(user, proposal)
-    authorization = ::Decidim::Authorization.where
-      .not(granted_at: nil)
-      .find_by!(user: user, name: "ine")
+    authorization = user_authorization(user)
+    return false unless authorization
 
-    !authorization.nil? && proposal.scope.code == authorization.metadata["zone_code"]
+    proposal.scope.code == authorization.metadata["zone_code"]
   end
 
   def get_proposals_component_scope_vote_message_key(component_settings)
@@ -49,11 +47,28 @@ module ProposalHelper
   end
 
   def user_scope_name(user, component_settings)
-    authorization = ::Decidim::Authorization.where
-      .not(granted_at: nil)
-      .find_by!(user: user, name: "ine")
+    authorization = user_authorization(user)
+
+    return "" unless authorization
     component_scope = Decidim::Scope.find component_settings.scope_id
     Decidim::Scope.find_by(code: authorization.metadata[USER_SCOPE_METADATA_KEY[component_scope.code]]).name
+  end
+
+  def user_authorization(user)
+    ine_authorization = ::Decidim::Authorization.where
+      .not(granted_at: nil)
+      .find_by(user: user, name: "ine")
+    managed_user_authorization = ::Decidim::Authorization.where
+      .not(granted_at: nil)
+      .find_by(user: user, name: "managed_user_authorization_handler")
+
+    authorization = ine_authorization ? ine_authorization : managed_user_authorization
+    authorization
+  end
+
+  def user_has_monterrey_authorization?(user)
+    return false unless user_authorization(user)
+    true
   end
 
   def remaining_proposals_count_for(user)

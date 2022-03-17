@@ -7,7 +7,7 @@
           <% if proposal_limit_enabled? %>
             <li><%= t(".proposal_limit.description", limit: proposal_limit) %></li>
           <% end %>
-          <% if current_user && component_settings.scopes_enabled %>
+          <% if current_user && user_has_monterrey_authorization?(current_user) && component_settings.scopes_enabled %>
             <li><%= raw t(get_proposals_component_scope_create_message_key(component_settings), scope_name: user_scope_name(current_user, component_settings)[I18n.locale.to_s]) %></li>
           <% end %>
         </ul>
