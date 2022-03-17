@@ -3,7 +3,7 @@ module Extensions
     module Budgets
       module Workflows
         # This Workflow allows users to vote in the correspondent budgets according
-        # to their scope
+        # to their scope (district or zone)
         class Monterrey < ::Decidim::Budgets::Workflows::Base
           PARTICIPATORY_PROCESS_TYPE = {
             "DISTRITOS" => "district_code",
@@ -16,7 +16,7 @@ module Extensions
 
           # Users can vote in any budget that is into their scope
           def vote_allowed?(budget, consider_progress: true)
-            return false unless current_user_scope(budget) == budget.scope
+            return false unless budget.scope == current_user_scope(budget)
 
             if consider_progress
               progress?(budget) || progress.none?
@@ -36,14 +36,23 @@ module Extensions
 
           def current_user_scope(budget)
             scope_type = PARTICIPATORY_PROCESS_TYPE[budget.scope.parent.code]
-
-            ::Decidim::Scope.find_by! code: user_authorization.metadata[scope_type]
+            current_user_authorization = user_authorization
+            return nil unless current_user_authorization
+            ::Decidim::Scope.find_by! code: current_user_authorization.metadata[scope_type]
           end
 
+          # We search for ine authorization first, because it has more priority than
+          # managed user authorization, and both are exclusive, a user can't have both.
           def user_authorization
-            ::Decidim::Authorization.where
+            ine_authorization = ::Decidim::Authorization.where
               .not(granted_at: nil)
-              .find_by!(user: user, name: "ine")
+              .find_by(user: user, name: "ine")
+
+            managed_user_authorization = ::Decidim::Authorization.where
+              .not(granted_at: nil)
+              .find_by(user: user, name: "managed_user_authorization_handler")
+
+            ine_authorization || managed_user_authorization
           end
         end
       end
