@@ -62,8 +62,7 @@ module ProposalHelper
       .not(granted_at: nil)
       .find_by(user: user, name: "managed_user_authorization_handler")
 
-    authorization = ine_authorization ? ine_authorization : managed_user_authorization
-    authorization
+    ine_authorization || managed_user_authorization
   end
 
   def user_has_monterrey_authorization?(user)
