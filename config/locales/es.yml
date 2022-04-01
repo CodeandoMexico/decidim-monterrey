@@ -2,7 +2,7 @@ es:
   activemodel:
     attributes:
       user:
-        phone: Número telefónico
+        phone: Número teléfono
   decidim:
     forms:
       current_file: Archivo actual
@@ -71,6 +71,7 @@ es:
     devise:
       registrations:
         new:
+          phone_help: (Campo opcional) Introducir un número de contacto
           subtitle: Crea una cuenta para poder participar subiendo y votando propuestas
   managed_user_authorization:
     form:
@@ -81,4 +82,5 @@ es:
       curp: CURP
   errors:
     messages:
+      phone_taken: Ya existe un usuario con ese número de teléfono
       curp: No es un CURP válido
