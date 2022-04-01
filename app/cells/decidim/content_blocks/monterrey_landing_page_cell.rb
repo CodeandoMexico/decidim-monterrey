@@ -8,7 +8,6 @@ module Decidim
 
       def show
         get_proposals(2)
-        return if translated_attribute(current_organization.description).blank?
 
         render
       end
