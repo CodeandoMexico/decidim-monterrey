@@ -5,7 +5,7 @@ module Extensions
 
       included do
         attribute :phone, String
-        validates :phone, allow_nil: true, allow_blank: true, format: /\A[\+]?[0-9]{10,13}\z/
+        validates :phone, allow_nil: true, allow_blank: true, format: /\A\+?[0-9]{10,13}\z/
         validate :phone_unique_in_organization
 
         def phone_unique_in_organization
