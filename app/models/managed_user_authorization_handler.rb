@@ -1,22 +1,9 @@
 # frozen_string_literal: true
 
 class ManagedUserAuthorizationHandler < Decidim::AuthorizationHandler
-  attribute :street, String
-  attribute :street_number, String
-  attribute :postal_code, String
+
   attribute :neighbourhood_code, Decidim::Ine::Neighbourhood
   attribute :curp, String
-
-  validates :street,
-    presence: true
-
-  validates :street_number,
-    format: {with: /\A[0-9]*\z/, message: I18n.t("errors.messages.number")},
-    presence: true
-
-  validates :postal_code,
-    format: {with: /\A[0-9]{5}\z/, message: I18n.t("errors.messages.postal_code")},
-    presence: true
 
   validates :neighbourhood_code,
     inclusion: {in: :neighbourhoods_codes},
