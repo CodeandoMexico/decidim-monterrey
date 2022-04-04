@@ -62,7 +62,7 @@
             line-height: 32px;
             letter-spacing: 0.18%;
             font-size: 20px;
-            text-align: center;
+            text-align: left;
           }
         }
 
@@ -161,7 +161,7 @@
           line-height: 32px;
           color: white;
           font-family: "Roboto", sans-serif;
-          text-align: center;
+          text-align: left;
           font-weight: 300;
         }
       }
@@ -250,7 +250,7 @@
 
         &-info {
           width: 100%;
-          text-align: center;
+          text-align: left;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -286,7 +286,7 @@
         .part-section__title {
           grid-row: 1;
           grid-column: 1 / 13;
-          text-align: center;
+          text-align: left;
           font-family: "Roboto", sans-serif;
           font-size: 20px;
         }
@@ -294,7 +294,7 @@
         .part-section__image {
           grid-row: 2;
           grid-column: 1 / 13;
-          text-align: center;
+          text-align: left;
           font-family: "Roboto", sans-serif;
           font-size: 20px;
 
@@ -353,7 +353,7 @@
 
         &-info {
           width: 100%;
-          text-align: center;
+          text-align: left;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -495,10 +495,10 @@
 
         p {
           padding-bottom: 15px;
-          text-align: center;
+          text-align: left;
           font-size: 20px;
           line-height: 32px;
-          text-align: center;
+          text-align: left;
           font-family: "Roboto", sans-serif;
           font-weight: 400;
         }
@@ -535,8 +535,8 @@
         grid-row: 2;
         grid-column: 2 / 12;
         font-size: 39px;
-        text-align: center;
-        text-align: center;
+        text-align: left;
+        text-align: left;
         font-family: "Roboto", sans-serif;
         font-weight: 700;
         color: white;
@@ -546,7 +546,7 @@
         grid-row: 3;
         grid-column: 2 / 12;
         font-size: 20px;
-        text-align: center;
+        text-align: left;
         font-family: "Roboto", sans-serif;
         font-weight: 400;
         color: white;
@@ -565,8 +565,8 @@
         grid-column: 2 / 12;
         grid-row: 2;
         font-size: 20px;
-        text-align: center;
-        text-align: center;
+        text-align: left;
+        text-align: left;
         font-family: "Roboto", sans-serif;
         font-weight: 400;
         color: black;
