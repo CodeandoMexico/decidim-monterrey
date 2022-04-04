@@ -1,54 +1,115 @@
-*{
+.title-bar {
+  background-color: #fff;
+
+
+  .topbar {
+    color: rgb(61, 57, 60);
+
+    a {
+      color: rgb(61, 57, 60);
+    }
+  }
+}
+
+.topbar__search {
+  input {
+    background-color: #f2f2f2;
+  }
+
+}
+
+.navbar {
+  background-color: #e6e6e6;
+
+  .main-nav__link .main-nav__link--active {
+    background-color: #f2f2f2;
+  }
+
+  a {
+    color: rgb(61, 57, 60);
+
+    &:hover {
+      color: rgb(41, 37, 30);
+    }
+  }
+}
+
+.main-footer {
+  background-color: #e6e6e6;
+
+  a {
+    color: rgb(61, 57, 60);
+
+    &:hover {
+      color: #000;
+    }
+  }
+}
+
+.mini-footer {
+  background-color: #fff;
+}
+
+* {
   box-sizing: border-box;
   clear: both;
   margin: 0;
   padding: 0;
 }
-.main-container{
-  .section{
+
+.main-container {
+  .section {
     outline: 1px solid black;
-    &-one{
+
+    &-one {
       align-items: center;
       display: flex;
       flex-direction: column;
       justify-content: center;
       padding: 100px 0px;
     }
-    &-two{
+
+    &-two {
       align-items: center;
       display: flex;
       flex-direction: column;
       justify-content: center;
       padding: 100px 0px;
-      &__text{
+
+      &__text {
         width: 50%;
       }
     }
-    &-three{
+
+    &-three {
       align-items: center;
       display: flex;
       flex-direction: column;
       justify-content: center;
       padding: 50px;
-      &__text{
-        margin:30px;
+
+      &__text {
+        margin: 30px;
         width: 50%;
         text-align: center;
       }
-      &__info{
-        margin:30px;
+
+      &__info {
+        margin: 30px;
         margin-top: 20px;
         outline: 1px solid black;
         text-align: center;
       }
-      &__info-map{
-        margin:30px;
+
+      &__info-map {
+        margin: 30px;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        .map{
-          margin:30px;
+
+        .map {
+          margin: 30px;
           outline: 1px solid black;
           width: 500px;
           height: 200px;
