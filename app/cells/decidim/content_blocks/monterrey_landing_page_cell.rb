@@ -30,7 +30,6 @@ module Decidim
         ::Decidim::Proposals::Proposal.all.length > 0
       end
 
-
       private
 
       def organization_description
