@@ -26,6 +26,11 @@ module Decidim
         proposals_return
       end
 
+      def proposals_vailable?
+        ::Decidim::Proposals::Proposal.all.length > 0
+      end
+
+
       private
 
       def organization_description
