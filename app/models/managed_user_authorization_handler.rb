@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class ManagedUserAuthorizationHandler < Decidim::AuthorizationHandler
-
   attribute :neighbourhood_code, Decidim::Ine::Neighbourhood
   attribute :curp, String
 
