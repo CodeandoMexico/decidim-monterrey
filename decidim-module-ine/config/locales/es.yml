@@ -48,7 +48,7 @@ es:
             neighbourhood: Colonia
             curp: CURP
             district: Distrito
-            zone: Zona
+            sector: Sector
             municipality: Municipio
         pending_authorizations:
           index:

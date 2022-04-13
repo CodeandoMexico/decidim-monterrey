@@ -3,11 +3,11 @@ module Extensions
     module Budgets
       module Workflows
         # This Workflow allows users to vote in the correspondent budgets according
-        # to their scope (district or zone)
+        # to their scope (district or sector)
         class Monterrey < ::Decidim::Budgets::Workflows::Base
           PARTICIPATORY_PROCESS_TYPE = {
             "DISTRITOS" => "district_code",
-            "ZONAS" => "zone_code"
+            "SECTORES" => "sector_code"
           }
 
           def highlighted?(_resource)

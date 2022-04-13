@@ -52,7 +52,7 @@ Decidim::Scope.destroy_all
 Decidim::ScopeType.destroy_all
 organization = Decidim::Organization.first
 create_scopes(organization, "Distrito", "Distritos", "districts")
-create_scopes(organization, "Zona", "Zonas", "zones")
+create_scopes(organization, "Sector", "Sectors", "sectors")
 
 # --------------------------------------------------------------------------------
 # Neighborhoods
@@ -64,5 +64,5 @@ neighbourhoods = sort_csv(neighbourhoods, "name")
 neighbourhoods.each do |neighbourhood|
   n = Decidim::Ine::Neighbourhood.new(neighbourhood.to_hash)
   n.save!
-  puts "Creating neighbourhood: #{n.name} | #{n.code} | #{n.zone_code} | #{n.district_code}"
+  puts "Creating neighbourhood: #{n.name} | #{n.code} | #{n.sector_code} | #{n.district_code}"
 end
