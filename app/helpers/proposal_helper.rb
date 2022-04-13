@@ -1,17 +1,17 @@
 module ProposalHelper
   PROPOSALS_COMPONENT_SCOPE_VOTE_MESSAGE_KEY = {
     "DISTRITOS" => "decidim.proposals.proposals.voting_rules.proposal_scope.district",
-    "ZONAS" => "decidim.proposals.proposals.voting_rules.proposal_scope.zone"
+    "SECTORES" => "decidim.proposals.proposals.voting_rules.proposal_scope.sector"
   }
 
   PROPOSALS_COMPONENT_SCOPE_CREATE_MESSAGE_KEY = {
     "DISTRITOS" => "decidim.proposals.proposals.create_proposal_rules.proposal_scope.district",
-    "ZONAS" => "decidim.proposals.proposals.create_proposal_rules.proposal_scope.zone"
+    "SECTORES" => "decidim.proposals.proposals.create_proposal_rules.proposal_scope.sector"
   }
 
   USER_SCOPE_METADATA_KEY = {
     "DISTRITOS" => "district_code",
-    "ZONAS" => "zone_code"
+    "SECTORES" => "sector_code"
   }
 
   def user_can_vote_district_proposal?(user, proposal)
@@ -21,11 +21,11 @@ module ProposalHelper
     proposal.scope.code == authorization.metadata["district_code"]
   end
 
-  def user_can_vote_zone_proposal?(user, proposal)
+  def user_can_vote_sector_proposal?(user, proposal)
     authorization = user_authorization(user)
     return false unless authorization
 
-    proposal.scope.code == authorization.metadata["zone_code"]
+    proposal.scope.code == authorization.metadata["sector_code"]
   end
 
   def get_proposals_component_scope_vote_message_key(component_settings)
@@ -42,8 +42,8 @@ module ProposalHelper
     Decidim::Scope.find(component.settings.scope_id).code == "DISTRICTS"
   end
 
-  def is_component_scope_zone?(component)
-    Decidim::Scope.find(component.settings.scope_id).code == "ZONES"
+  def is_component_scope_sector?(component)
+    Decidim::Scope.find(component.settings.scope_id).code == "SECTORS"
   end
 
   def user_scope_name(user, component_settings)

@@ -46,8 +46,8 @@
 
             <% elsif is_component_scope_district?(current_component) && !user_can_vote_district_proposal?(current_user, proposal) %>
               <%= content_tag :button, t("decidim.proposals.proposals.vote_button.out_of_scope.district"), class: "button #{vote_button_classes(from_proposals_list)} disabled", disabled: true %>
-            <% elsif is_component_scope_zone?(current_component) && !user_can_vote_zone_proposal?(current_user, proposal) %>
-              <%= content_tag :button, t("decidim.proposals.proposals.vote_button.out_of_scope.zone"), class: "button #{vote_button_classes(from_proposals_list)} disabled", disabled: true %>
+            <% elsif is_component_scope_sector?(current_component) && !user_can_vote_sector_proposal?(current_user, proposal) %>
+              <%= content_tag :button, t("decidim.proposals.proposals.vote_button.out_of_scope.sector"), class: "button #{vote_button_classes(from_proposals_list)} disabled", disabled: true %>
 
             <% else %>
               <%= action_authorized_button_to :vote, proposal_proposal_vote_path(proposal_id: proposal, from_proposals_list: from_proposals_list), resource: proposal, remote: true, data: { disable: true, "redirect-url": proposal_path(proposal) }, class: "button #{vote_button_classes(from_proposals_list)}" do %>

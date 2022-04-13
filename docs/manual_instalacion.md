@@ -48,7 +48,7 @@ docker-compose run decidim rake db:create
 ```
 docker-compose run decidim rake db:migrate
 ```
-3. Decidim Monterrey necesita datos de distritos, zonas y colonias para poder funcioanar correctamente.
+3. Decidim Monterrey necesita datos de distritos, sectores y colonias para poder funcionar correctamente.
 ```
 docker-compose run decidim rake db:seed
 ```

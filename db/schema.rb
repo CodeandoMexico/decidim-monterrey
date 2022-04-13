@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_08_221415) do
+ActiveRecord::Schema.define(version: 2022_04_13_195455) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "ltree"
@@ -654,7 +654,7 @@ ActiveRecord::Schema.define(version: 2022_03_08_221415) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "code"
-    t.string "zone_code"
+    t.string "sector_code"
     t.string "district_code"
   end
 

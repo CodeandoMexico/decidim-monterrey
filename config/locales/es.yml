@@ -35,7 +35,7 @@ es:
         settings:
           global:
             workflow_choices:
-              monterrey: "Voto limitado a alcance: Permite a las participantes a votar solo en los presupuestos de su distrito o zona"
+              monterrey: "Voto limitado a alcance: Permite a las participantes a votar solo en los presupuestos de su distrito o sector"
     proposals:
       proposals:
         preview:
@@ -45,7 +45,7 @@ es:
         create_proposal_rules:
           title: "El envío de propuestas se rige por las siguientes normas:"
           proposal_scope:
-            zone: Perteneces a la <strong>%{scope_name}</strong>, y las propuestas que envíes serán asignadas a esta zona.
+            sector: Perteneces a la <strong>%{scope_name}</strong>, y las propuestas que envíes serán asignadas a este sector.
             district: Perteneces al <strong>%{scope_name}</strong>, y las propuestas que envíes serán asignadas a este distrito.
           proposal_limit:
             left: Restante
@@ -53,11 +53,11 @@ es:
             proposals: Propuestas
         voting_rules:
           proposal_scope:
-            zone: Perteneces a la<strong>%{scope_name}</strong>, solo puedes votar por propuestas de esta zona.
+            sector: Perteneces a la<strong>%{scope_name}</strong>, solo puedes votar por propuestas de este sector.
             district: Perteneces al <strong>%{scope_name}</strong>, solo puedes votar por propuestas de este distrito.
         vote_button:
           out_of_scope:
-            zone: No pertenece a tu zona
+            sector: No pertenece a tu sector
             district: No pertenece a tu distrito
     admin:
       models:
@@ -91,21 +91,21 @@ es:
     section_one:
       title: ¡Ya se armó MTY!
       text: ahora decidimos juntos cómo invertir
-            el 5% de la recaudación del predial para promover
-            mejoras en tu colonia y delegación.
+        el 5% de la recaudación del predial para promover
+        mejoras en tu colonia y delegación.
     section_two:
       title: ¿Qué es el presupuesto participativo?
       text: Es el instrumento de participación ciudadana a través del
-            cual la ciudadanía decidirá el destino de una parte del
-            Presupuesto Municipal, donde la ciudadanía podrá proponer y
-            decidir sobre las propuestas que mejorarán los espacios
-            públicos de donde habitan, y su objetivo es impulsar la
-            participación social para dar solución a problemas de la comunidad.
+        cual la ciudadanía decidirá el destino de una parte del
+        Presupuesto Municipal, donde la ciudadanía podrá proponer y
+        decidir sobre las propuestas que mejorarán los espacios
+        públicos de donde habitan, y su objetivo es impulsar la
+        participación social para dar solución a problemas de la comunidad.
     section_three:
       text: Por primera vez juntos decidiremos cómo invertir el 5% de la
-            recaudación del pago predial, aproximadamente 60 millones de pesos
-            para promover mejoras en su colonia y su distrito, promoviendo la
-            distribución de ingresos públicos de manera más equitativa.
+        recaudación del pago predial, aproximadamente 60 millones de pesos
+        para promover mejoras en su colonia y su distrito, promoviendo la
+        distribución de ingresos públicos de manera más equitativa.
       info:
         title: El presupuesto será distribuido en 5 delegaciones
         subtitle: Conoce el tuyo
@@ -115,9 +115,9 @@ es:
       title: "Fases: AMT MTY"
       phase_one:
         title: "Presenta: 1"
-        info: ¡Participar y subir tu proyecto es muy 
-              fácil! Regístrate en la plataforma Decidimos 
-              Juntos y crea una cuenta.
+        info: ¡Participar y subir tu proyecto es muy
+          fácil! Regístrate en la plataforma Decidimos
+          Juntos y crea una cuenta.
         subtitle: ¿Qué tipo de proyecto califican?
         categories_title: Categorías de propuestas
         categories:
@@ -131,14 +131,14 @@ es:
     section_five:
       phase_two:
         title: "Analiza: 2"
-        info: Los proyectos serán sometidos a una evaluación para revisar si son viables económica, técnica, social y jurídicamente
-              para ser aprobados y publicados en la plataforma para que puedas conocerlos y decidir los proyectos para armar Monterrey.
-              Es importante tu decisión, analiza en la plataforma cada uno de los proyectos publicados que mejorarán nuestra ciudad
+        info:
+          Los proyectos serán sometidos a una evaluación para revisar si son viables económica, técnica, social y jurídicamente
+          para ser aprobados y publicados en la plataforma para que puedas conocerlos y decidir los proyectos para armar Monterrey.
+          Es importante tu decisión, analiza en la plataforma cada uno de los proyectos publicados que mejorarán nuestra ciudad
     section_six:
       phase_three:
         title: "Decide: 3"
         info: ¡Es hora de votar! Del 30 de mayo al 8 de junio
-              podrás decidir qué proyecto beneficia a tu distrito.
-              De forma presencial, podrás encontrar ciberespacios en las bibliotecas cercanas a tu sector o en espacios asignados por la Dirección de Participación Ciudadana (incluir el listado de bibliotecas)
-              También podrás votar a través de la plataforma desde cualquier dispositivo electrónico.            
-            
+          podrás decidir qué proyecto beneficia a tu distrito.
+          De forma presencial, podrás encontrar ciberespacios en las bibliotecas cercanas a tu sector o en espacios asignados por la Dirección de Participación Ciudadana (incluir el listado de bibliotecas)
+          También podrás votar a través de la plataforma desde cualquier dispositivo electrónico.
