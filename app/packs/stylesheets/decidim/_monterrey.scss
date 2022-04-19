@@ -13,16 +13,53 @@
 
 .topbar__search {
   input {
-    background-color: #f2f2f2;
-  }
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-right: none;
 
+    &::placeholder {
+      color: #333;
+    }
+  }
 }
 
+.topbar__search:not(:focus-within) button {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-left: none;
+}
+
+.icon--magnifying-glass {
+  fill: #333;
+}
+
+.topbar__notifications .icon,
+.topbar__conversations .icon {
+  fill: #000;
+
+  &:hover {
+    opacity: 1;
+    transition: opacity .2s;
+  }
+}
+
+.topbar__notifications,
+.topbar__conversations {
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.topbar__dropmenu>ul>li>a::after {
+  border-top-color: #333 !important;
+}
+
+
 .navbar {
-  background-color: #e6e6e6;
+  background-color: #fff;
 
   .main-nav__link .main-nav__link--active {
-    background-color: #f2f2f2;
+    background-color: #fff;
   }
 
   a {
