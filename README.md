@@ -33,3 +33,25 @@ Más detalle en el [Manual de Instalación](docs/manual_instalacion.md).
 ## ¿Cómo colaborar?
 
 Si quieres saber como puedes colaborar, revisa la [guía de participación](CONTRIBUTING.md).
+
+## Equipo y Colaboradores
+
+Este proyecto es una colaboración entre la Dirección de Participación Ciudadana y Dirección de Gobierno Digital del municipio de Monterrey, Brightcoders y Codeando México.
+
+### Municipio de Monterrey
+* Roxana Alicia Rodríguez Rodríguez | Dirección de Participación Ciudadana
+* Minerva Lisset Escobedo Torres | Dirección de Participación Ciudadana
+* Guillermo Alejandro Navarro Virgen | Dirección de Participación Ciudadana
+* César Benjamín García Martínez | Dirección de Gobierno Digital
+* Viridiana Hernández Gómez | Dirección de Gobierno Digital
+* Luis Manuel Guzmán Zirate | Dirección de Gobierno Digital
+
+### Brightcoders
+* [Eduardo Hernández](https://github.com/EduardoGHdez) :octocat:
+* [Daniel Hernández Ascencio](https://github.com/dany-herz42) :octocat:
+* [Omar Caleb Corpus mendoza](https://github.com/corps01) :octocat:
+
+### Codeando México
+* [Alma Rangel](https://github.com/almarngl) :octocat:
+* [Alejandra González](https://github.com/basicavisual) :octocat:
+* [Óscar Hernández](https://github.com/oxcar) :octocat:
