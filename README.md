@@ -47,11 +47,11 @@ Este proyecto es una colaboración entre la Dirección de Participación Ciudada
 * Luis Manuel Guzmán Zirate | Dirección de Gobierno Digital
 
 ### Brightcoders
-* [Eduardo Hernández](https://github.com/EduardoGHdez) :octocat:
-* [Daniel Hernández Ascencio](https://github.com/dany-herz42) :octocat:
-* [Omar Caleb Corpus mendoza](https://github.com/corps01) :octocat:
+* [Eduardo Hernández](https://github.com/EduardoGHdez)
+* [Daniel Hernández Ascencio](https://github.com/dany-herz42)
+* [Omar Caleb Corpus mendoza](https://github.com/corps01)
 
 ### Codeando México
-* [Alma Rangel](https://github.com/almarngl) :octocat:
-* [Alejandra González](https://github.com/basicavisual) :octocat:
-* [Óscar Hernández](https://github.com/oxcar) :octocat:
+* [Alma Rangel](https://github.com/almarngl)
+* [Alejandra González](https://github.com/basicavisual)
+* [Óscar Hernández](https://github.com/oxcar)
