@@ -4,6 +4,9 @@ es:
       user:
         phone: Número teléfono
   decidim:
+    pages:
+      index:
+        subheading: En esta sección podrás resolver tus dudas y encontrar distintos recursos para participar en la plataforma
     forms:
       current_file: Archivo actual
       current_image: Imagen actual
@@ -69,6 +72,12 @@ es:
         index:
           phone: Teléfono
     devise:
+      shared:
+        newsletter_modal:
+          notice: |-
+            <p>Hola, ¿estás seguro/a de que no quieres recibir un boletín informativo?<br>
+            <p>Si recibes nuestros correos ocasionales podrías recibir avisos importantes y nuevas oportunidades de participación dentro de la plataforma.</p>
+            <p>Si aún deseas evitar recibir notificaciones y boletines, entendemos perfectamente tu decisión.</p>
       registrations:
         new:
           phone_help: (Campo opcional) Introducir un número de contacto

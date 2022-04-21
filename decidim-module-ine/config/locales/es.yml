@@ -30,9 +30,9 @@ es:
           copy_ul_2: Asegúrate de que la información ingresada sea correcta.
           copy_cta: Revisa tu solicitud
         verification_accepted:
-          subject: Solicitud de verificación documento INE / Carta de Residencia aceptada
-          title: Solicitud de verificación documento INE / Carta de Residencia aceptada
-          copy_p: "Enhorabuena, ya eres un ciudadano verificado. Entre otras cosas ahora ya puedes:"
+          subject: Solicitud de verificación aceptada
+          title: Solicitud de verificación aceptada
+          copy_p: "¡Felicidades! Ahora tienes una cuenta verificada. Ahora puedes:"
           copy_ul_1: Subir propuestas
           copy_ul_2: Votar y comentar propuestas
           copy_cta: Participa
@@ -61,12 +61,14 @@ es:
           message_1: Para proponer y votar propuestas es importante comprobar que resides en Monterrey. Si tu credencial para votar no muestra domicilio o indica otro diferente a los datos que registrarás a continuación, puedes cargar una Carta de Residencia extendida por la Dirección de Concertación Social del Ayuntamiento.
           message_2: En caso de cargar una credencial para votar INE, asegúrate que esta se encuentre vigente y que la imagen sea legible.
           message_3: En caso de cargar una Carta de Residencia, asegúrate que esta muestre una residencia mínima de 6 meses en el municipio y sea legible.
+          message_4: Recuerda que en caso de que tu credencial INE no muestre tu domicilio, deberás cargar una Carta de Residencia para que podamos confirmar tu dirección.
         edit:
           being_reviewed: Estamos revisando tu solicitud de verificación.
           send: Solicitar verificación de nuevo
           rejection_notice: Hubo un problema con tu verificación. Por favor, inténtalo de nuevo.
           rejection_clarity: Asegúrate de que la información sea claramente visible en la imagen subida.
           rejection_correctness: Asegúrate de que la información ingresada sea correcta.
+          rejection_whatever: Recuerda que en caso de que tu credencial INE no muestre tu domicilio, deberás cargar una Carta de Residencia para que podamos confirmar tu dirección.
         form:
           street: Calle de tu domicilio
           street_number: Número (exterior)
