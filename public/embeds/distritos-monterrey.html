@@ -18,7 +18,7 @@
 
 
   <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.css">
-
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.js"></script>
   <meta name="theme-color" content="#fafafa">
 </head>
 
@@ -35,7 +35,7 @@
   </style>
 
 
-  <script src="https://api.mapbox.com/mapbox-gl-js/v2.8.1/mapbox-gl.js"></script>
+  
   <script>
       mapboxgl.accessToken = 'pk.eyJ1IjoidmlyaWhnMjAiLCJhIjoiY2wyNHh4YzlnMDE3aTNlbnJzNGRhZHR6OCJ9.ZrjLKQ1GtmHkkHXpo7gHCw';
         const map = new mapboxgl.Map({
@@ -44,6 +44,24 @@
             center: [-100.4431811, 25.6490376],
             zoom: 11
         });
+   
+        map.on("wheel", event => {
+            if (event.originalEvent.ctrlKey) {
+                return;
+            }
+        
+            if (event.originalEvent.metaKey) {
+                return;
+            }
+        
+            if (event.originalEvent.altKey) {
+                return;
+            }
+        
+            event.preventDefault();
+        });
+
+        map.addControl(new mapboxgl.NavigationControl());
 
         map.on('load', () => {
             map.addSource('sectores_monterreybbox', {
