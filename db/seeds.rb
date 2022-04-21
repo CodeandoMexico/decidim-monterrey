@@ -52,7 +52,7 @@ Decidim::Scope.destroy_all
 Decidim::ScopeType.destroy_all
 organization = Decidim::Organization.first
 create_scopes(organization, "Distrito", "Distritos", "districts")
-create_scopes(organization, "Sector", "Sectors", "sectors")
+create_scopes(organization, "Sector", "Sectores", "sectors")
 
 # --------------------------------------------------------------------------------
 # Neighborhoods
