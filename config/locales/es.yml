@@ -48,7 +48,7 @@ es:
         create_proposal_rules:
           title: "El envío de propuestas se rige por las siguientes normas:"
           proposal_scope:
-            sector: Perteneces a la <strong>%{scope_name}</strong>, y las propuestas que envíes serán asignadas a este sector.
+            sector: Perteneces al <strong>%{scope_name}</strong>, y las propuestas que envíes serán asignadas a este sector.
             district: Perteneces al <strong>%{scope_name}</strong>, y las propuestas que envíes serán asignadas a este distrito.
           proposal_limit:
             left: Restante
@@ -56,7 +56,7 @@ es:
             proposals: Propuestas
         voting_rules:
           proposal_scope:
-            sector: Perteneces a la<strong>%{scope_name}</strong>, solo puedes votar por propuestas de este sector.
+            sector: Perteneces al <strong>%{scope_name}</strong>, solo puedes votar por propuestas de este sector.
             district: Perteneces al <strong>%{scope_name}</strong>, solo puedes votar por propuestas de este distrito.
         vote_button:
           out_of_scope:
