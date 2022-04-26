@@ -4,6 +4,10 @@ es:
       user:
         phone: Número teléfono
   decidim:
+    budgets:
+      projects:
+        budget_confirm:
+          are_you_sure: ¿Estás seguro? Después NO podrás cambiar tu voto.
     menu:
       processes: Participa
     pages:
