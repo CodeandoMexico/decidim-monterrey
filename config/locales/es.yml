@@ -4,6 +4,8 @@ es:
       user:
         phone: Número teléfono
   decidim:
+    menu:
+      processes: Participa
     pages:
       index:
         subheading: En esta sección podrás resolver tus dudas y encontrar distintos recursos para participar en la plataforma
@@ -74,6 +76,9 @@ es:
     devise:
       shared:
         newsletter_modal:
+          buttons:
+            check: Acepto recibir notificaciones
+            uncheck: Continuar sin aceptar
           notice: |-
             <p>Hola, ¿estás seguro/a de que no quieres recibir un boletín informativo?<br>
             <p>Si recibes nuestros correos ocasionales podrías recibir avisos importantes y nuevas oportunidades de participación dentro de la plataforma.</p>
@@ -82,6 +87,7 @@ es:
         new:
           phone_help: (Campo opcional) Introducir un número de contacto
           subtitle: Crea una cuenta para poder participar subiendo y votando propuestas
+          extra_info: Recibirás un correo para confimar tu cuenta, no olvides revisar tu bandeja de correos no deseados y spam.
     content_blocks:
       monterrey_landing_page:
         name: Página principal Monterrey

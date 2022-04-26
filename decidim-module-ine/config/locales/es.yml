@@ -15,10 +15,10 @@ es:
               success: La participante ha sido verificada correctamente.
         authorizations:
           create:
-            success: Solicitud de verificación recibida correctamente
+            success: Hemos recibido tu solicitud de verificación correctamente. Recibirás un correo en un lapso de hasta 48 horas, revisa tu bandeja de correos no deseados o spam.
             error: No se pudo crear tu solicitud de verificación
           update:
-            success: Solicitud de verificación recibida correctamente
+            success: Hemos recibido tu solicitud de verificación correctamente. Recibirás un correo en un lapso de hasta 48 horas, revisa tu bandeja de correos no deseados o spam.
             error: No se pudo actualizar tu solicitud de verificación
     ine:
       verification_mailer:
