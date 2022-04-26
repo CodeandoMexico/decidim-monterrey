@@ -58,6 +58,7 @@ module ProposalHelper
     ine_authorization = ::Decidim::Authorization.where
       .not(granted_at: nil)
       .find_by(user: user, name: "ine")
+
     managed_user_authorization = ::Decidim::Authorization.where
       .not(granted_at: nil)
       .find_by(user: user, name: "managed_user_authorization_handler")
