@@ -13,6 +13,17 @@ es:
           added: Proyecto seleccionado
         budget_confirm:
           are_you_sure: ¿Estás seguro? Después NO podrás cambiar tu voto.
+        budget_summary:
+          minimum_projects_rule:
+            description: "¿A qué proyectos crees que deberíamos destinar el presupuesto? Selecciona por lo menos %{minimum_number} y vota según tus preferencias para definir el presupuesto."
+            instruction: "<li>Selecciona al menos %{minimum_number} proyectos que quieras y vota de acuerdo a tus preferencias para definir el presupuesto. No olvides dar clic en VOTA para confirmar tu voto.</li>"
+          projects_rule:
+            description: "¿A qué proyectos crees que deberíamos destinar el presupuesto? Selecciona entre %{minimum_number} y %{maximum_number} proyectos, y vota según tus preferencias para definir el presupuesto."
+            instruction: "<li>Selecciona al menos %{minimum_number} y hasta %{maximum_number} proyectos que quieras y vota de acuerdo a tus preferencias para definir el presupuesto. No olvides dar clic en VOTA para confirmar tu voto.</li>"
+          projects_rule_maximum_only:
+            description: "¿A qué proyectos crees que deberíamos destinar el presupuesto? Selecciona hasta %{maximum_number} y vota según tus preferencias para definir el presupuesto."
+            instruction: "<li>Selecciona %{maximum_number} proyecto/s y vota de acuerdo a tus preferencias para definir el presupuesto. No olvides dar clic en VOTA para confirmar tu voto.</li>"
+
     menu:
       processes: Participa
     pages:
