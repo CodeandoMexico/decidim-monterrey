@@ -8,6 +8,9 @@ es:
       limit_announcement:
         cant_vote: No puedes votar en este presupuesto porque no pertenece a tu sector. Tu sector es <b>%{sector_name}</b>.
       projects:
+        project_budget_button:
+          add: Seleccionar proyecto
+          added: Proyecto seleccionado
         budget_confirm:
           are_you_sure: ¿Estás seguro? Después NO podrás cambiar tu voto.
     menu:
