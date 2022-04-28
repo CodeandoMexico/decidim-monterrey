@@ -17,7 +17,13 @@
     a {
       color: rgb(61, 57, 60);
     }
+
+
   }
+}
+
+div.title-bar div.button-wrapper button#submit.button svg.icon--magnifying-glass.icon {
+  fill: #333;
 }
 
 .logo-wrapper a span {
@@ -42,9 +48,7 @@
   border-left: none;
 }
 
-.icon--magnifying-glass {
-  fill: #333;
-}
+
 
 .topbar__notifications .icon,
 .topbar__conversations .icon {
