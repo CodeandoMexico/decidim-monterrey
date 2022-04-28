@@ -1,4 +1,11 @@
 es:
+  activerecord:
+    errors:
+      models:
+        decidim/authorization:
+          attributes:
+            verification_attachment:
+              allowed_file_content_types: "Este formato no es soportado en la plataforma, los formatos de archivo permitidos son: jpg, jpeg, gif, png, bmp, ico"
   activemodel:
     attributes:
       user:
