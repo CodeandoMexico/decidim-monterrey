@@ -3,6 +3,9 @@ es:
     attributes:
       user:
         phone: Número teléfono
+  devise:
+    registrations:
+      signed_up: Te has registrado con éxito. Recibirás un correo de confirmación, no olvides revisar en tu carpeta de spam o correos no deseados.
   decidim:
     budgets:
       limit_announcement:
