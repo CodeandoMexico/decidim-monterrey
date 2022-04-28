@@ -4,7 +4,7 @@ module Decidim
   module Budgets
     # This cell renders information when current user can't create more budgets orders.
     class LimitAnnouncementCell < BaseCell
-      alias budget model
+      alias_method :budget, :model
       delegate :voted?, :vote_allowed?, :discardable, :limit_reached?, to: :current_workflow
       delegate :voting_open?, to: :controller
 
@@ -35,7 +35,7 @@ module Decidim
                             landing_path: budgets_path)
         else
           sector_name = current_user_sector_scope_name
-          t(:cant_vote, scope: i18n_scope, landing_path: budgets_path, sector_name: sector_name['es'])
+          t(:cant_vote, scope: i18n_scope, landing_path: budgets_path, sector_name: sector_name["es"])
         end
       end
 
@@ -49,7 +49,6 @@ module Decidim
 
       # Pedido ex-profeso por MTY
       def current_user_sector_scope_name
-
         # Obtenemos primero el objeto autorizacion
         ine_authorization = ::Decidim::Authorization.where
           .not(granted_at: nil)
@@ -64,7 +63,6 @@ module Decidim
         return "" unless authorization
         component_scope = current_workflow.budgets_component.scope
         Decidim::Scope.find_by(code: authorization.metadata[USER_SCOPE_METADATA_KEY[component_scope.code]]).name
-
       end
     end
   end
