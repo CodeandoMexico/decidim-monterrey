@@ -30,7 +30,7 @@ module Decidim
                      "proposal_in_evaluation_reason"
                    else
                      "proposal_#{@proposal.state}_reason"
-                   end
+        end
 
         t(i18n_key, scope: "decidim.proposals.proposals.show")
       end
