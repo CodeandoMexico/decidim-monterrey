@@ -51,7 +51,7 @@ end
 puts "----------------------------------------------------------------------"
 puts "¿Procesar ámbitos? (s/n)"
 puts "----------------------------------------------------------------------"
-procesar_ambitos = STDIN.gets.strip
+procesar_ambitos = $stdin.gets.strip
 
 if procesar_ambitos == "s"
   puts "\n\n"
@@ -66,7 +66,7 @@ if procesar_ambitos == "s"
   puts "----------"
 
   puts "Teclea el Id (número):"
-  org_id = STDIN.gets.strip
+  org_id = $stdin.gets.strip
   organization = nil
   begin
     organization = Decidim::Organization.find org_id
@@ -102,7 +102,7 @@ end
 puts "----------------------------------------------------------------------"
 puts "¿Procesar colonias? (s/n)"
 puts "----------------------------------------------------------------------"
-procesar_colonias = STDIN.gets.strip
+procesar_colonias = $stdin.gets.strip
 
 if procesar_colonias == "s"
   begin
