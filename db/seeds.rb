@@ -72,7 +72,7 @@ if procesar_ambitos == "s"
     organization = Decidim::Organization.find org_id
   rescue => e
     puts "No existe una organización con ese Id"
-    puts "#{e}"
+    puts e.to_s
   end
 
   if organization
@@ -91,12 +91,10 @@ if procesar_ambitos == "s"
       create_scopes(organization, "Sector", "Sectores", "sectors")
     rescue => e
       puts "ERROR: Hubo un error al borrar o crear los ámbitos"
-      puts "#{e}"
+      puts e.to_s
     end
   end
 end
-
-
 
 # --------------------------------------------------------------------------------
 # Neighborhoods
@@ -122,6 +120,6 @@ if procesar_colonias == "s"
     end
   rescue => e
     puts "ERROR: Hubo un error al borrar o crear las colonias"
-    puts "#{e}"
+    puts e.to_s
   end
 end
