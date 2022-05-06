@@ -48,21 +48,80 @@ def create_scopes(organization, scope_type_name, scope_type_plural, scopes_csv_n
   end
 end
 
-Decidim::Scope.destroy_all
-Decidim::ScopeType.destroy_all
-organization = Decidim::Organization.first
-create_scopes(organization, "Distrito", "Distritos", "districts")
-create_scopes(organization, "Sector", "Sectores", "sectors")
+puts "----------------------------------------------------------------------"
+puts "¿Procesar ámbitos? (s/n)"
+puts "----------------------------------------------------------------------"
+procesar_ambitos = STDIN.gets.strip
+
+if procesar_ambitos == "s"
+  puts "\n\n"
+  puts "Selecciona la organización para la que quieres cargar los ámbitos y colonias:"
+  organizations = Decidim::Organization.all
+  organizations.each do |org|
+    puts "----------"
+    puts "Id: #{org.id}"
+    puts "Organización: #{org.name}"
+    puts "Host: #{org.host}"
+  end
+  puts "----------"
+
+  puts "Teclea el Id (número):"
+  org_id = STDIN.gets.strip
+  organization = nil
+  begin
+    organization = Decidim::Organization.find org_id
+  rescue => e
+    puts "No existe una organización con ese Id"
+    puts "#{e}"
+  end
+
+  if organization
+    begin
+      puts "La organizacion tiene:"
+      puts "#{Decidim::Scope.where(organization: organization).to_a.size} ámbitos"
+      puts "#{Decidim::ScopeType.where(organization: organization).to_a.size} tipos de ámbito"
+
+      puts "Intentando borrar ámbitos"
+      Decidim::Scope.where(organization: organization).destroy_all
+      puts "Intentando borrar tipos de ámbito"
+      Decidim::ScopeType.where(organization: organization).destroy_all
+      puts "Creando Distritos"
+      create_scopes(organization, "Distrito", "Distritos", "districts")
+      puts "Creando Sectores"
+      create_scopes(organization, "Sector", "Sectores", "sectors")
+    rescue => e
+      puts "ERROR: Hubo un error al borrar o crear los ámbitos"
+      puts "#{e}"
+    end
+  end
+end
+
+
 
 # --------------------------------------------------------------------------------
 # Neighborhoods
 # --------------------------------------------------------------------------------
-Decidim::Ine::Neighbourhood.destroy_all
-neighbourhoods_csv = File.read("db/csv/neighbourhoods.csv")
-neighbourhoods = CSV.parse(neighbourhoods_csv, headers: true)
-neighbourhoods = sort_csv(neighbourhoods, "name")
-neighbourhoods.each do |neighbourhood|
-  n = Decidim::Ine::Neighbourhood.new(neighbourhood.to_hash)
-  n.save!
-  puts "Creating neighbourhood: #{n.name} | #{n.code} | #{n.sector_code} | #{n.district_code}"
+puts "----------------------------------------------------------------------"
+puts "¿Procesar colonias? (s/n)"
+puts "----------------------------------------------------------------------"
+procesar_colonias = STDIN.gets.strip
+
+if procesar_colonias == "s"
+  begin
+    puts "Hay #{Decidim::Ine::Neighbourhood.all.to_a.size} colonias"
+    puts "Intentando borrar colonias"
+    Decidim::Ine::Neighbourhood.destroy_all
+    puts "Creando Colonias"
+    neighbourhoods_csv = File.read("db/csv/neighbourhoods.csv")
+    neighbourhoods = CSV.parse(neighbourhoods_csv, headers: true)
+    neighbourhoods = sort_csv(neighbourhoods, "name")
+    neighbourhoods.each do |neighbourhood|
+      n = Decidim::Ine::Neighbourhood.new(neighbourhood.to_hash)
+      n.save!
+      puts "Colonia: #{n.name} | #{n.code} | #{n.sector_code} | #{n.district_code}"
+    end
+  rescue => e
+    puts "ERROR: Hubo un error al borrar o crear las colonias"
+    puts "#{e}"
+  end
 end
