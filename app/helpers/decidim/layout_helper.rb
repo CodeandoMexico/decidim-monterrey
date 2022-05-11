@@ -10,9 +10,9 @@ module Decidim
     def favicon
       return if current_organization.favicon.blank?
 
-      safe_join(Decidim::OrganizationFaviconUploader::SIZES.map do |version, size|
-        favicon_link_tag(current_organization.attached_uploader(:favicon).variant_url(version, host: current_organization.host, protocol: "https" ), sizes: "#{size}x#{size}")
-      end)
+      safe_join(Decidim::OrganizationFaviconUploader::SIZES.map { |version, size|
+        favicon_link_tag(current_organization.attached_uploader(:favicon).variant_url(version, host: current_organization.host, protocol: "https"), sizes: "#{size}x#{size}")
+      })
     end
 
     # Outputs an SVG-based icon.
@@ -74,7 +74,7 @@ module Decidim
       classes = _icon_classes(options) + ["external-icon"]
 
       if path.split(".").last == "svg"
-        attributes = { class: classes.join(" ") }.merge(options)
+        attributes = {class: classes.join(" ")}.merge(options)
         asset = File.read(application_path(path))
         asset.gsub("<svg ", "<svg#{tag_builder.tag_options(attributes)} ").html_safe
       else
@@ -134,7 +134,7 @@ module Decidim
     # background-color: rgba(var(--primary-rgb), 0.5)
     def organization_colors
       css = current_organization.colors.each.map { |k, v| "--#{k}: #{v};--#{k}-rgb: #{v[1..2].hex},#{v[3..4].hex},#{v[5..6].hex};" }.join
-      render partial: "layouts/decidim/organization_colors", locals: { css: css }
+      render partial: "layouts/decidim/organization_colors", locals: {css: css}
     end
 
     private
