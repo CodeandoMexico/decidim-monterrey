@@ -6,6 +6,8 @@ Decidim.configure do |config|
 
   # The email that will be used as sender in all emails from Decidim
   config.mailer_sender = ENV.fetch("MAILER_SENDER")
+  config.maximum_attachment_size = 10.megabytes
+  config.maximum_avatar_size = 10.megabytes
 
   # Sets the list of available locales for the whole application.
   #
