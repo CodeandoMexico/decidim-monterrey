@@ -147,7 +147,6 @@ div.title-bar div.button-wrapper button#submit.button svg.icon--magnifying-glass
 /* HERO */
 
 .hero__container {
-
   text-align: left;
 }
 
@@ -155,7 +154,6 @@ div.title-bar div.button-wrapper button#submit.button svg.icon--magnifying-glass
   @include for-tablet-landscape-up {
     float: left !important;
   }
-
   float: none !important;
   margin: auto;
 }
@@ -166,7 +164,10 @@ div.title-bar div.button-wrapper button#submit.button svg.icon--magnifying-glass
 
 .hero-cta {
   margin-top: auto;
+}
 
+.hero::after {
+  background-color: rgba(26, 24, 29, 0.2);
 }
 
 /* FOOTER */
