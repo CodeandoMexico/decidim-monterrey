@@ -22,6 +22,20 @@
   }
 }
 
+.off-canvas .close-button {
+  color: rgb(61, 57, 60);
+}
+
+a.sign-up-link {
+  color: #fff !important;
+}
+
+@media print, screen and (max-width: 39.9988em) {
+  .title-bar {
+    border-top: 2.125rem solid #fff;
+  }
+}
+
 div.title-bar div.button-wrapper button#submit.button svg.icon--magnifying-glass.icon {
   fill: #333;
 }
