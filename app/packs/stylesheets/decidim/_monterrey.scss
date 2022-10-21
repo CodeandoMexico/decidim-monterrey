@@ -42,6 +42,10 @@
 .button {
   border-radius: 3px !important;
 }
+.text-highlight.heading1 {
+  font-weight: 300;
+}
+
 
 /* CABECERA */
 
@@ -158,13 +162,13 @@ div.title-bar div.button-wrapper button#submit.button svg.icon--magnifying-glass
 
 .hero-heading {
   text-shadow: none;
-  font-weight: 300 !important;
 }
 
 .hero-cta {
   margin-top: auto;
 
 }
+
 /* FOOTER */
 
 .main-footer {
