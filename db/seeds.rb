@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-# You may get "Faker::UniqueGenerator::RetryLimitExceeded: Retry limit exceeded for country_code" if you run this in developtment since this instance uses spanish as default_locale. See https://github.com/decidim/decidim/issues/4667 and https://github.com/decidim/decidim/pull/9036 for how to patch 
-Decidim.seed! if Rails.env.development? 
+# You may get "Faker::UniqueGenerator::RetryLimitExceeded: Retry limit exceeded for country_code" if you run this in developtment since this instance uses spanish as default_locale. See https://github.com/decidim/decidim/issues/4667 and https://github.com/decidim/decidim/pull/9036 for how to patch
+Decidim.seed! if Rails.env.development?
 
 require "csv"
 
