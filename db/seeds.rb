@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+Decidim.seed! if Rails.env.development? 
+
 require "csv"
 
 def sort_csv(csv_rows, sort_column)
@@ -110,7 +112,7 @@ if procesar_colonias == "s"
     puts "Intentando borrar colonias"
     Decidim::Ine::Neighbourhood.destroy_all
     puts "Creando Colonias"
-    neighbourhoods_csv = File.read("db/csv/neighbourhoods.csv")
+    neighbourhoods_csv = File.read("./db/csv/neighbourhoods.csv")
     neighbourhoods = CSV.parse(neighbourhoods_csv, headers: true)
     neighbourhoods = sort_csv(neighbourhoods, "name")
     neighbourhoods.each do |neighbourhood|
