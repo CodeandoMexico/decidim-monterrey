@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+# You may get "Faker::UniqueGenerator::RetryLimitExceeded: Retry limit exceeded for country_code" if you run this in developtment since this instance uses spanish as default_locale. See https://github.com/decidim/decidim/issues/4667 and https://github.com/decidim/decidim/pull/9036 for how to patch
+Decidim.seed! if Rails.env.development?
+
 require "csv"
 
 def sort_csv(csv_rows, sort_column)
@@ -110,7 +113,7 @@ if procesar_colonias == "s"
     puts "Intentando borrar colonias"
     Decidim::Ine::Neighbourhood.destroy_all
     puts "Creando Colonias"
-    neighbourhoods_csv = File.read("db/csv/neighbourhoods.csv")
+    neighbourhoods_csv = File.read("./db/csv/neighbourhoods.csv")
     neighbourhoods = CSV.parse(neighbourhoods_csv, headers: true)
     neighbourhoods = sort_csv(neighbourhoods, "name")
     neighbourhoods.each do |neighbourhood|

@@ -1,9 +1,51 @@
+/* Mixins */
+
+@mixin for-phone-only {
+  @media (max-width: 599px) {
+    @content;
+  }
+}
+
+@mixin for-tablet-portrait-up {
+  @media (min-width: 600px) {
+    @content;
+  }
+}
+
+@mixin for-tablet-landscape-up {
+  @media (min-width: 900px) {
+    @content;
+  }
+}
+
+@mixin for-desktop-up {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin for-big-desktop-up {
+  @media (min-width: 1800px) {
+    @content;
+  }
+}
+
+
 /* EMAIL */
 :global(table.body th.decidim-bar),
 :global(table.body td.decidim-bar) {
   padding: 10px 0;
   background-color: #fafafa !important;
 }
+
+/* reboots generales */
+.button {
+  border-radius: 3px !important;
+}
+.text-highlight.heading1 {
+  font-weight: 300;
+}
+
 
 /* CABECERA */
 
@@ -19,6 +61,20 @@
     }
 
 
+  }
+}
+
+.off-canvas .close-button {
+  color: rgb(61, 57, 60);
+}
+
+a.sign-up-link {
+  color: #fff !important;
+}
+
+@media print, screen and (max-width: 39.9988em) {
+  .title-bar {
+    border-top: 2.125rem solid #fff;
   }
 }
 
@@ -86,6 +142,32 @@ div.title-bar div.button-wrapper button#submit.button svg.icon--magnifying-glass
       color: rgb(41, 37, 30);
     }
   }
+}
+
+/* HERO */
+
+.hero__container {
+  text-align: left;
+}
+
+.hero-button {
+  @include for-tablet-landscape-up {
+    float: left !important;
+  }
+  float: none !important;
+  margin: auto;
+}
+
+.hero-heading {
+  text-shadow: none;
+}
+
+.hero-cta {
+  margin-top: auto;
+}
+
+.hero::after {
+  background-color: rgba(26, 24, 29, 0.2);
 }
 
 /* FOOTER */
@@ -174,35 +256,7 @@ div.title-bar div.button-wrapper button#submit.button svg.icon--magnifying-glass
   }
 }
 
-@mixin for-phone-only {
-  @media (max-width: 599px) {
-    @content;
-  }
-}
 
-@mixin for-tablet-portrait-up {
-  @media (min-width: 600px) {
-    @content;
-  }
-}
-
-@mixin for-tablet-landscape-up {
-  @media (min-width: 900px) {
-    @content;
-  }
-}
-
-@mixin for-desktop-up {
-  @media (min-width: 1200px) {
-    @content;
-  }
-}
-
-@mixin for-big-desktop-up {
-  @media (min-width: 1800px) {
-    @content;
-  }
-}
 
 $gris: #f2f2f2;
 $amarillo: #ecb731;

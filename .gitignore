@@ -44,3 +44,6 @@ node_modules
 .DS_Store?
 .vscode
 TAGS
+
+# Ignore application configuration
+/config/application.yml
