@@ -59,10 +59,19 @@ es:
         new:
           title: Verifica tu usuario con tu identificación INE o Carta de Residencia
           send: Solicitar verificación
-          message_1: Para proponer y votar propuestas es importante comprobar que resides en Monterrey. Si tu credencial para votar no muestra domicilio o indica otro diferente a los datos que registrarás a continuación, puedes cargar una Carta de Residencia extendida por la Dirección de Concertación Social del Ayuntamiento.
-          message_2: En caso de cargar una credencial para votar INE, asegúrate que esta se encuentre vigente y que la imagen sea legible.
-          message_3: En caso de cargar una Carta de Residencia, asegúrate que esta muestre una residencia mínima de 6 meses en el municipio y sea legible.
-          message_4: Recuerda que en caso de que tu credencial INE no muestre tu domicilio, deberás cargar una Carta de Residencia para que podamos confirmar tu dirección.
+          message_1: |
+            Para comprobar que resides en Monterrey:   
+          message_2: Carga una <strong>foto legible</strong> de la parte del frente de tu credencial INE
+          message_3: | 
+            En caso de que <strong>no muestre tu domicilio actual, deberás solicitar una carta de residencia extendida por la Dirección de Concertación Social y cargarla aquí.</strong>  <br>
+
+            Para información de cómo tramitarla, <a href="/pages/cartaresidencia" target="_blank">puedes conocer más aquí</a>
+          message_4: >
+            Adjunta la fotografía del frente de tu credencial del INE o Carta de Residencia *Obligatorio  <br>
+            <br>
+            Instrucciones para la foto:  
+          message_4_1: "Tamaño máximo del archivo: 10MB"
+          message_4_2: "Formatos de archivo permitidos: jpg jpeg gif png bmp ico"
         edit:
           being_reviewed: Estamos revisando tu solicitud de verificación.
           send: Solicitar verificación de nuevo
@@ -70,6 +79,7 @@ es:
           rejection_clarity: Asegúrate de que la información sea claramente visible en la imagen subida.
           rejection_correctness: Asegúrate de que la información ingresada sea correcta.
           rejection_whatever: Recuerda que en caso de que tu credencial INE no muestre tu domicilio, deberás cargar una Carta de Residencia para que podamos confirmar tu dirección.
+          rejection_not_a_neighbour: En caso de que tu INE no tenga un domicilio en el municipio de Monterrey, será rechazada.
         form:
           street: Calle de tu domicilio
           street_number: Número (exterior)
