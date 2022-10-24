@@ -2,12 +2,12 @@
   <p>
     <%= t("decidim.ine.authorizations.new.message_1") %>
   </p>
-  <ul>
-    <li><%= t("decidim.ine.authorizations.new.message_2") %></li>
-    <li><%= t("decidim.ine.authorizations.new.message_3") %></li>
-    <li><%= t("decidim.ine.authorizations.new.message_4") %></li>
-</li>
-  </ul>
+  <div>
+    <ol>
+      <li><%= t("decidim.ine.authorizations.new.message_2").html_safe %></li>
+      <li><%= t("decidim.ine.authorizations.new.message_3").html_safe %></li>
+    </ol>
+  </div>
 </div>
 
 <%= form_required_explanation %>
