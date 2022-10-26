@@ -91,7 +91,7 @@
               <%= f.submit t("devise.registrations.new.sign_up"), class: "button expanded" %>
             </div>
             <div class="actions" style="margin-bottom: 2rem;">
-              <label><%= t("decidim.devise.registrations.new.extra_info") %></label>
+              <label><%= t("decidim.devise.registrations.new.extra_info").html_safe %></label>
             </div>
             <%= yield :devise_links %>
           </div>

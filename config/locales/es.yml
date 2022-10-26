@@ -117,8 +117,8 @@ es:
       registrations:
         new:
           phone_help: (Campo opcional) Introducir un número de contacto
-          subtitle: Crea una cuenta para poder participar subiendo y votando propuestas
-          extra_info: Recibirás un correo para confimar tu cuenta, no olvides revisar tu bandeja de correos no deseados y spam.
+          subtitle: Crea una cuenta para poder participar subiendo propuestas
+          extra_info: Recibirás un correo para confimar tu cuenta, <strong>recuerda revisar tu bandeja de correos no deseados y spam.</strong>
     content_blocks:
       monterrey_landing_page:
         name: Página principal Monterrey
