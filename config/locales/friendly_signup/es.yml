@@ -1,0 +1,101 @@
+---
+es:
+  activemodel:
+    attributes:
+      confirmation_code:
+        code: Código de confirmación
+  decidim:
+    forms:
+      errors:
+        decidim/user:
+          email: Please enter a valid email address
+    friendly_signup:
+      confirmation_code_form:
+        expired: Este código ha expirado, por favor genera uno nuevo.
+        invalid: Código inválido, asegúrate de copiar el último código enviado por email.
+        invalid_token: Token inválido.
+      confirmation_codes:
+        create:
+          user_confirmed: Bienvenida %{name}! Tu cuenta ha sido confirmada correctamente!
+        index:
+          code_not_received: '¿No has recibido el código?'
+          confirm_send_code: '¡Quieres reenviar el código de confirmación a %{email}<br>Asegurate de comprobar la carpeta de spam por si acaso!'
+          description: Deberías recibir un código de 4 cifras a %{email}.<br>Si no lo encuentras, comprueba las carpetas de spam o espera unos minutos.
+          enter_code: Introducir código
+          subtitle: Debes confirmar tu dirección de correo electrónico antes de poder enviar propuestas, comentar o votar.
+          title: Solo un último paso...
+          verify: Verificar
+        mailer:
+          subject: "%{code} is your confirmation code for %{organization}"
+        resend_code:
+          sent: Se ha enviado un correo de confirmación a %{email}.
+      confirmation_codes_mailer:
+        confirmation_instructions:
+          copy: 'Copia este código:'
+          expires_in: Expirará en %{time}.
+          ignore: |-
+            Si no has generado este mensaje, por favor ignora este email.<br />
+            Tu cuenta no se activará a menos que este confirmada.
+          subtitle: Para finalizar el registro solo debes copiar el código de 4 dígitos mostrado a continuación, luego vuelve a la página de registro de %{organization} y engánchalo ahí!
+          title: '¡Ya casi está!'
+      datetime:
+        distance_in_words:
+          about_x_hours:
+            one: alrededor de 1 hora
+            other: alrededor de %{count} horas
+          about_x_months:
+            one: alrededor de 1 mes
+            other: alrededor de %{count} meses
+          about_x_years:
+            one: alrededor de 1 año
+            other: alrededor de %{count} años
+          almost_x_years:
+            one: casi 1 año
+            other: casi %{count} años
+          half_a_minute: medio minuto
+          less_than_x_minutes:
+            one: menos de 1 minuto
+            other: menos de %{count} minutos
+          less_than_x_seconds:
+            one: menos de 1 segundo
+            other: menos de %{count} segundos
+          over_x_years:
+            one: más de 1 año
+            other: más de %{count} años
+          x_days:
+            one: 1 día
+            other: "%{count} días"
+          x_minutes:
+            one: 1 minuto
+            other: "%{count} minutos"
+          x_months:
+            one: 1 mes
+            other: "%{count} meses"
+          x_seconds:
+            one: 1 segundo
+            other: "%{count} segundos"
+      errors:
+        messages:
+          blank: Parece que no has introducido nada en este campo
+          email:
+            blank: Introduzca una dirección de correo electrónico
+            invalid: La dirección de correo electrónico parece incompleta
+            taken: Este correo electrónico ya está en uso para otra cuenta. Intenta iniciar sesión o utiliza otro correo electrónico
+          password:
+            email_included_in_password: La contraseña que has introducido es demasiado similar a tu correo electrónico
+            name_included_in_password: La contraseña que has introducido es demasiado similar a tu nombre
+            nickname_included_in_password: La contraseña que has introducido es demasiado similar a tu apodo
+            not_enough_unique_characters: La contraseña que ha introducido no tiene suficientes caracteres diferentes
+            password_too_common: La contraseña que has introducido es muy común - te sugerimos usar una contraseña diferente
+            password_too_short: La contraseña introducida es demasiado corta
+      shared:
+        password_fields:
+          hidden_password: La contraseña está oculta
+          hide_password: Ocultar contraseña
+          show_password: Mostrar contraseña
+          shown_password: La contraseña es visible
+  devise:
+    confirmations:
+      signed_up_but_code_required: Un mensaje con un código ha sido enviado a su dirección de correo electrónico. Por favor, copie y pegue el código recibido en esta página.
+    registrations:
+      signed_up_but_code_required: Un mensaje con un código ha sido enviado a su dirección de correo electrónico. Por favor, copie y pegue el código recibido en esta página.

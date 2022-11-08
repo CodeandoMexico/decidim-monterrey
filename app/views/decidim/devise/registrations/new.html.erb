@@ -1,5 +1,4 @@
 <% add_decidim_page_title(t(".sign_up")) %>
-
 <% content_for :devise_links do %>
   <%= render "decidim/devise/shared/links" %>
 <% end %>
@@ -26,7 +25,7 @@
   <div class="row">
     <div class="columns large-6 medium-10 medium-centered">
 
-      <%= decidim_form_for(@form, namespace: "registration", as: resource_name, url: registration_path(resource_name), html: { class: "register-form new_user", id: "register-form" }) do |f| %>
+      <%= decidim_form_for(@form, namespace: "registration", as: resource_name, url: registration_path(resource_name), html: { class: "register-form new_user#{friendly_override_activated?(:use_instant_validation) ? ' instant-validation' : ''}", id: "register-form" }, data: { "validation-url" => decidim_friendly_signup.validate_path }) do |f| %>
         <%= invisible_captcha %>
         <div class="card">
           <div class="card__content">
@@ -34,18 +33,20 @@
 
             <div class="user-person">
               <div class="field">
-                <%= f.text_field :name, help_text: t(".username_help") %>
+              <%= f.text_field :name, help_text: t(".username_help"), autocomplete: "off", data: { "instant-attribute" => "name", "instant-recheck" => "#registration_user_password" } %>
               </div>
             </div>
 
-            <div class="user-nickname">
-              <div class="field">
-                <%= f.text_field :nickname, help_text: t(".nickname_help", organization: current_organization.name), prefix: { value: "@", small: 1, large: 1 } %>
+            <% unless friendly_override_activated?(:hide_nickname) %>
+              <div class="user-nickname">
+                <div class="field">
+                  <%= f.text_field :nickname, help_text: t(".nickname_help", organization: current_organization.name), prefix: { value: "@", small: 1, large: 1 }, autocomplete: "off", data: { "instant-attribute" => "nickname", "instant-recheck" => "#registration_user_password" } %>
+                </div>
               </div>
-            </div>
+            <% end %>
 
             <div class="field">
-              <%= f.email_field :email %>
+              <%= f.email_field :email, autocomplete: "email", data: { "instant-attribute" => "email", "instant-recheck" => "#registration_user_password" } %>
             </div>
 
             <div class="field">
@@ -53,11 +54,7 @@
             </div>
 
             <div class="field">
-              <%= f.password_field :password, help_text: t(".password_help", minimun_characters: NOBSPW.configuration.min_password_length), autocomplete: "off" %>
-            </div>
-
-            <div class="field">
-              <%= f.password_field :password_confirmation %>
+              <%= render("decidim/friendly_signup/shared/password_fields", form: f, options: { required: true, help_text: t(".password_help", minimun_characters: ::PasswordValidator::MINIMUM_LENGTH), autocomplete: "off", data: { "instant-attribute" => "password" } }) %>
             </div>
           </div>
         </div>
@@ -102,4 +99,3 @@
 </div>
 </div>
 <%= render "decidim/devise/shared/newsletter_modal" %>
-
