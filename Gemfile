@@ -3,10 +3,11 @@
 source "https://rubygems.org"
 
 ruby RUBY_VERSION
+DECIDIM_VERSION = "0.26.3"
 
 gem "dotenv-rails", groups: [:development, :test, :production]
 
-gem "decidim", "0.25.2"
+gem "decidim", DECIDIM_VERSION
 gem "decidim-ine", path: "decidim-module-ine"
 
 gem "bootsnap", "~> 1.3"
@@ -16,10 +17,11 @@ gem "wicked_pdf", "~> 2.1"
 gem "clockwork"
 gem "delayed_job_active_record"
 gem "daemons"
+gem "decidim-friendly_signup"
 
 group :development, :test do
   gem "byebug", "~> 11.0", platform: :mri
-  gem "decidim-dev", "0.25.2"
+  gem "decidim-dev", DECIDIM_VERSION
   gem "pry"
   gem "standard"
   gem "rspec-rails"
