@@ -1,0 +1,8 @@
+---
+es:
+  decidim:
+    verifications:
+      authorizations:
+        first_login:
+          actions:
+            managed_user_authorization_handler: Verifícate contra el gestor de autorización de usuario gestionado
