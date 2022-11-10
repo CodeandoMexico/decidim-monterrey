@@ -14,6 +14,11 @@ es:
     registrations:
       signed_up: Te has registrado con éxito. Recibirás un correo de confirmación, no olvides revisar en tu carpeta de spam o correos no deseados.
   decidim:
+    verifications:
+      authorizations:
+        first_login:
+          actions:
+            managed_user_authorization_handler: Verifícate contra la autorización de usuaria gestionada
     budgets:
       limit_announcement:
         cant_vote: No puedes votar en este presupuesto porque no pertenece a tu sector. Tu sector es <b>%{sector_name}</b>.
