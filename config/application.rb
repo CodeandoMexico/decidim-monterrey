@@ -21,6 +21,7 @@ module DecidimMonterrey
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+    # Set overrides using this pattern: https://edgeguides.rubyonrails.org/engines.html#overriding-models-and-controllers
     overrides = "#{Rails.root}/app/overrides"
     Rails.autoloaders.main.ignore(overrides)
 
@@ -29,5 +30,8 @@ module DecidimMonterrey
         load override
       end
     end
+
+    # Expand locales path
+    config.i18n.load_path += Dir[Rails.root.join("config/locales/**/*.yml").to_s]
   end
 end

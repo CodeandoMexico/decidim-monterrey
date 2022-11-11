@@ -289,6 +289,8 @@ GEM
       decidim-core (= 0.26.3)
       wicked_pdf (~> 2.1)
       wkhtmltopdf-binary (~> 0.12)
+    decidim-friendly_signup (0.4.2)
+      decidim-core (~> 0.26.0)
     decidim-generators (0.26.3)
       decidim-core (= 0.26.3)
     decidim-meetings (0.26.3)
@@ -785,6 +787,7 @@ DEPENDENCIES
   daemons
   decidim (= 0.26.3)
   decidim-dev (= 0.26.3)
+  decidim-friendly_signup
   decidim-ine!
   delayed_job_active_record
   dotenv-rails
