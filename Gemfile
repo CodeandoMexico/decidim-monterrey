@@ -17,6 +17,7 @@ gem "wicked_pdf", "~> 2.1"
 gem "clockwork"
 gem "delayed_job_active_record"
 gem "daemons"
+gem "decidim-friendly_signup"
 
 group :development, :test do
   gem "byebug", "~> 11.0", platform: :mri
