@@ -4,6 +4,10 @@ es:
       ine:
         name: Verificación INE / Carta de Residencia
     verifications:
+      authorizations:
+        first_login:
+          actions:
+            ine: Verifícate con tu INE
       ine:
         admin:
           rejections:
