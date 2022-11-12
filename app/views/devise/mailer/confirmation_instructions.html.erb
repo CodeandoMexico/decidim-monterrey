@@ -1,0 +1,7 @@
+<% if @resource.unconfirmed_email.blank? %>
+  <p class="email-greeting"><%= t(".greeting", recipient: @email) %></p>
+<% end %>
+
+<p class="email-instructions"><%= t(".instruction") %></p>
+
+<button class="button button-mailer email-button__cta" style="background-color: #cb3c29 !important; padding: .7rem 1.5rem !important; border-color: transparent; border-radius: 4px; font-size: 1.1rem;"><%= link_to t(".action"), confirmation_url(@resource, confirmation_token: @token, host: @resource.organization.host), style: "color: #ddd !important; font-weight: bold;" %></button>
