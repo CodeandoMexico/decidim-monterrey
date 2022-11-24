@@ -13,6 +13,9 @@ es:
   devise:
     registrations:
       signed_up: Te has registrado con éxito. Recibirás un correo de confirmación, no olvides revisar en tu carpeta de spam o correos no deseados.
+    mailer:
+      confirmation_instructions:
+        action: Haz click aquí para confirmar tu cuenta
   decidim:
     verifications:
       authorizations:
