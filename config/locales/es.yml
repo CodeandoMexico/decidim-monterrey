@@ -70,6 +70,8 @@ es:
         allowed_file_extensions: "Formatos de archivo permitidos: %{extensions}"
         max_file_size: "Tamaño máximo del archivo: %{megabytes}MB"
       remove_this_file: Eliminar este archivo
+      question_types:
+        curp: CURP
     authorization_handlers:
       managed_user_authorization_handler:
         name: Autorizacion de Usuaria Administrada
