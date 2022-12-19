@@ -30,7 +30,7 @@ module DecidimMonterrey
         load override
       end
     end
-
+    config.i18n.default_locale = :es
     # Expand locales path
     config.i18n.load_path += Dir[Rails.root.join("config/locales/**/*.yml").to_s]
   end

@@ -1,0 +1,4 @@
+en:
+  errors:
+    messages:
+      curp: The CURP is invalid

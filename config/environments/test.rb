@@ -44,6 +44,8 @@ Rails.application.configure do
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
 
+  # config.i18n.enforce_available_locales = false
+  I18n.reload! if I18n.backend.initialized?
   # Raises error for missing translations.
   # config.action_view.raise_on_missing_translations = true
 end
