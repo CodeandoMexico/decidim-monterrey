@@ -1,0 +1,8 @@
+es:
+  decidim:
+    forms:
+      questionnaires:
+        show:
+          questionnaire_answered:
+            body: Ya has participado.
+            title: Ya has participado
