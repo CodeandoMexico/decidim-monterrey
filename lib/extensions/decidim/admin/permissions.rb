@@ -5,8 +5,6 @@ module Extensions
         def permissions
 
           read_admin_dashboard_action?
-          allow! if permission_action.subject == :global_moderation
-          apply_newsletter_permissions_for_admin!
 
           if authorization_valuator?
             begin
