@@ -15,7 +15,7 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
-      - run: bin/standardrb
+      - run: bin/standardrb --config .standard.yml
 
   rspec:
     runs-on: ubuntu-latest
