@@ -15,8 +15,6 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
-      - run: cat .standard.yml
-      - run: $PWD
       - run: bin/standardrb --config .standard.yml
 
   rspec:
