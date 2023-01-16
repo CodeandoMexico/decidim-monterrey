@@ -3,7 +3,6 @@ module Extensions
     module Admin
       module Permissions
         def permissions
-
           read_admin_dashboard_action?
 
           if authorization_valuator?
