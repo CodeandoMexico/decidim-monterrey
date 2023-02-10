@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 #   TODO:  this modifies entire file but only needs the function proposal_has_costs modified. refactor to only modify that funciton
 module Decidim
   module Proposals
