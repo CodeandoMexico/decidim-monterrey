@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# TODO: This is a whole file only to modify the favicon fucntion to include the https protocol... need to refactor this code so that it only reopens the class
+
 module Decidim
   # View helpers related to the layout.
   module LayoutHelper
