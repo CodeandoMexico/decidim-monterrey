@@ -1,0 +1,10 @@
+es:
+  decidim:
+    system:
+      organizations:
+        omniauth_settings:
+          juanita:
+            site_url: URL del host
+            client_id: client_id
+            client_secret: client_secret
+            redirect_url: Redirect URI
