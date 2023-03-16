@@ -15,16 +15,13 @@ Después corre `bundle install` en tu terminal.
 
 Necesitarás un client_id y un client_secret para este servicio. Deberás escribir a la dirección de informática de [Monterrey SIGA](monterrey.gob.mx/siga) para obtener tu registro. Deberás proporcionar la url de tu servicio y la url de callback (por ejemplo: http://tuurl.com/users/auth/juanita/callback).
 
-Pon dichas variables en tu .env o lo que utilices para administrar las variables de entorno, y referencíalos en tu `secrets.yml`:
+Se requieren las siguientes variables:
 
-```yaml
-omniauth:
-  juanita:
-    enabled: true
-    redirect_uri: <%= ENV['JUANITA_CALLBACK'] %>
-    scheme: 'https'
-    port: 443
-```
+- client_id
+- client_secret
+- redirect_uri
+- client_url
+
 
 Para activarlo, recomiendo utilizar OmniAuth::Builder en un initializer, por ejemplo:
 
