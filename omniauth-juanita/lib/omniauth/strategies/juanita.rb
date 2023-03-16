@@ -1,28 +1,28 @@
 # frozen_string_literal: true
 
-require 'base64'
-require 'timeout'
-require 'net/http'
-require 'open-uri'
-require 'omniauth'
-require 'openid_connect'
-require 'forwardable'
+require "base64"
+require "timeout"
+require "net/http"
+require "open-uri"
+require "omniauth"
+require "openid_connect"
+require "forwardable"
 
 module OmniAuth
   module Strategies
-    class Juanita 
+    class Juanita
       include OmniAuth::Strategy
       extend Forwardable
 
       RESPONSE_TYPE_EXCEPTIONS = {
-        'id_token' => { exception_class: OmniAuth::Juanita::MissingIdTokenError, key: :missing_id_token }.freeze,
-        'code' => { exception_class: OmniAuth::Juanita::MissingCodeError, key: :missing_code }.freeze,
+        "id_token" => {exception_class: OmniAuth::Juanita::MissingIdTokenError, key: :missing_id_token}.freeze,
+        "code" => {exception_class: OmniAuth::Juanita::MissingCodeError, key: :missing_code}.freeze
       }.freeze
 
       def_delegator :request, :params
 
-      option :name, 'juanita'
-      MID = '/realms/id.monterrey.gob.mx/protocol/openid-connect'
+      option :name, "juanita"
+      MID = "/realms/id.monterrey.gob.mx/protocol/openid-connect"
       option(:client_options, identifier: nil,
                               secret: nil,
                               redirect_uri: nil,
@@ -42,8 +42,8 @@ module OmniAuth
       option :client_jwk_signing_key
       option :client_x509_signing_key
       option :scope, [:openid]
-      option :response_type, 'code' # ['code', 'id_token']
-      option :grant_type, 'authorization_code'
+      option :response_type, "code" # ['code', 'id_token']
+      option :grant_type, "authorization_code"
       option :require_state, true
       option :state
       option :response_mode, [:query] # [:query, :fragment, :form_post, :web_message]
@@ -55,8 +55,8 @@ module OmniAuth
       # option :post_logout_redirect_uri
       option :extra_authorize_params, {}
       option :allow_authorize_params, []
-      option :uid_field, 'sub'
-      option :logout_path, '/logout'
+      option :uid_field, "sub"
+      option :logout_path, "/logout"
 
       def uid
         user_info.raw_attributes[options.uid_field.to_sym] || user_info.sub
@@ -68,7 +68,7 @@ module OmniAuth
           token: access_token.access_token,
           refresh_token: access_token.refresh_token,
           expires_in: access_token.expires_in,
-          scope: access_token.scope,
+          scope: access_token.scope
         }
       end
 
@@ -78,12 +78,12 @@ module OmniAuth
           email: user_info.email,
           email_verified: user_info.email_verified,
           nickname: user_info.preferred_username,
-          first_name: user_info.given_name,
+          first_name: user_info.given_name
         }
       end
 
       extra do
-        { raw_info: user_info.raw_attributes }
+        {raw_info: user_info.raw_attributes}
       end
 
       def client
@@ -101,22 +101,22 @@ module OmniAuth
       end
 
       def callback_phase
-        error = params['error_reason'] || params['error']
-        error_description = params['error_description'] || params['error_reason']
-        invalid_state = (options.require_state && params['state'].to_s.empty?) || params['state'] != stored_state
+        error = params["error_reason"] || params["error"]
+        error_description = params["error_description"] || params["error_reason"]
+        invalid_state = (options.require_state && params["state"].to_s.empty?) || params["state"] != stored_state
 
-        raise CallbackError, error: params['error'], reason: error_description, uri: params['error_uri'] if error
+        raise CallbackError, error: params["error"], reason: error_description, uri: params["error_uri"] if error
         raise CallbackError, error: :csrf_detected, reason: "Invalid 'state' parameter" if invalid_state
 
         return unless valid_response_type?
 
         options.issuer = issuer if options.issuer.nil? || options.issuer.empty?
 
-        verify_id_token!(params['id_token']) if configured_response_type == 'id_token'
+        verify_id_token!(params["id_token"]) if configured_response_type == "id_token"
         discover!
         client.redirect_uri = redirect_uri
 
-        return id_token_callback_phase if configured_response_type == 'id_token'
+        return id_token_callback_phase if configured_response_type == "id_token"
 
         client.authorization_code = authorization_code
         access_token
@@ -141,7 +141,7 @@ module OmniAuth
       end
 
       def authorization_code
-        params['code']
+        params["code"]
       end
 
       def end_session_uri
@@ -158,26 +158,26 @@ module OmniAuth
           response_type: options.response_type,
           response_mode: options.response_mode,
           scope: options.scope,
-          state: new_state,
+          state: new_state
         }
-        
+
         opts.merge!(options.extra_authorize_params) unless options.extra_authorize_params.empty?
 
         options.allow_authorize_params.each do |key|
           opts[key] = request.params[key.to_s] unless opts.key?(key)
         end
-        
+
         client.authorization_uri(opts.reject { |_k, v| v.nil? })
       end
 
       def public_key
         @public_key ||= if options.discovery
-                          config.jwks
-                        elsif configured_public_key
-                          configured_public_key
-                        elsif client_options.jwks_uri
-                          fetch_key
-                        end
+          config.jwks
+        elsif configured_public_key
+          configured_public_key
+        elsif client_options.jwks_uri
+          fetch_key
+        end
       end
 
       # Some OpenID providers use the OAuth2 client secret as the shared secret, but
@@ -186,13 +186,11 @@ module OmniAuth
         base64_decoded_jwt_secret || client_options.secret
       end
 
-
       private
 
       def fetch_key
         req = ::OpenIDConnect.http_client.get(complete_url(client_options.jwks_uri))
         @fetch_key ||= parse_jwk_key(req.body)
-
       end
 
       def base64_decoded_jwt_secret
@@ -202,8 +200,8 @@ module OmniAuth
       end
 
       def issuer
-        resource = "#{ client_options.scheme }://#{ client_options.host }"
-        resource = "#{ resource }:#{ client_options.port }" if client_options.port
+        resource = "#{client_options.scheme}://#{client_options.host}"
+        resource = "#{resource}:#{client_options.port}" if client_options.port
         ::OpenIDConnect::Discovery::Provider.discover!(resource).issuer
       end
 
@@ -233,13 +231,13 @@ module OmniAuth
 
         token_request_params = {
           scope: (options.scope if options.send_scope_to_token_endpoint),
-          client_auth_method: options.client_auth_method,
+          client_auth_method: options.client_auth_method
         }
 
-        token_request_params[:code_verifier] = params['code_verifier'] || session.delete('omniauth.pkce.verifier') if options.pkce
+        token_request_params[:code_verifier] = params["code_verifier"] || session.delete("omniauth.pkce.verifier") if options.pkce
 
         @access_token = client.access_token!(token_request_params)
-        verify_id_token!(@access_token.id_token) if configured_response_type == 'code'
+        verify_id_token!(@access_token.id_token) if configured_response_type == "code"
 
         @access_token
       end
@@ -274,7 +272,7 @@ module OmniAuth
         # done. However, if there is no kid, then we try each key
         # individually to see if one works:
         # https://github.com/nov/json-jwt/pull/92#issuecomment-824654949
-        raise if decoded&.header&.key?('kid')
+        raise if decoded&.header&.key?("kid")
 
         decoded = decode_with_each_key!(id_token, keyset)
 
@@ -292,7 +290,7 @@ module OmniAuth
         return if algorithm == client_signing_alg
 
         reason = "Received JWT is signed with #{algorithm}, but client_singing_alg is configured for #{client_signing_alg}"
-        raise CallbackError, error: :invalid_jwt_algorithm, reason: reason, uri: params['error_uri']
+        raise CallbackError, error: :invalid_jwt_algorithm, reason: reason, uri: params["error_uri"]
       end
 
       def decode!(id_token, key)
@@ -321,29 +319,29 @@ module OmniAuth
 
       def new_state
         state = if options.state.respond_to?(:call)
-                  if options.state.arity == 1
-                    options.state.call(env)
-                  else
-                    options.state.call
-                  end
-                end
-        session['omniauth.state'] = state || SecureRandom.hex(16)
+          if options.state.arity == 1
+            options.state.call(env)
+          else
+            options.state.call
+          end
+        end
+        session["omniauth.state"] = state || SecureRandom.hex(16)
       end
 
       def stored_state
-        session.delete('omniauth.state')
+        session.delete("omniauth.state")
       end
 
       def new_nonce
-        session['omniauth.nonce'] = SecureRandom.hex(16)
+        session["omniauth.nonce"] = SecureRandom.hex(16)
       end
 
       def stored_nonce
-        session.delete('omniauth.nonce')
+        session.delete("omniauth.nonce")
       end
 
       def script_name
-        return '' if @env.nil?
+        return "" if @env.nil?
 
         super
       end
@@ -356,10 +354,10 @@ module OmniAuth
 
       def configured_public_key
         @configured_public_key ||= if options.client_jwk_signing_key
-                                     parse_jwk_key(options.client_jwk_signing_key)
-                                   elsif options.client_x509_signing_key
-                                     parse_x509_key(options.client_x509_signing_key)
-                                   end
+          parse_jwk_key(options.client_jwk_signing_key)
+        elsif options.client_x509_signing_key
+          parse_x509_key(options.client_x509_signing_key)
+        end
       end
 
       def parse_x509_key(key)
@@ -367,20 +365,20 @@ module OmniAuth
       end
 
       def parse_jwk_key(key)
-        json = key if key.class == Hash || json = JSON.parse(key)
-        return JSON::JWK::Set.new(json['keys']) if json.key?('keys')
+        (json = key) if key.class == Hash || (json = JSON.parse(key))
+        return JSON::JWK::Set.new(json["keys"]) if json.key?("keys")
 
         JSON::JWK.new(json)
       end
 
       def decode(str)
-        UrlSafeBase64.decode64(str).unpack1('B*').to_i(2).to_s
+        UrlSafeBase64.decode64(str).unpack1("B*").to_i(2).to_s
       end
 
       def redirect_uri
-        return client_options.redirect_uri unless params['redirect_uri']
+        return client_options.redirect_uri unless params["redirect_uri"]
 
-        "#{ client_options.redirect_uri }?redirect_uri=#{ CGI.escape(params['redirect_uri']) }"
+        "#{client_options.redirect_uri}?redirect_uri=#{CGI.escape(params["redirect_uri"])}"
       end
 
       def encoded_post_logout_redirect_uri
@@ -401,12 +399,12 @@ module OmniAuth
       end
 
       def id_token_callback_phase
-        user_data = decode_id_token(params['id_token']).raw_attributes
-        env['omniauth.auth'] = AuthHash.new(
+        user_data = decode_id_token(params["id_token"]).raw_attributes
+        env["omniauth.auth"] = AuthHash.new(
           provider: name,
-          uid: user_data['sub'],
-          info: { name: user_data['name'], email: user_data['email'] },
-          extra: { raw_info: user_data }
+          uid: user_data["sub"],
+          info: {name: user_data["name"], email: user_data["email"]},
+          extra: {raw_info: user_data}
         )
         call_app!
       end
@@ -415,7 +413,7 @@ module OmniAuth
         return true if params.key?(configured_response_type)
 
         error_attrs = RESPONSE_TYPE_EXCEPTIONS[configured_response_type]
-        fail!(error_attrs[:key], error_attrs[:exception_class].new(params['error']))
+        fail!(error_attrs[:key], error_attrs[:exception_class].new(params["error"]))
 
         false
       end
@@ -429,11 +427,11 @@ module OmniAuth
 
         decode_id_token(id_token).verify!(issuer: options.issuer,
                                           client_id: client_options.identifier,
-                                          nonce: params['nonce'].presence || stored_nonce)
+                                          nonce: params["nonce"].presence || stored_nonce)
       end
 
       def complete_url(endpoint)
-        client_options.scheme + '://' + client_options.host + endpoint
+        client_options.scheme + "://" + client_options.host + endpoint
       end
 
       class CallbackError < StandardError
@@ -447,11 +445,11 @@ module OmniAuth
         end
 
         def message
-          [error, error_reason, error_uri].compact.join(' | ')
+          [error, error_reason, error_uri].compact.join(" | ")
         end
       end
     end
   end
 end
 
-OmniAuth.config.add_camelization 'juanita', 'Juanita'
+OmniAuth.config.add_camelization "juanita", "Juanita"
