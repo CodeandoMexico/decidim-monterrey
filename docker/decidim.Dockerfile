@@ -23,7 +23,7 @@ COPY Gemfile.lock .
 COPY decidim-module-ine/decidim-ine.gemspec ./decidim-module-ine/
 COPY decidim-module-ine/lib/decidim/ine/version.rb ./decidim-module-ine/lib/decidim/ine/
 COPY omniauth-juanita/omniauth-juanita.gemspec ./omniauth-juanita/
-COPY omniauth-juanita/lib/omniauth-juanita/version.rb ./omniauth-juanita/lib/
+COPY omniauth-juanita/lib/omniauth/omniauth-juanita/version.rb ./omniauth-juanita/lib/omniauth/omniauth-juanita/
 RUN bundle check || bundle install --jobs=4
 COPY . .
 RUN yarn install
