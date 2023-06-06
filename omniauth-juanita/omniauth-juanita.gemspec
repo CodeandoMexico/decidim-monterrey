@@ -1,7 +1,8 @@
-lib = File.expand_path("lib", __dir__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "lib/omniauth-juanita/version"
-require File.expand_path("lib/omniauth-juanita/version")
+# frozen_string_literal: true
+
+$LOAD_PATH.push File.expand_path("lib", __dir__)
+
+require "omniauth/omniauth-juanita/version"
 
 Gem::Specification.new do |spec|
   spec.add_dependency "omniauth", "~> 2"
