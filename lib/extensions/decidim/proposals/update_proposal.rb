@@ -15,7 +15,11 @@ module Extensions
           )
           @proposal.coauthorships.clear
           @proposal.add_coauthor(current_user, user_group: user_group)
-          @proposal.scope = current_user_scope(@proposal)
+          GeographicScopeMatcher.call(@proposal, @current_user) do
+            on(:ok) do
+              @roposal.scope = matcher
+            end
+          end
           @proposal.save!
         end
       end

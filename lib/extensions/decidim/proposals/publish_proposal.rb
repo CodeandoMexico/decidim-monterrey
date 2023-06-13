@@ -17,7 +17,11 @@ module Extensions
             visibility: "public-only"
           ) do
             @proposal.update title: title, body: body, published_at: Time.current
-            @proposal.scope = current_user_scope(@proposal)
+            GeographicScopeMatcher.call(@proposal, @current_user) do
+              on(:ok) do
+                @proposal.scope = matcher
+              end
+            end
             @proposal.save!
           end
         end
