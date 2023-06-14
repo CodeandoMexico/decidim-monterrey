@@ -29,6 +29,7 @@ module Extensions
       end
 
       private
+
       attr_reader :current_user, :item
 
       def scope_type_checker

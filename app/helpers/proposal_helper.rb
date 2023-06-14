@@ -39,7 +39,7 @@ module ProposalHelper
   end
 
   def is_component_scope_district?(component)
-    Decidim::Scope.find(component.settings.scope_id).code == "DISTRITOS" 
+    Decidim::Scope.find(component.settings.scope_id).code == "DISTRITOS"
   end
 
   def is_component_scope_sector?(component)
