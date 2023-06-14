@@ -22,10 +22,8 @@ module Extensions
                 component: form.component
               )
               proposal.add_coauthor(@current_user, user_group: user_group)
-              GeographicScopeMatcher.call(@proposal, @current_user) do
-                on(:ok) do
-                  proposal.scope = matcher
-                end
+              Decidim::GeographicScopeMatcher.call(proposal, @current_user) do
+                on(:ok) {|matcher| proposal.scope = matcher}
               end
               proposal.save!
               proposal

@@ -5,10 +5,12 @@ module Extensions
     module Proposals
       module PublishProposal
         include Extensions::Decidim::Proposals::CurrentUserScope
+      
 
         def publish_proposal
           title = reset(:title)
           body = reset(:body)
+          
 
           ::Decidim.traceability.perform_action!(
             "publish",
@@ -16,13 +18,19 @@ module Extensions
             @current_user,
             visibility: "public-only"
           ) do
-            @proposal.update title: title, body: body, published_at: Time.current
-            GeographicScopeMatcher.call(@proposal, @current_user) do
-              on(:ok) do
-                @proposal.scope = matcher
-              end
+            event = Decidim::GeographicScopeMatcher.call(@proposal, @current_user) do
+              on(:ok) { |matcher| publisher(title, body, matcher) }
+              on(:nil) { publisher(title, body, false) }
             end
             @proposal.save!
+          end
+        end
+
+        def publisher(title, body, match)
+          if match == false
+            @proposal.update title: title, body: body, published_at: Time.current
+          else
+            @proposal.update title: title, body: body, published_at: Time.current, scope: match
           end
         end
       end
