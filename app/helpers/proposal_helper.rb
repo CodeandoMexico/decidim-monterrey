@@ -39,11 +39,11 @@ module ProposalHelper
   end
 
   def is_component_scope_district?(component)
-    Decidim::Scope.find(component.settings.scope_id).code == "DISTRICTS"
+    Decidim::Scope.find(component.settings.scope_id).code == "DISTRITOS" # what about using component.budget??.scope to account for those that don't have .code
   end
 
   def is_component_scope_sector?(component)
-    Decidim::Scope.find(component.settings.scope_id).code == "SECTORS"
+    Decidim::Scope.find(component.settings.scope_id).code == "SECTORES"
   end
 
   def user_scope_name(user, component_settings)
