@@ -16,14 +16,14 @@ module ProposalHelper
 
   def user_can_vote_district_proposal?(user, proposal)
     authorization = user_authorization(user)
-    return false unless authorization
+    return false unless authorization && proposal.scope
 
     proposal.scope.code == authorization.metadata["district_code"]
   end
 
   def user_can_vote_sector_proposal?(user, proposal)
     authorization = user_authorization(user)
-    return false unless authorization
+    return false unless authorization && proposal.scope
 
     proposal.scope.code == authorization.metadata["sector_code"]
   end
@@ -39,7 +39,7 @@ module ProposalHelper
   end
 
   def is_component_scope_district?(component)
-    Decidim::Scope.find(component.settings.scope_id).code == "DISTRITOS" # what about using component.budget??.scope to account for those that don't have .code
+    Decidim::Scope.find(component.settings.scope_id).code == "DISTRITOS"
   end
 
   def is_component_scope_sector?(component)

@@ -16,13 +16,19 @@ module Extensions
             @current_user,
             visibility: "public-only"
           ) do
-            @proposal.update title: title, body: body, published_at: Time.current
-            GeographicScopeMatcher.call(@proposal, @current_user) do
-              on(:ok) do
-                @proposal.scope = matcher
-              end
+            Decidim::GeographicScopeMatcher.call(@proposal, @current_user) do
+              on(:ok) { |matcher| publisher(title, body, matcher) }
+              on(:nil) { publisher(title, body, false) }
             end
             @proposal.save!
+          end
+        end
+
+        def publisher(title, body, match)
+          if match == false
+            @proposal.update title: title, body: body, published_at: Time.current
+          else
+            @proposal.update title: title, body: body, published_at: Time.current, scope: match
           end
         end
       end
