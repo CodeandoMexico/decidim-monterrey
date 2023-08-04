@@ -15,7 +15,9 @@ module Extensions
           )
           @proposal.coauthorships.clear
           @proposal.add_coauthor(current_user, user_group: user_group)
-          @proposal.scope = current_user_scope(@proposal)
+          Decidim::GeographicScopeMatcher.call(proposal, @current_user) do
+            on(:ok) { |matcher| @proposal.scope = matcher }
+          end
           @proposal.save!
         end
       end

@@ -4,8 +4,6 @@ module Extensions
   module Decidim
     module Proposals
       module CreateProposal
-        include Extensions::Decidim::Proposals::CurrentUserScope
-
         def create_proposal
           PaperTrail.request(enabled: false) do
             @proposal = ::Decidim.traceability.perform_action!(
@@ -24,7 +22,9 @@ module Extensions
                 component: form.component
               )
               proposal.add_coauthor(@current_user, user_group: user_group)
-              proposal.scope = current_user_scope(proposal)
+              Decidim::GeographicScopeMatcher.call(proposal, @current_user) do
+                on(:ok) { |matcher| proposal.scope = matcher }
+              end
               proposal.save!
               proposal
             }

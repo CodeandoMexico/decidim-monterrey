@@ -2,6 +2,7 @@ module Extensions
   module Decidim
     module Proposals
       module CurrentUserScope
+        ## this module will not used for now while we test the GeographicScopeMatcher
         PARTICIPATORY_PROCESS_TYPE = {
           "DISTRITOS" => "district_code",
           "SECTORES" => "sector_code"

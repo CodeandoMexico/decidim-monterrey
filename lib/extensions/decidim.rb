@@ -9,7 +9,7 @@ require "extensions/decidim/core/permissions"
 require "extensions/decidim/admin/permissions"
 require "extensions/decidim/registrations/registrations_form"
 require "extensions/decidim/registrations/create_registration"
-
+require "extensions/decidim/geographic_scope_matcher"
 module Extensions
   module Decidim
   end

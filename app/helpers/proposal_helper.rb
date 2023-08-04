@@ -16,14 +16,14 @@ module ProposalHelper
 
   def user_can_vote_district_proposal?(user, proposal)
     authorization = user_authorization(user)
-    return false unless authorization
+    return false unless authorization && proposal.scope
 
     proposal.scope.code == authorization.metadata["district_code"]
   end
 
   def user_can_vote_sector_proposal?(user, proposal)
     authorization = user_authorization(user)
-    return false unless authorization
+    return false unless authorization && proposal.scope
 
     proposal.scope.code == authorization.metadata["sector_code"]
   end
@@ -39,11 +39,11 @@ module ProposalHelper
   end
 
   def is_component_scope_district?(component)
-    Decidim::Scope.find(component.settings.scope_id).code == "DISTRICTS"
+    Decidim::Scope.find(component.settings.scope_id).code == "DISTRITOS"
   end
 
   def is_component_scope_sector?(component)
-    Decidim::Scope.find(component.settings.scope_id).code == "SECTORS"
+    Decidim::Scope.find(component.settings.scope_id).code == "SECTORES"
   end
 
   def user_scope_name(user, component_settings)

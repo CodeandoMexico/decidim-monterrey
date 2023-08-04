@@ -29,7 +29,15 @@ module Extensions
         private
 
         def can_user_vote_in_proposal?
-          @proposal.scope == current_user_scope(@proposal)
+          return true if @proposal.scope.nil?
+          Decidim::GeographicScopeMatcher.call(@proposal, @current_user) do
+            on(:ok) do
+              return true
+            end
+            on(:nil) do
+              return false
+            end
+          end
         end
       end
     end
