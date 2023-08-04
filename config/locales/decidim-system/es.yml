@@ -3,7 +3,7 @@ es:
     system:
       organizations:
         omniauth_settings:
-          juanita:
+          idmty:
             site_url: URL del host
             client_id: client_id
             client_secret: client_secret

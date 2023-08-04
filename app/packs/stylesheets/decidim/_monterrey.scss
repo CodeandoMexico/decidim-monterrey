@@ -1,3 +1,9 @@
+$idmty: #7c4cfe;
+
+:root{
+  --idmty: #{$idmty};
+}
+
 /* Mixins */
 
 @mixin for-phone-only {
