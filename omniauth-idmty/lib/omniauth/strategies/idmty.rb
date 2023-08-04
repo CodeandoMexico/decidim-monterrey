@@ -21,7 +21,6 @@ module OmniAuth
 
       def_delegator :request, :params
 
-
       option :name, "IDMty"
       MID = "/realms/IDMty/protocol/openid-connect"
       option(:client_options, identifier: nil,
