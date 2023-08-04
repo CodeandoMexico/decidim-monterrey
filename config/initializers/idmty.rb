@@ -1,12 +1,12 @@
-if Rails.application.secrets.dig(:omniauth, :juanita).present?
+if Rails.application.secrets.dig(:omniauth, :idmty).present?
   Rails.application.config.middleware.use OmniAuth::Builder do
     provider(
-      :juanita,
+      :idmty,
       setup: ->(env) {
                request = Rack::Request.new(env)
                organization = Decidim::Organization.find_by(host: request.host)
 
-               provider_config = organization.enabled_omniauth_providers[:juanita]
+               provider_config = organization.enabled_omniauth_providers[:idmty]
                env["omniauth.strategy"].options[:client_options] = {
                  identifier: provider_config[:client_id],
                  secret: provider_config[:client_secret],

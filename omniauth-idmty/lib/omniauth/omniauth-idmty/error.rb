@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module OmniAuth
-  module Juanita
+  module IDMty
     class Error < RuntimeError; end
 
     class MissingCodeError < Error; end

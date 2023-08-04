@@ -10,19 +10,19 @@ require "forwardable"
 
 module OmniAuth
   module Strategies
-    class Juanita
+    class IDMty
       include OmniAuth::Strategy
       extend Forwardable
 
       RESPONSE_TYPE_EXCEPTIONS = {
-        "id_token" => {exception_class: OmniAuth::Juanita::MissingIdTokenError, key: :missing_id_token}.freeze,
-        "code" => {exception_class: OmniAuth::Juanita::MissingCodeError, key: :missing_code}.freeze
+        "id_token" => {exception_class: OmniAuth::IDMty::MissingIdTokenError, key: :missing_id_token}.freeze,
+        "code" => {exception_class: OmniAuth::IDMty::MissingCodeError, key: :missing_code}.freeze
       }.freeze
 
       def_delegator :request, :params
 
-      option :name, "juanita"
-      MID = "/realms/id.monterrey.gob.mx/protocol/openid-connect"
+      option :name, "IDMty"
+      MID = "/realms/IDMty/protocol/openid-connect"
       option(:client_options, identifier: nil,
                               secret: nil,
                               redirect_uri: nil,
@@ -35,7 +35,7 @@ module OmniAuth
                               jwks_uri: "#{MID}/certs",
                               end_session_endpoint: "#{MID}/logout")
 
-      option :issuer, "https://iam.monterrey.gob.mx/realms/id.monterrey.gob.mx"
+      option :issuer, "https://iam.monterrey.gob.mx/realms/IDMty"
       option :discovery, true
       option :client_signing_alg
       option :jwt_secret_base64
@@ -452,4 +452,4 @@ module OmniAuth
   end
 end
 
-OmniAuth.config.add_camelization "juanita", "Juanita"
+OmniAuth.config.add_camelization "idmty", "IDMty"
