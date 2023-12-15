@@ -5,7 +5,7 @@ Decidim.configure do |config|
   config.application_name = "Decidimos juntos Monterrey"
 
   # The email that will be used as sender in all emails from Decidim
-  config.mailer_sender = ENV.fetch("MAILER_SENDER")
+  config.mailer_sender = ENV.fetch("MAILER_SENDER", '')
   config.maximum_attachment_size = 10.megabytes
   config.maximum_avatar_size = 10.megabytes
 
