@@ -13,6 +13,9 @@ module Decidim
 
           @form = InformationRejectionForm.from_model(@pending_authorization)
 
+          # Explicitly reject
+          @pending_authorization.granted_at = nil
+
           Decidim::Verifications::PerformAuthorizationStep.call(@pending_authorization, @form) do
             on(:ok) do
               SendVerificationRejectedJob.perform_now(@authorization.user)

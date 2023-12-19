@@ -3,6 +3,10 @@
 module Decidim
   module Ine
     class InformationRejectionForm < InformationForm
+      def metadata
+        {}
+      end
+
       def verification_metadata
         super.merge("rejected" => true)
       end

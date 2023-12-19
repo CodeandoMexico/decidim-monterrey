@@ -6,6 +6,8 @@ module Decidim
       mimic :ine_upload
 
       attribute :verification_attachment, String
+      attribute :component_id, String
+      attribute :redirect_url, String
 
       validates :verification_attachment,
         passthru: {to: Decidim::Authorization},

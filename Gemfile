@@ -19,6 +19,7 @@ gem "clockwork"
 gem "delayed_job_active_record"
 gem "daemons"
 gem "decidim-friendly_signup"
+gem "decidim-verify_wo_registration", path: "decidim-verify_wo_registration"
 
 group :development, :test do
   gem "byebug", "~> 11.0", platform: :mri
@@ -36,4 +37,5 @@ group :development do
   gem "web-console", "~> 4.0"
   gem "ripper-tags"
   gem "figaro"
+  gem "rack-mini-profiler"
 end
